@@ -1,11 +1,10 @@
-// Components
 import '../../utils/template'
 
 describe('MyRide Integration Test - Auth - Post : Login', () => {
     const method = 'post'
     const url = '/api/v1/login'
 
-    it('Success Post Login With Valid Data', () => {
+    it('TC-E2E-AU-001 : Success Post Login With Valid Data', () => {
         const test_data = {
             username : "flazefy",
             password : 'nopass123',
@@ -58,7 +57,7 @@ describe('MyRide Integration Test - Auth - Post : Login', () => {
         })
     })
 
-    it('Failed Post Login With Wrong Password', () => {
+    it('TC-E2E-AU-002 : Failed Post Login With Wrong Password', () => {
         const test_data = {
             username : "flazefy",
             password : 'nopass1234',
@@ -83,7 +82,7 @@ describe('MyRide Integration Test - Auth - Post : Login', () => {
         })
     })
 
-    it('Failed Post Login With Invalid Char Length Username', () => {
+    it('TC-E2E-AU-003 : Failed Post Login With Invalid Char Length Username', () => {
         const test_data = {
             username : "fla",
             password : 'nopass1234',
@@ -109,7 +108,7 @@ describe('MyRide Integration Test - Auth - Post : Login', () => {
         })
     })
 
-    it('Failed Post Login With Empty Username', () => {
+    it('TC-E2E-AU-004 : Failed Post Login With Empty Username', () => {
         const test_data = {
             username : "",
             password : 'nopass1234',
