@@ -1,0 +1,4 @@
+/node_modules
+*.png
+audit/firebase/init.js
+cypress/
