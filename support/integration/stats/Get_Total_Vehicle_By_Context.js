@@ -9,12 +9,12 @@ describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () 
             username : "flazefy",
             password: 'nopass123',
         }
-        const category = 'vehicle_merk'
+        const context = 'vehicle_merk'
 
         cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${category}`,
+                url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -45,12 +45,12 @@ describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () 
             username : "flazefy",
             password: 'nopass123',
         }
-        const category = 'Vehicle_categories'
+        const context = 'vehicle_categories'
 
         cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${category}`,
+                url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -72,12 +72,12 @@ describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () 
             username : "testerempty",
             password: 'nopass123',
         }
-        const category = 'vehicle_merk'
+        const context = 'vehicle_merk'
 
         cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${category}`,
+                url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -95,11 +95,11 @@ describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () 
     })
 
     it('TC-E2E-ST-008 : Failed Get Total Vehicle By Context With Invalid Auth', () => {
-        const category = 'vehicle_merk'
+        const context = 'vehicle_merk'
 
         cy.request({
             method: method,
-            url: `${url}/${category}`,
+            url: `${url}/${context}`,
             headers: {
                 Accept: `application/json`
             },

@@ -9,12 +9,12 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
             username : "flazefy",
             password: 'nopass123',
         }
-        const category = 'trip_category'
+        const context = 'trip_category'
 
         cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${category}`,
+                url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -45,12 +45,12 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
             username : "flazefy",
             password: 'nopass123',
         }
-        const category = 'trip_categories'
+        const context = 'trip_categories'
 
         cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${category}`,
+                url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -72,12 +72,12 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
             username : "testerempty",
             password: 'nopass123',
         }
-        const category = 'trip_category'
+        const context = 'trip_category'
 
         cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${category}`,
+                url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -95,11 +95,11 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
     })
 
     it('TC-E2E-ST-004 : Failed Get Total Trip By Context With Invalid Auth', () => {
-        const category = 'trip_category'
+        const context = 'trip_category'
 
         cy.request({
             method: method,
-            url: `${url}/${category}`,
+            url: `${url}/${context}`,
             headers: {
                 Accept: `application/json`
             },
