@@ -1,36 +1,43 @@
-// Components
-import { generateAuthToken } from '../../components/generator'
-import '../../components/template'
+// utils
+import '../../utils/template'
 
 describe('MyRide API Testing - User', () => {
     // Template
     const method = 'get'
-    const token = generateAuthToken("hardcode")
 
     it(method.toUpperCase() + ' - My Profile', () => {
-        cy.request({
-            method: method,
-            url: 'api/v1/user/my_profile',
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).as(method + 'MyProfile')
-        cy.get('@' + method + 'MyProfile').then(dt => {
-            cy.templateGet(dt, null)
+        const payload = {
+            username : "ricky.cremin",
+            password: 'nopass123',
+        }
 
-            // Get item holder
-            const resultItem = dt.body
-            expect(resultItem).to.have.property('data')
-            const dataArr = resultItem.data
-            expect(dataArr).to.be.an('object')
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
+            cy.request({
+                method: method,
+                url: 'api/v1/user/my_profile',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).as(method + 'MyProfile')
+            cy.get('@' + method + 'MyProfile').then(dt => {
+                cy.templateGet(dt, null)
 
-            // Get list key / column
-            const stringFields = ['username','email','created_at']
-            const stringNullableFields = ['telegram_user_id']
+                // Get item holder
+                const resultItem = dt.body
+                expect(resultItem).to.have.property('data')
+                const dataArr = resultItem.data
+                expect(dataArr).to.be.an('object')
 
-            // Validate column
-            cy.templateValidateColumn(dataArr, stringFields, 'string', false)
-            cy.templateValidateColumn(dataArr, stringNullableFields, 'string', false)
+                // Get list key / column
+                const stringFields = ['id','username','email','created_at','role']
+                const stringNullableFields = ['telegram_user_id','updated_at']
+                const intFields = ['telegram_is_valid']
+
+                // Validate column
+                cy.templateValidateColumn(dataArr, stringFields, 'string', false)
+                cy.templateValidateColumn(dataArr, stringNullableFields, 'string', true)
+                cy.templateValidateColumn(dataArr, intFields, 'number', true)
+            })
         })
     })
 })

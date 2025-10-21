@@ -1,4 +1,4 @@
-Cypress.Commands.add('templateGet', (code, obj, is_paginate) => {
+Cypress.Commands.add('templateGet', (obj, is_paginate) => {
     let dataType
 
     // Builder
@@ -9,14 +9,14 @@ Cypress.Commands.add('templateGet', (code, obj, is_paginate) => {
     }
 
     // Test
-    expect(obj.status).to.equal(code)
+    expect(obj.status).to.equal(200)
     expect(obj.body.message).to.be.a('string')
 
-    if(is_paginate == false && code == 200){
+    if(is_paginate == false){
         expect(obj.body.data).to.be.a(dataType)
     }
 
-    if(is_paginate == true && code == 200){
+    if(is_paginate == true){
         expect(obj.body.data.data).to.be.a('array')
     }
 });
@@ -196,7 +196,7 @@ Cypress.Commands.add('templateE2ELogin', (username, password) => {
     cy.screenshot(`TC-US-001_Pre Condition-${date}`)
 })
 
-Cypress.Commands.add('templateE2ELoginAPI', (username, password) => {
+Cypress.Commands.add('templateIntegrationLoginAPI', (username, password) => {
     return cy.request({
         method: 'POST', 
         url: 'api/v1/login',
