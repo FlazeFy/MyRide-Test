@@ -2,7 +2,7 @@ Cypress.Commands.add('templateGet', (obj, is_paginate) => {
     let dataType
 
     // Builder
-    if(is_paginate){
+    if(is_paginate === true || is_paginate === null){
         dataType = 'object'
     } else {
         dataType = 'array'

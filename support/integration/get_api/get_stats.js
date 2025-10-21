@@ -165,4 +165,58 @@ describe('MyRide API Testing - Stats', () => {
             })
         })
     })
+
+    it(method.toUpperCase() + ' - Summary Apps (Public)', () => {
+        cy.request({
+            method: method,
+            url: `api/v1/stats/summary`,
+        }).as(method + 'SummaryAppsPublic')
+        cy.get('@' + method + 'SummaryAppsPublic').then(dt => {
+            cy.templateGet(dt, null)
+
+            // Get item holder
+            const resultItem = dt.body
+            expect(resultItem).to.have.property('data')
+            const dataObj = resultItem.data
+            expect(dataObj).to.be.an('object')
+
+            // Get list key / column
+            const intFieldsContext = ['total_vehicle','total_service','total_clean','total_driver','total_trip','total_user']
+
+            // Validate column
+            cy.templateValidateColumn(dataObj, intFieldsContext, 'number', false)
+        })
+    })
+
+    it(method.toUpperCase() + ' - Summary Apps (Signed In)', () => {
+        const payload = {
+            username : "ricky.cremin",
+            password: 'nopass123',
+        }
+
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
+            cy.request({
+                method: method,
+                url: `api/v1/stats/summary`,
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).as(method + 'SummaryAppsSignedIn')
+            cy.get('@' + method + 'SummaryAppsSignedIn').then(dt => {
+                cy.templateGet(dt, null)
+
+                // Get item holder
+                const resultItem = dt.body
+                expect(resultItem).to.have.property('data')
+                const dataObj = resultItem.data
+                expect(dataObj).to.be.an('object')
+
+                // Get list key / column
+                const intFieldsContext = ['total_vehicle','total_service','total_clean','total_driver','total_trip']
+
+                // Validate column
+                cy.templateValidateColumn(dataObj, intFieldsContext, 'number', false)
+            })
+        })
+    })
 })
