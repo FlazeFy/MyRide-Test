@@ -1,4 +1,4 @@
-import '../../utils/template'
+import '../../support/utils/template'
 
 describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => {
     const method = 'get'
