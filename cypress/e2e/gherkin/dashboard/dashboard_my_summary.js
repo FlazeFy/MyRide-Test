@@ -1,6 +1,6 @@
 const { Given, Then } = require("@badeball/cypress-cucumber-preprocessor")
 
-Given("I already signed in into the app", () => {
+Given("I have already signed in to the app", () => {
     const testData = {
         email: "flazen.edu",
         password: "nopass123"
