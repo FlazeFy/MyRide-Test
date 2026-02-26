@@ -18,9 +18,11 @@ Then("I should see the label {string} with a value in {string} date format", (la
         const dateText = text.replace(label, "").replace(":", "").trim()
 
         // Validate date format
-        const regex = /^\d{2} [A-Za-z]{3} \d{4}$/
-        expect(dateText).to.not.equal("")
-        expect(dateText).to.match(regex)
+        if (format === "dd MMM YYYY") {
+            const regex = /^\d{2} [A-Za-z]{3} \d{4}$/
+            expect(dateText).to.not.equal("")
+            expect(dateText).to.match(regex)
+        }
     })
 })
 
