@@ -1,5 +1,7 @@
 const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor")
 
+// E2E Test : E2E-AUTH-LOGIN-001
+
 Given("I open the login page", () => {
     cy.visit("/login")
 })

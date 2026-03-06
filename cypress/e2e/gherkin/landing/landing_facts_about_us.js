@@ -1,5 +1,7 @@
 const { Given, Then } = require("@badeball/cypress-cucumber-preprocessor")
 
+// E2E Test : E2E-LAND-FACT-001
+
 Given("I open the landing page", () => {
     cy.visit("/")
 })

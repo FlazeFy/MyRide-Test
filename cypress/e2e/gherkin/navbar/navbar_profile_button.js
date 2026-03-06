@@ -1,5 +1,7 @@
 const { Given, Then } = require("@badeball/cypress-cucumber-preprocessor")
 
+// E2E Test : E2E-NAV-PRBT-001
+
 const testData = {
     username: "flazen.edu",
     password: "nopass123"
