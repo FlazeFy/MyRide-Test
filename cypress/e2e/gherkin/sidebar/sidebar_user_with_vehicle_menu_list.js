@@ -38,15 +38,13 @@ Then("I click the sidebar button located in the left navbar", () => {
     cy.get(".toogle_nav-button").click()
 })
 
-Then("I should see my vehicle list in section {string}", (title) => {
+Then("I should see full menu list such as {string} in section {string}", (menu, title) => {
     // Validate group menu has title
-    cy.get('#vehicle_menu-list').prev('h5.group-menu').should('contain.text',title)
+    cy.get('#sidebar_menu-holder').prev('h5.group-menu').should('contain.text',title)
 
-    // Validate the vehicle has plate number and name
-    const notEmptyEl = ['.plate-number','.vehicle-name']
-    cy.get('#vehicle_menu-list li').each((el) => {
-        notEmptyEl.forEach((dt) => {
-            cy.wrap(el).find(dt).invoke("text").should('not.be.empty')
-        })
+    const listMenu = menu.split(",")
+    // List dynamic menu
+    cy.get("#sidebar_menu-holder .nav-link").each((el, idx) => {
+        cy.wrap(el).should("contain.text", listMenu[idx].trim())
     })
 })
