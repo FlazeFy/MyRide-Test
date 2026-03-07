@@ -1,11 +1,12 @@
 import http from "k6/http"
 import { check, sleep } from "k6"
 
-// Performance Test : PERF-QUES-GSFQ-001
-// Multiple users see showing faq simultaneously
+// Performance Test : PERF-STAS-GTTY-001
+// Multiple users see total trip monthly by year simultaneously
 
 // Credentials
 const BASE_URL = __ENV.BASE_URL
+const year = 2026
 
 // Test Config Data
 const MAX_P95_RESPONSE_TIME = "1000"
@@ -26,7 +27,7 @@ export const options = {
 
 export default function () {
     // Prepare the endpoint
-    const url = `${BASE_URL}/api/v1/question/faq`
+    const url = `${BASE_URL}/api/v1/stats/total/trip/monthly/${year}`
     const params = {
         headers: {
             "Content-Type": "application/json",
@@ -39,7 +40,7 @@ export default function () {
     // Check response
     check(res, {
         "status is 200": (r) => r.status === 200,
-        "get question success": (r) => r.json("status") === "success",
+        "get stats success": (r) => r.json("status") === "success",
     })
 
     // Pause before next iteration

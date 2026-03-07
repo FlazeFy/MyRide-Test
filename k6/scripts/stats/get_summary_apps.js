@@ -39,7 +39,7 @@ export default function () {
     // Check response
     check(res, {
         "status is 200": (r) => r.status === 200,
-        "login success": (r) => r.json("status") === "success",
+        "get stats success": (r) => r.json("status") === "success",
     })
 
     // Pause before next iteration
