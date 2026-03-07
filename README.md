@@ -248,6 +248,6 @@ Tools : K6 Grafana
 - Run this command first to export the env
 `export $(cat .env | xargs)`
 - Execute the k6 script
-`k6 run scripts/post_login.js`
+`k6 run scripts/auth/post_login.js`
 
 _Made with ❤️ by Leonardho R. Sitanggang_
