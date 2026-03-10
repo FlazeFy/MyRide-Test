@@ -1,22 +1,22 @@
 import http from "k6/http"
 import { check, sleep } from "k6"
+import { loginHelper } from "../../helpers/auth.js"
 
-// Performance Test : PERF-DICT-GDBT-001
-// Multiple users see dictionary by type simultaneously
+// Performance Test : PERF-HIST-GAHT-001
+// Multiple users see their history simultaneously
 
-// Credentials
+// Env
 const BASE_URL = __ENV.BASE_URL
-const type = 'vehicle_type'
 
 // Test Config Data
 const MAX_P95_RESPONSE_TIME = "600"
-const MAX_FAILURE_RATE = "0.03"
+const MAX_FAILURE_RATE = "0.01"
 
 export const options = {
     stages: [
-        { duration: "30s", target: 3 },  // warm up
-        { duration: "60s", target: 6 },  // 75% server's capacity test
-        { duration: "60s", target: 6 },  // sustain load
+        { duration: "30s", target: 2 },  // warm up
+        { duration: "60s", target: 4 },  // 75% server's capacity test
+        { duration: "60s", target: 4 },  // sustain load
         { duration: "30s", target: 0 },  // ramp down
     ],
     thresholds: {
@@ -26,11 +26,15 @@ export const options = {
 }
 
 export default function () {
+    // Get token from login
+    const token = loginHelper()
+
     // Prepare the endpoint
-    const url = `${BASE_URL}/api/v1/dictionary/type/${type}`
+    const url = `${BASE_URL}/api/v1/history`
     const params = {
         headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
         },
     }
 
@@ -40,7 +44,7 @@ export default function () {
     // Check response
     check(res, {
         "status is 200": (r) => r.status === 200,
-        "get dictionary success": (r) => r.json("status") === "success",
+        "get all history success": (r) => r.json("status") === "success",
     })
 
     // Pause before next iteration
