@@ -19,6 +19,6 @@ Then("I clicked the button", () => {
     cy.get("nav a#profile-button").click()
 })
 
-Then("I should be redirected to the profile page", () => {
-    cy.url().should("include", "/profile")
+Then("I should be redirected to the {string} page", (page) => {
+    cy.url().should("include", `/${page}`)
 })
