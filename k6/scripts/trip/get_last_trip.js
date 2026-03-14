@@ -1,8 +1,9 @@
 import http from "k6/http"
 import { check, sleep } from "k6"
+import { loginHelper } from "../../helpers/auth.js"
 
-// Performance Test : PERF-TRIP-GTDS-001
-// Multiple users see trip discovered summary simultaneously
+// Performance Test : PERF-TRIP-GLTR-001
+// Multiple users see last trip summary simultaneously
 
 // Credentials
 const BASE_URL = __ENV.BASE_URL
@@ -25,11 +26,15 @@ export const options = {
 }
 
 export default function () {
+    // Get token from login
+    const token = loginHelper()
+
     // Prepare the endpoint
-    const url = `${BASE_URL}/api/v1/trip/discovered`
+    const url = `${BASE_URL}/api/v1/trip/last`
     const params = {
         headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
         },
     }
 
