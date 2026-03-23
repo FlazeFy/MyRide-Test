@@ -75,7 +75,7 @@ Then("I should see plate number, vehicle type, service category, service info, n
             }
 
             // Check remind at
-            if (Cypress.$(".updated-at").length) {
+            if (Cypress.$(".remind-at").length) {
                 cy.get(".remind-at").within(() => {
                     cy.get("h6").invoke("text").should("eq", "Remind At")
                     cy.get("p").invoke("text").should("match", /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)
