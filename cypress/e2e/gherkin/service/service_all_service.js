@@ -67,20 +67,28 @@ Then("I should see plate number, vehicle type, service category, service info, n
             })
 
             // Check updated at
-            if (Cypress.$(".updated-at").length) {
-                cy.get(".updated-at").within(() => {
-                    cy.get("h6").invoke("text").should("eq", "Updated At")
-                    cy.get("p").invoke("text").should("match", /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)
-                })
-            }
+            cy.root().then(($root) => {
+                const updatedAt = $root.find(".updated-at")
+        
+                if (updatedAt.length) {
+                    cy.wrap(updatedAt).within(() => {
+                        cy.get("h6").should("have.text", "Updated At")
+                        cy.get("p").invoke("text").should("match", /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)
+                    })
+                }
+            })
 
             // Check remind at
-            if (Cypress.$(".remind-at").length) {
-                cy.get(".remind-at").within(() => {
-                    cy.get("h6").invoke("text").should("eq", "Remind At")
-                    cy.get("p").invoke("text").should("match", /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)
-                })
-            }
+            cy.root().then(($root) => {
+                const remindAt = $root.find(".remind-at")
+        
+                if (remindAt.length) {
+                    cy.wrap(remindAt).within(() => {
+                        cy.get("h6").should("have.text", "Remind At")
+                        cy.get("p").invoke("text").should("match", /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)
+                    })
+                }
+            })
         })
         
         // Check Action Button
