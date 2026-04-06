@@ -20,10 +20,10 @@ describe('MyRide Integration Test - Stats - Get : Summary', () => {
             expect(data).to.be.an('object')
 
             // Get List Key / Column
-            const intFelds = ['total_user','total_vehicle','total_service','total_wash','total_trip']
+            const intFields = ['total_user','total_vehicle','total_service','total_wash','total_trip']
 
             // Validate Column
-            cy.templateValidateColumn(data, intFelds, 'number', false)
+            cy.templateValidateColumn(data, intFields, 'number', false)
         })
     })
 })

@@ -31,11 +31,11 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
 
                 // Get List Key / Column
                 const stringFields = ['context']
-                const intFelds = ['total']
+                const intFields = ['total']
 
                 // Validate Column
                 cy.templateValidateColumn(data, stringFields, 'string', false)
-                cy.templateValidateColumn(data, intFelds, 'number', false)
+                cy.templateValidateColumn(data, intFields, 'number', false)
             })
         })
     })

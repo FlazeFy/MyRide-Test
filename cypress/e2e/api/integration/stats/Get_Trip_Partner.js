@@ -30,11 +30,11 @@ describe('MyRide Integration Test - Stats - Get : Partner Trip', () => {
 
                 // Get List Key / Column
                 const stringFields = ['name','favorite_day','last_trip']
-                const intFelds = ['total_trip','total_distance']
+                const intFields = ['total_trip','total_distance']
 
                 // Validate Column
                 cy.templateValidateColumn(data, stringFields, 'string', false)
-                cy.templateValidateColumn(data, intFelds, 'number', false)
+                cy.templateValidateColumn(data, intFields, 'number', false)
             })
         })
     })

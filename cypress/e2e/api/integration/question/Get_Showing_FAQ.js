@@ -20,10 +20,10 @@ describe('MyRide Integration Test - Question - Get : Showing FAQ', () => {
             expect(data).to.be.an('array')
 
             // Get List Key / Column
-            const stringFelds = ['faq_question','faq_answer']
+            const stringFields = ['faq_question','faq_answer']
 
             // Validate Column
-            cy.templateValidateColumn(data, stringFelds, 'string', false)
+            cy.templateValidateColumn(data, stringFields, 'string', false)
         })
     })
 
