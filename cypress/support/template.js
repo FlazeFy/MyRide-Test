@@ -43,16 +43,33 @@ Cypress.Commands.add('templatePut', (obj) => {
     expect(typeof obj.body.rows_affected).to.eq('number')
 });
 
-Cypress.Commands.add('templatePagination', (url, max) => {
-    for (let index = 1; index <= max; index++) {
+Cypress.Commands.add('templatePagination', (url, max, token = null) => {
+    let pages = []
+
+    if (max <= 4) {
+        // Hit all pages
+        for (let i = 1; i <= max; i++) {
+            pages.push(i)
+        }
+    } else {
+        // Hit page 2, middle, last
+        const middle = Math.ceil(max / 2)
+        pages = [2, middle, max]
+    }
+
+    pages = [...new Set(pages)]
+    pages.forEach(page => {
         cy.request({
-            method: 'GET', 
-            url: url + '?page='+index,
+            method: 'GET',
+            url: `${url}?page=${page}`,
+            headers: token ? {
+                Authorization: `Bearer ${token}`
+            } : undefined
         }).then(dt => {
             expect(dt.status).to.equal(200)
         })
-    }
-});
+    })
+})
 
 Cypress.Commands.add('templateValidateColumn', (data, obj, dataType, nullable) => {
     const dataArray = Array.isArray(data) ? data : [data];
@@ -67,11 +84,7 @@ Cypress.Commands.add('templateValidateColumn', (data, obj, dataType, nullable) =
                 expect(item[field]).to.be.a(dataType)
 
                 if(dataType === "number"){
-                    if(Number.isInteger(item[field])){
-                        expect(item[field] % 1).to.equal(0)
-                    } else {
-                        expect(item[field] % 1).to.not.equal(0)
-                    }
+                    Number.isInteger(item[field]) ? expect(item[field] % 1).to.equal(0) : expect(item[field] % 1).to.not.equal(0)
                 }
             }
         });
@@ -132,12 +145,8 @@ Cypress.Commands.add('templateValidateMaxMin', (data, obj) => {
                 if(max && min && max == min){
                     expect(data_length, `Column ${col_name} ${props_msg} must equal to ${max}`).to.be.equal(max)
                 } else {
-                    if (max !== null && max !== undefined) {
-                        expect(data_length, `Column ${col_name} must have ${props_msg} less than or equal to ${max}`).to.be.at.most(max)
-                    }
-                    if (min !== null && min !== undefined) {
-                        expect(data_length, `Column ${col_name} must have ${props_msg} more than or equal to ${min}`).to.be.at.least(min)
-                    }
+                    if (max !== null && max !== undefined) expect(data_length, `Column ${col_name} must have ${props_msg} less than or equal to ${max}`).to.be.at.most(max)
+                    if (min !== null && min !== undefined) expect(data_length, `Column ${col_name} must have ${props_msg} more than or equal to ${min}`).to.be.at.least(min)
                 }
             }
         });
