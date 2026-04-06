@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Stats - Get : Trip Discovered', () => {
+describe('MyRide Integration Test - Trip - Get : Trip Discovered', () => {
     const method = 'get'
     const url = '/api/v1/trip/discovered'
 
@@ -34,7 +34,6 @@ describe('MyRide Integration Test - Stats - Get : Trip Discovered', () => {
             username : "flazefy",
             password: 'nopass123',
         }
-        const context = 'trip_category'
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
