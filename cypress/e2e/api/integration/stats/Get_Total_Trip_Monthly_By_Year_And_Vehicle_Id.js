@@ -1,10 +1,10 @@
-import '../../utils/template'
+import '../../../../support/template'
 
 describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => {
     const method = 'get'
     const url = '/api/v1/stats/total/trip/monthly'
 
-    it('TC-E2E-ST-009 : Success Get Total Trip Monthly By Year And Vehicle Id With Valid Year & Vehicle And Valid Data', () => {
+    it('TC-INT-ST-003 : Success Get Total Trip Monthly By Year And Vehicle Id With Valid Year & Vehicle And Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         const vehicle_id = '2d98f524-de02-11ed-b5ea-0242ac120002'
         const year = 2024
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${year}/${vehicle_id}`,
@@ -41,7 +41,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         })
     })
 
-    it('TC-E2E-ST-010 : Failed Get Total Trip Monthly By Year And Vehicle Id With Invalid Vehicle Id', () => {
+    it('TC-INT-ST-010 : Failed Get Total Trip Monthly By Year And Vehicle Id With Invalid Vehicle Id', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -49,7 +49,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         const vehicle_id = '2d98f524-de02-11ed-b5ea'
         const year = 2024
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${year}/${vehicle_id}`,
@@ -69,7 +69,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         })
     })
 
-    it('TC-E2E-ST-011 : Success Get Total Trip By Context With Valid Context And Empty Data', () => {
+    it('TC-INT-ST-011 : Success Get Total Trip By Context With Valid Context And Empty Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -77,7 +77,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         const vehicle_id = '2d98f524-de02-11ed-b5ea-0242ac120002'
         const year = 2020
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${year}/${vehicle_id}`,
@@ -97,7 +97,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         })
     })
 
-    it('TC-E2E-ST-012 : Failed Get Total Trip By Context With Invalid Auth', () => {
+    it('TC-INT-ST-012 : Failed Get Total Trip By Context With Invalid Auth', () => {
         const vehicle_id = '2d98f524-de02-11ed-b5ea-0242ac120002'
         const year = 2024
 

@@ -1,10 +1,10 @@
-import '../../utils/template'
+import '../../../../support/template'
 
 describe('MyRide Integration Test - Question - Get : Showing FAQ', () => {
     const method = 'get'
     const url = '/api/v1/question/faq'
 
-    it('TC-E2E-QS-001 : Success Get Showing FAQ With Valid Data', () => {
+    it('TC-INT-QS-001 : Success Get Showing FAQ With Valid Data', () => {
         cy.request({
             method: method,
             url: url,
@@ -27,7 +27,7 @@ describe('MyRide Integration Test - Question - Get : Showing FAQ', () => {
         })
     })
 
-    it('TC-E2E-QS-002 : Failed Get Showing FAQ With Empty Data', () => {
+    it('TC-INT-QS-002 : Failed Get Showing FAQ With Empty Data', () => {
         cy.request({
             method: method,
             url: url,

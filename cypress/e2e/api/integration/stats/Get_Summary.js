@@ -1,10 +1,10 @@
-import '../../utils/template'
+import '../../../../support/template'
 
 describe('MyRide Integration Test - Stats - Get : Summary', () => {
     const method = 'get'
     const url = '/api/v1/stats/summary'
 
-    it('TC-E2E-ST-013 : Success Get Summary With Valid Data', () => {
+    it('TC-INT-ST-001 : User Can See Summary With Valid Data', () => {
         cy.request({
             method: method,
             url: url,
@@ -20,7 +20,7 @@ describe('MyRide Integration Test - Stats - Get : Summary', () => {
             expect(data).to.be.an('object')
 
             // Get List Key / Column
-            const intFelds = ['total_user','total_vehicle','total_service','total_clean','total_trip']
+            const intFelds = ['total_user','total_vehicle','total_service','total_wash','total_trip']
 
             // Validate Column
             cy.templateValidateColumn(data, intFelds, 'number', false)

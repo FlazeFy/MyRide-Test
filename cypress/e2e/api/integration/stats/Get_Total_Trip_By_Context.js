@@ -1,17 +1,17 @@
-import '../../support/utils/template'
+import '../../../../support/template'
 
 describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => {
     const method = 'get'
     const url = '/api/v1/stats/total/trip'
 
-    it('TC-E2E-ST-001 : Success Get Total Trip By Context With Valid Context And Valid Data', () => {
+    it('TC-INT-ST-002 : User Can See Total Trip By Context With Valid Context And Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
         const context = 'trip_category'
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${context}`,
@@ -40,14 +40,14 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         })
     })
 
-    it('TC-E2E-ST-002 : Failed Get Total Trip By Context With Invalid Context', () => {
+    it('TC-INT-ST-003 : User Cant See Total Trip By Context With Invalid Context', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
         const context = 'trip_categories'
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${context}`,
@@ -67,14 +67,14 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         })
     })
 
-    it('TC-E2E-ST-003 : Success Get Total Trip By Context With Valid Context And Empty Data', () => {
+    it('TC-INT-ST-004 : User Cant See Total Trip By Context With Valid Context And Empty Data', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
         }
         const context = 'trip_category'
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${context}`,
@@ -94,7 +94,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         })
     })
 
-    it('TC-E2E-ST-004 : Failed Get Total Trip By Context With Invalid Auth', () => {
+    it('TC-INT-ST-005 : User Cant See Total Trip By Context With Invalid Auth', () => {
         const context = 'trip_category'
 
         cy.request({

@@ -1,17 +1,17 @@
-import '../../utils/template'
+import '../../../../support/template'
 
 describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () => {
     const method = 'get'
     const url = '/api/v1/stats/total/vehicle'
 
-    it('TC-E2E-ST-005 : Success Get Total Vehicle By Context With Valid Context And Valid Data', () => {
+    it('TC-INT-ST-004 : Success Get Total Vehicle By Context With Valid Context And Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
         const context = 'vehicle_merk'
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${context}`,
@@ -40,14 +40,14 @@ describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () 
         })
     })
 
-    it('TC-E2E-ST-006 : Failed Get Total Vehicle By Context With Invalid Context', () => {
+    it('TC-INT-ST-006 : Failed Get Total Vehicle By Context With Invalid Context', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
         const context = 'vehicle_categories'
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${context}`,
@@ -67,14 +67,14 @@ describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () 
         })
     })
 
-    it('TC-E2E-ST-007 : Success Get Total Vehicle By Context With Valid Context And Empty Data', () => {
+    it('TC-INT-ST-007 : Success Get Total Vehicle By Context With Valid Context And Empty Data', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
         }
         const context = 'vehicle_merk'
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: `${url}/${context}`,
@@ -94,7 +94,7 @@ describe('MyRide Integration Test - Stats - Get : Total Vehicle By Context', () 
         })
     })
 
-    it('TC-E2E-ST-008 : Failed Get Total Vehicle By Context With Invalid Auth', () => {
+    it('TC-INT-ST-008 : Failed Get Total Vehicle By Context With Invalid Auth', () => {
         const context = 'vehicle_merk'
 
         cy.request({

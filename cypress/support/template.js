@@ -1,24 +1,14 @@
-Cypress.Commands.add('templateGet', (obj, is_paginate) => {
-    let dataType
-
+Cypress.Commands.add('templateGet', (status_code, obj, is_paginate) => {
     // Builder
-    if(is_paginate === true || is_paginate === null){
-        dataType = 'object'
-    } else {
-        dataType = 'array'
-    }
+    const dataType = (is_paginate === true || is_paginate === null) ? 'object' : 'array'
 
     // Test
-    expect(obj.status).to.equal(200)
+    expect(obj.status).to.equal(status_code)
     expect(obj.body.message).to.be.a('string')
 
-    if(is_paginate == false){
-        expect(obj.body.data).to.be.a(dataType)
-    }
+    if (is_paginate == false) expect(obj.body.data).to.be.a(dataType)
 
-    if(is_paginate == true){
-        expect(obj.body.data.data).to.be.a('array')
-    }
+    if (is_paginate == true) expect(obj.body.data.data).to.be.a('array')
 });
 
 Cypress.Commands.add('templatePost', (obj, builder) => {

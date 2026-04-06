@@ -1,5 +1,5 @@
 // utils
-import '../../utils/template'
+import '../../../../support/template'
 
 describe('MyRide Integration Test - Question', () => {
     const is_paginate = false

@@ -1,16 +1,16 @@
-import '../../utils/template'
+import '../../../../support/template'
 
 describe('MyRide Integration Test - Auth - Post : Sign Out', () => {
     const method = 'post'
     const url = '/api/v1/logout'
 
-    it('TC-E2E-AU-005 : Success Post Sign Out With Valid Token', () => {
+    it('TC-INT-AU-005 : User Can Sign Out With Valid Token', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
 
-        cy.templateE2ELoginAPI(payload.username, payload.password).then(token => {
+        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
                 url: url,
@@ -25,7 +25,7 @@ describe('MyRide Integration Test - Auth - Post : Sign Out', () => {
         })
     })
 
-    it('TC-E2E-AU-006 : Failed Post Sign Out With Empty Token', () => {
+    it('TC-INT-AU-006 : User Cant Sign Out With Empty Token', () => {
         cy.request({
             method: method,
             url: url,
@@ -40,7 +40,7 @@ describe('MyRide Integration Test - Auth - Post : Sign Out', () => {
         })
     })
 
-    it('TC-E2E-AU-007 : Failed Post Sign Out With Invalid Token', () => {
+    it('TC-INT-AU-007 : User Cant Sign Out With Invalid Token', () => {
         cy.request({
             method: method,
             url: url,
