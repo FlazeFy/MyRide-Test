@@ -81,10 +81,12 @@ Cypress.Commands.add('templateValidateColumn', (data, obj, dataType, nullable) =
             if (nullable && item[field] === null) {
                 expect(item[field]).to.be.null
             } else {
-                expect(item[field]).to.be.a(dataType)
+                expect(item[field]).to.be.a(dataType === "bool_number" ? "number" : dataType)
 
-                if(dataType === "number"){
+                if (dataType === "number") {
                     Number.isInteger(item[field]) ? expect(item[field] % 1).to.equal(0) : expect(item[field] % 1).to.not.equal(0)
+                } else if (dataType === 'bool_number') {
+                    Number.isInteger(item[field]) && expect([0,1]).to.include(item[field])
                 }
             }
         });
