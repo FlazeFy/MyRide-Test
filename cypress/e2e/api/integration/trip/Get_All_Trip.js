@@ -1,12 +1,12 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
+describe('MyRide Integration Test - Trip - Get : All Trip', () => {
     const method = 'get'
-    const url = '/api/v1/inventory'
+    const url = '/api/v1/trip'
 
     const validateValidResponse = (dt) => {
         cy.templateGet(200,dt, null)
-        expect(dt.body.message).contain('inventory fetched')
+        expect(dt.body.message).contain('trip fetched')
         
         // Get Item Holder
         const res = dt.body
@@ -15,30 +15,27 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         expect(data).to.be.an('object')
 
         // Get List Key / Column
-        const stringFields = ['id','inventory_name','inventory_category','inventory_storage','created_at','vehicle_plate_number','vehicle_type']
-        const stringNullableFields = ['inventory_image_url','updated_at']
+        const stringFields = ['id','vehicle_name','trip_category','trip_origin_name','trip_destination_name','trip_origin_coordinate','trip_destination_coordinate','created_at','vehicle_plate_number','vehicle_type']
+        const stringNullableFields = ['driver_fullname','trip_desc','trip_person']
 
         // Validate Column
         cy.templateValidateColumn(data.data, stringFields, 'string', false)
         cy.templateValidateColumn(data.data, stringNullableFields, 'string', true)
 
         // Validate Contain
-        cy.templateValidateContain(data.data, ['Glove Compartment', 'Trunk', 'Dashboard', 'Back Seat Pocket', 'Roof Box'], 'inventory_storage')
-        cy.templateValidateContain(data.data, ['Safety', 'Maintenance', 'Electronics', 'Documents','Accessoris'], 'inventory_category')
+        cy.templateValidateContain(data.data, [
+            'Culinary Hunting','Business Trip','Family Vacation','Worship','Refreshing','Strolling Around','City Exploration','Nature Retreat',
+            'Cultural Festival','Road Trip','Backpacking','Photography','Shopping','Sport Event', 'Personal', 'Drop Off', 'Pick Up'
+        ], 'trip_category')
 
         // Validate datetime
         const columnDateTime = [
-            { column_name : 'created_at', date_type: 'datetime', nullable: false },
-            { column_name : 'updated_at', date_type: 'datetime', nullable: true }
+            { column_name : 'created_at', date_type: 'datetime', nullable: false }
         ]
         cy.templateValidateDateTime(data.data, columnDateTime)
-        
-        // Validate 
-        const intFields = ['inventory_qty']
-        cy.templateValidateColumn(data.data, intFields, 'number', false)
     }
 
-    it('TC-INT-IN-001 : User Can See All Inventory With Valid Data', () => {
+    it('TC-INT-TR-001 : User Can See All Trip With Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -51,8 +48,8 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('UserCanSeeAllInventoryWithValidData')
-            cy.get('@UserCanSeeAllInventoryWithValidData').then(dt => {
+            }).as('UserCanSeeAllTripWithValidData')
+            cy.get('@UserCanSeeAllTripWithValidData').then(dt => {
                 validateValidResponse(dt)
 
                 // Check if all page accessible
@@ -62,7 +59,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-002 : User Can See All Inventory With Custom Item Per Page', () => {
+    it('TC-INT-TR-002 : User Can See All Trip With Custom Item Per Page', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -76,8 +73,8 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
-            }).as('UserCanSeeAllInventoryWithCustomItemPerPage')
-            cy.get('@UserCanSeeAllInventoryWithCustomItemPerPage').then(dt => {
+            }).as('UserCanSeeAllTripWithCustomItemPerPage')
+            cy.get('@UserCanSeeAllTripWithCustomItemPerPage').then(dt => {
                 validateValidResponse(dt)
 
                 // Check if item per page query same with data.length
@@ -87,7 +84,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-003 : User Cant See All Inventory With Custom Invalid Item Per Page', () => {
+    it('TC-INT-TR-003 : User Cant See All Trip With Custom Invalid Item Per Page', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -102,8 +99,8 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllInventoryWithCustomInvalidItemPerPage')
-            cy.get('@UserCantSeeAllInventoryWithCustomInvalidItemPerPage').then(dt => {
+            }).as('UserCantSeeAllTripWithCustomInvalidItemPerPage')
+            cy.get('@UserCantSeeAllTripWithCustomInvalidItemPerPage').then(dt => {
                 cy.templateGet(400,dt, null)
                 expect(dt.body.message).contain('per_page_key is not a valid page')
                 
@@ -114,7 +111,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-004 : User Cant See All Inventory With Empty Data', () => {
+    it('TC-INT-TR-004 : User Cant See All Trip With Empty Data', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
@@ -128,10 +125,10 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllInventoryWithEmptyData')
-            cy.get('@UserCantSeeAllInventoryWithEmptyData').then(dt => {
+            }).as('UserCantSeeAllTripWithEmptyData')
+            cy.get('@UserCantSeeAllTripWithEmptyData').then(dt => {
                 cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('inventory not found')
+                expect(dt.body.message).contain('trip not found')
                 
                 // Get Item Holder
                 const res = dt.body
@@ -140,7 +137,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-005 : User Cant See All Inventory With Invalid Auth', () => {
+    it('TC-INT-TR-005 : User Cant See All Trip With Invalid Auth', () => {
         cy.request({
             method: method,
             url,
@@ -148,8 +145,8 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
                 Accept: `application/json`
             },
             failOnStatusCode: false,
-        }).as('UserCantSeeAllInventoryWithInvalidAuth')
-        cy.get('@UserCantSeeAllInventoryWithInvalidAuth').then(dt => {
+        }).as('UserCantSeeAllTripWithInvalidAuth')
+        cy.get('@UserCantSeeAllTripWithInvalidAuth').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
             
@@ -159,25 +156,25 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-006 : User Cant See All Inventory With Custom Invalid Vehicle Id (UUID)', () => {
+    it('TC-INT-TR-006 : User Cant See All Trip With Custom Invalid Trip Id (UUID)', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
-        const vehicleId = '1'
+        const tripId = '1'
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}?vehicle_id=${vehicleId}`,
+                url: `${url}?trip_id=${tripId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllInventoryWithCustomInvalidVehicleId(UUID)')
-            cy.get('@UserCantSeeAllInventoryWithCustomInvalidVehicleId(UUID)').then(dt => {
+            }).as('UserCantSeeAllTripWithCustomInvalidTripId(UUID)')
+            cy.get('@UserCantSeeAllTripWithCustomInvalidTripId(UUID)').then(dt => {
                 cy.templateGet(400,dt, null)
-                expect(dt.body.message).contain('vehicle_id must be a valid UUID')
+                expect(dt.body.message).contain('trip_id must be a valid UUID')
                 
                 // Get Item Holder
                 const res = dt.body
@@ -186,25 +183,25 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-007 : User Cant See All Inventory With Custom Invalid Vehicle Id (Not Found)', () => {
+    it('TC-INT-TR-007 : User Cant See All Trip With Custom Invalid Trip Id (Not Found)', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
-        const vehicleId = 'a5add64f-fdf8-1eba-0498-c1a000737c81'
+        const tripId = 'da79e9ba-bc19-2186-2f4d-c755ec841234'
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}?vehicle_id=${vehicleId}`,
+                url: `${url}?trip_id=${tripId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllInventoryWithCustomInvalidVehicleId(NotFound)')
-            cy.get('@UserCantSeeAllInventoryWithCustomInvalidVehicleId(NotFound)').then(dt => {
+            }).as('UserCantSeeAllTripWithCustomInvalidTripId(NotFound)')
+            cy.get('@UserCantSeeAllTripWithCustomInvalidTripId(NotFound)').then(dt => {
                 cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('inventory not found')
+                expect(dt.body.message).contain('trip not found')
                 
                 // Get Item Holder
                 const res = dt.body
@@ -213,12 +210,12 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-008 : User Can See All Inventory With Custom Search', () => {
+    it('TC-INT-TR-008 : User Can See All Trip With Custom Search', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
-        const search = 'Sponge'
+        const search = 'Kost'
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
@@ -227,8 +224,8 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('UserCanSeeAllInventoryWithCustomSearch')
-            cy.get('@UserCanSeeAllInventoryWithCustomSearch').then(dt => {
+            }).as('UserCanSeeAllTripWithCustomSearch')
+            cy.get('@UserCanSeeAllTripWithCustomSearch').then(dt => {
                 validateValidResponse(dt)
 
                 // Check if all page accessible
@@ -238,7 +235,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
         })
     })
 
-    it('TC-INT-IN-009 : User Cant See All Inventory With Failed Custom Search', () => {
+    it('TC-INT-TR-009 : User Cant See All Trip With Failed Custom Search', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -253,10 +250,10 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllInventoryWithFailedCustomSearch')
-            cy.get('@UserCantSeeAllInventoryWithFailedCustomSearch').then(dt => {
+            }).as('UserCantSeeAllTripWithFailedCustomSearch')
+            cy.get('@UserCantSeeAllTripWithFailedCustomSearch').then(dt => {
                 cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('inventory not found')
+                expect(dt.body.message).contain('trip not found')
                 
                 // Get Item Holder
                 const res = dt.body
