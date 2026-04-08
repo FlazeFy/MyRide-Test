@@ -93,12 +93,21 @@ Cypress.Commands.add('templateValidateColumn', (data, obj, dataType, nullable) =
     });
 });
 
-Cypress.Commands.add('templateValidateContain', (data, list, target) => {
-    data.forEach((item, idx) => {
-        expect(item).to.be.an('object')
-        expect(list,`Column ${target} with value = ${item[target]} must contain in list. Index Data : ${idx}`).to.include(item[target])
-    });
-});
+Cypress.Commands.add('templateValidateContain', (data, list, target, nullable = false) => {
+    const dataArray = Array.isArray(data) ? data : [data]
+
+    dataArray.forEach((item, idx) => {
+        const value = item[target]
+
+        if (nullable && (value === null || value === undefined)) return
+        if (!nullable) {
+            expect(value, `Column ${target} should not be null. Index: ${idx}`).to.not.be.null
+            expect(value).to.not.be.undefined
+        }
+
+        if (value !== null && value !== undefined) expect(list, `Column ${target} with value = ${value} must be in list. Index: ${idx}`).to.include(value)
+    })
+})
 
 Cypress.Commands.add('templateOrdering', (data, target, typeOrdering, typeData) => {
     data.forEach((item,idx)=> {
