@@ -4,7 +4,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Discovered', () => {
     const method = 'get'
     const url = '/api/v1/trip/discovered'
 
-    it('TC-INT-TR-001 : User Can See Trip Public Discovered Valid Data', () => {
+    it('TC-INT-TR-010 : User Can See Trip Public Discovered Valid Data', () => {
         cy.request({
             method: method,
             url: url,
@@ -29,7 +29,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Discovered', () => {
         })
     })
 
-    it('TC-INT-TR-002 : User Can See Trip Personal Discovered Valid Data', () => {
+    it('TC-INT-TR-011 : User Can See Trip Personal Discovered Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
