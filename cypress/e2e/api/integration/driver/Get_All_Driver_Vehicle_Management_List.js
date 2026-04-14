@@ -15,12 +15,14 @@ describe('MyRide Integration Test - Driver - Get : All Driver Vehicle Management
         expect(data).to.be.an('object')
 
         // Get List Key / Column
-        const stringVehicleFields = ['id','vehicle_name','vehicle_plate_number','deleted_at']
+        const stringVehicleFields = ['id','vehicle_name','vehicle_plate_number']
+        const stringNullableVehicleFields = ['deleted_at']
         const stringDriverFields = ['id','username','fullname']
         const stringAssignedFields = ['id','vehicle_id','vehicle_plate_number','driver_id','username','fullname']
 
         // Validate Column
         if (data.vehicle) cy.templateValidateColumn(data.vehicle, stringVehicleFields, 'string', false)
+        if (data.vehicle) cy.templateValidateColumn(data.vehicle, stringNullableVehicleFields, 'string', true)
         if (data.driver) cy.templateValidateColumn(data.driver, stringDriverFields, 'string', false)
         if (data.assigned) cy.templateValidateColumn(data.assigned, stringAssignedFields, 'string', false)
     }
