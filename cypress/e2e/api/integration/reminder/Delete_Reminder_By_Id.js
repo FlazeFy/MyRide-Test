@@ -1,10 +1,10 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Wash - Delete : Wash By Id', () => {
+describe('MyRide Integration Test - Reminder - Delete : Reminder By Id', () => {
     const method = 'delete'
-    const url = '/api/v1/wash/destroy'
+    const url = '/api/v1/reminder/destroy'
 
-    it('TC-INT-WS-016 : User Cant Remove Wash Using Invalid ID Format', () => {
+    it('TC-INT-RM-013 : User Cant Remove Reminder Using Invalid ID Format', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -19,8 +19,8 @@ describe('MyRide Integration Test - Wash - Delete : Wash By Id', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantRemoveWashUsingInvalidIDFormat')
-            cy.get('@UserCantRemoveWashUsingInvalidIDFormat').then(dt => {
+            }).as('UserCantRemoveReminderUsingInvalidIDFormat')
+            cy.get('@UserCantRemoveReminderUsingInvalidIDFormat').then(dt => {
                 cy.templateDelete(dt, 400, {
                     "id": ["The id field must be at least 36 characters."]
                 })
@@ -28,7 +28,7 @@ describe('MyRide Integration Test - Wash - Delete : Wash By Id', () => {
         })
     })
 
-    it('TC-INT-WS-017 : User Cant Remove Wash Using Not Found ID', () => {
+    it('TC-INT-RM-014 : User Cant Remove Reminder Using Not Found ID', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -43,14 +43,14 @@ describe('MyRide Integration Test - Wash - Delete : Wash By Id', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantRemoveWashUsingNotFoundID')
-            cy.get('@UserCantRemoveWashUsingNotFoundID').then(dt => {
-                cy.templateDelete(dt, 404, 'wash not found')
+            }).as('UserCantRemoveReminderUsingNotFoundID')
+            cy.get('@UserCantRemoveReminderUsingNotFoundID').then(dt => {
+                cy.templateDelete(dt, 404, 'reminder not found')
             })
         })
     })
 
-    it('TC-INT-WS-018 : User Can Remove Wash Using Valid ID', () => {
+    it('TC-INT-RM-015 : User Can Remove Reminder Using Valid ID', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -64,9 +64,9 @@ describe('MyRide Integration Test - Wash - Delete : Wash By Id', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('UserCanRemoveWashUsingValidID')
-            cy.get('@UserCanRemoveWashUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'wash permentally deleted')
+            }).as('UserCanRemoveReminderUsingValidID')
+            cy.get('@UserCanRemoveReminderUsingValidID').then(dt => {
+                cy.templateDelete(dt, 200, 'reminder permentally deleted')
             })
         })
     })
