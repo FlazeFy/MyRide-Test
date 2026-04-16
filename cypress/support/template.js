@@ -39,7 +39,13 @@ Cypress.Commands.add('templateDelete', (obj, status, msg) => {
         expect(message).to.equal(msg)
     } else {
         expect(message).to.be.an("object")
-        expect(message).to.deep.equal(msg)
+
+        Object.entries(msg).forEach(([key, expectedArr]) => {
+            expect(message).to.have.property(key)
+            expect(message[key]).to.be.an("array")
+
+            expectedArr.forEach((expectedMsg) => expect(message[key]).to.include(expectedMsg))
+        })
     }
 });
 

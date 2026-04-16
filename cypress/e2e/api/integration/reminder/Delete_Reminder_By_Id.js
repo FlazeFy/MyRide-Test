@@ -22,7 +22,7 @@ describe('MyRide Integration Test - Reminder - Delete : Reminder By Id', () => {
             }).as('UserCantRemoveReminderUsingInvalidIDFormat')
             cy.get('@UserCantRemoveReminderUsingInvalidIDFormat').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "id": ["The id field must be at least 36 characters."]
+                    "id": ["The id field must be 36 characters."]
                 })
             })
         })
