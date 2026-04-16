@@ -28,10 +28,12 @@ Cypress.Commands.add('templatePost', (obj, builder) => {
     // expect(typeof obj.body.data.created_at).to.eq('string')
 });
 
-Cypress.Commands.add('templateDelete', (obj) => {
+Cypress.Commands.add('templateDelete', (obj, status, msg) => {
     // Test
-    expect(obj.status).to.equal(200)
+    expect(obj.status).to.equal(status)
+    expect(obj.body.status).to.equal(status !== 200 ? 'failed' : 'success')
     expect(obj.body.message).to.be.a('string')
+    expect(obj.body.message).to.equal(msg)
 });
 
 Cypress.Commands.add('templatePut', (obj) => {
