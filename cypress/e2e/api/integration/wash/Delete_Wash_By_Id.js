@@ -1,12 +1,12 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Dictionary - Delete : Dictionary By Id', () => {
+describe('MyRide Integration Test - Wash - Delete : Wash By Id', () => {
     const method = 'delete'
-    const url = '/api/v1/dictionary'
+    const url = '/api/v1/wash/destroy'
 
-    it('TC-INT-DC-003 : Admin Cant Remove Dictionary Using Invalid ID Format', () => {
+    it('TC-INT-WS-016 : Admin Cant Remove Wash Using Invalid ID Format', () => {
         const payload = {
-            username : "testeradmin",
+            username : "flazefy",
             password: 'nopass123',
         }
         const id = '1'
@@ -19,8 +19,8 @@ describe('MyRide Integration Test - Dictionary - Delete : Dictionary By Id', () 
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('AdminCantRemoveDictionaryUsingInvalidIDFormat')
-            cy.get('@AdminCantRemoveDictionaryUsingInvalidIDFormat').then(dt => {
+            }).as('AdminCantRemoveWashUsingInvalidIDFormat')
+            cy.get('@AdminCantRemoveWashUsingInvalidIDFormat').then(dt => {
                 cy.templateDelete(dt, 400, {
                     "id": ["The id field must be at least 36 characters."]
                 })
@@ -28,9 +28,9 @@ describe('MyRide Integration Test - Dictionary - Delete : Dictionary By Id', () 
         })
     })
 
-    it('TC-INT-DC-004 : Admin Cant Remove Dictionary Using Not Found ID', () => {
+    it('TC-INT-WS-017 : Admin Cant Remove Wash Using Not Found ID', () => {
         const payload = {
-            username : "testeradmin",
+            username : "flazefy",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12abcd'
@@ -43,16 +43,16 @@ describe('MyRide Integration Test - Dictionary - Delete : Dictionary By Id', () 
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('AdminCantRemoveDictionaryUsingNotFoundID')
-            cy.get('@AdminCantRemoveDictionaryUsingNotFoundID').then(dt => {
-                cy.templateDelete(dt, 404, 'dictionary not found')
+            }).as('AdminCantRemoveWashUsingNotFoundID')
+            cy.get('@AdminCantRemoveWashUsingNotFoundID').then(dt => {
+                cy.templateDelete(dt, 404, 'wash not found')
             })
         })
     })
 
-    it('TC-INT-DC-005 : Admin Can Remove Dictionary Using Valid ID', () => {
+    it('TC-INT-WS-018 : Admin Can Remove Wash Using Valid ID', () => {
         const payload = {
-            username : "testeradmin",
+            username : "flazefy",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'
@@ -64,9 +64,9 @@ describe('MyRide Integration Test - Dictionary - Delete : Dictionary By Id', () 
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('AdminCanRemoveDictionaryUsingValidID')
-            cy.get('@AdminCanRemoveDictionaryUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'dictionary permentally deleted')
+            }).as('AdminCanRemoveWashUsingValidID')
+            cy.get('@AdminCanRemoveWashUsingValidID').then(dt => {
+                cy.templateDelete(dt, 200, 'wash permentally deleted')
             })
         })
     })

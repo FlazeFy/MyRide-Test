@@ -32,8 +32,15 @@ Cypress.Commands.add('templateDelete', (obj, status, msg) => {
     // Test
     expect(obj.status).to.equal(status)
     expect(obj.body.status).to.equal(status !== 200 ? 'failed' : 'success')
-    expect(obj.body.message).to.be.a('string')
-    expect(obj.body.message).to.equal(msg)
+    
+    const message = obj.body.message
+    if (typeof msg === "string") {
+        expect(message).to.be.a("string")
+        expect(message).to.equal(msg)
+    } else {
+        expect(message).to.be.an("object")
+        expect(message).to.deep.equal(msg)
+    }
 });
 
 Cypress.Commands.add('templatePut', (obj) => {
