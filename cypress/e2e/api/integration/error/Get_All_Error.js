@@ -33,7 +33,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
         cy.templateValidateDateTime(data.data, columnDateTime)
     }
 
-    it('TC-INT-ER-001 : User Can See All Error With Valid Data', () => {
+    it('TC-INT-ER-003 : User Can See All Error With Valid Data', () => {
         const payload = {
             username : "testeradmin",
             password: 'nopass123',
@@ -57,7 +57,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
         })
     })
 
-    it('TC-INT-ER-002 : User Can See All Error With Custom Item Per Page', () => {
+    it('TC-INT-ER-004 : User Can See All Error With Custom Item Per Page', () => {
         const payload = {
             username : "testeradmin",
             password: 'nopass123',
@@ -82,7 +82,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
         })
     })
 
-    it('TC-INT-ER-003 : User Cant See All Error With Custom Invalid Item Per Page', () => {
+    it('TC-INT-ER-005 : User Cant See All Error With Custom Invalid Item Per Page', () => {
         const payload = {
             username : "testeradmin",
             password: 'nopass123',
@@ -109,7 +109,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
         })
     })
 
-    it('TC-INT-ER-004 : User Cant See All Error With Empty Data', () => {
+    it('TC-INT-ER-006 : User Cant See All Error With Empty Data', () => {
         const payload = {
             username : "testeradmin",
             password: 'nopass123',
@@ -135,7 +135,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
         })
     })
 
-    it('TC-INT-ER-005 : User Cant See All Error With Invalid Auth', () => {
+    it('TC-INT-ER-007 : User Cant See All Error With Invalid Auth', () => {
         cy.request({
             method: method,
             url,
