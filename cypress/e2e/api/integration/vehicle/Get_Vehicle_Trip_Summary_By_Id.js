@@ -29,7 +29,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
         ], 'most_category', true)
     }
 
-    it('TC-INT-VR-012 : User Can See Vehicle Trip Summary By Id With Valid Data', () => {
+    it('TC-INT-VH-012 : User Can See Vehicle Trip Summary By Id With Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -50,7 +50,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
         })
     })
 
-    it('TC-INT-VR-013 : User Can See Vehicle Trip Summary By Id For Never Used Vehicle', () => {
+    it('TC-INT-VH-013 : User Can See Vehicle Trip Summary By Id For Never Used Vehicle', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -71,7 +71,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
         })
     })
 
-    it('TC-INT-VR-014 : User Cant See Vehicle Trip Summary By Id With Invalid UUID', () => {
+    it('TC-INT-VH-014 : User Cant See Vehicle Trip Summary By Id With Invalid UUID', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -98,7 +98,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
         })
     })
 
-    it('TC-INT-VR-015 : User Cant See Vehicle Trip Summary By Id With Not Found Vehicle', () => {
+    it('TC-INT-VH-015 : User Cant See Vehicle Trip Summary By Id With Not Found Vehicle', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
@@ -125,7 +125,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
         })
     })
 
-    it('TC-INT-VR-011 : User Cant See Vehicle Trip Summary By Id With Invalid Auth', () => {
+    it('TC-INT-VH-016 : User Cant See Vehicle Trip Summary By Id With Invalid Auth', () => {
         const id = '7d53371a-e363-2ad3-25fe-180dae88c062'
 
         cy.request({

@@ -39,7 +39,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
         cy.templateValidateDateTime(data.data, columnDateTime)
     }
 
-    it('TC-INT-VR-007 : User Can See All Vehicle Readiness With Valid Data', () => {
+    it('TC-INT-VH-007 : User Can See All Vehicle Readiness With Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -63,7 +63,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
         })
     })
 
-    it('TC-INT-VR-008 : User Can See All Vehicle Readiness With Custom Item Per Page', () => {
+    it('TC-INT-VH-008 : User Can See All Vehicle Readiness With Custom Item Per Page', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -88,7 +88,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
         })
     })
 
-    it('TC-INT-VR-009 : User Cant See All Vehicle Readiness With Custom Invalid Item Per Page', () => {
+    it('TC-INT-VH-009 : User Cant See All Vehicle Readiness With Custom Invalid Item Per Page', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -115,7 +115,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
         })
     })
 
-    it('TC-INT-VR-010 : User Cant See All Vehicle Readiness With Empty Data', () => {
+    it('TC-INT-VH-010 : User Cant See All Vehicle Readiness With Empty Data', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
@@ -141,7 +141,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
         })
     })
 
-    it('TC-INT-VR-011 : User Cant See All Vehicle Readiness With Invalid Auth', () => {
+    it('TC-INT-VH-011 : User Cant See All Vehicle Readiness With Invalid Auth', () => {
         cy.request({
             method: method,
             url,
