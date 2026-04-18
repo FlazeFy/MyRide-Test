@@ -1,10 +1,10 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
+describe('MyRide Integration Test - Trip - Get : Export Trip Dataset', () => {
     const method = 'get'
-    const url = '/api/v1/export/wash'
+    const url = '/api/v1/export/trip'
 
-    it('TC-INT-EX-001 : User Can Export Wash Dataset', () => {
+    it('TC-INT-EX-004 : User Can Export Trip Dataset', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -17,14 +17,14 @@ describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('UserCanExportWashDataset')
-            cy.get('@UserCanExportWashDataset').then(dt => {
+            }).as('UserCanExportTripDataset')
+            cy.get('@UserCanExportTripDataset').then(dt => {
                 cy.templateGetExportExcel(dt)
             })
         })
     })
 
-    it('TC-INT-EX-002 : User Cant Export Wash Dataset With Invalid Auth', () => {
+    it('TC-INT-EX-005 : User Cant Export Trip Dataset With Invalid Auth', () => {
         cy.request({
             method: method,
             url,
@@ -32,8 +32,8 @@ describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
                 Accept: `application/json`
             },
             failOnStatusCode: false,
-        }).as('UserCantExportWashDatasetWithInvalidAuth')
-        cy.get('@UserCantExportWashDatasetWithInvalidAuth').then(dt => {
+        }).as('UserCantExportTripDatasetWithInvalidAuth')
+        cy.get('@UserCantExportTripDatasetWithInvalidAuth').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
             
@@ -43,7 +43,7 @@ describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
         })
     })
 
-    it('TC-INT-EX-003 : User Cant Export Wash Dataset With Empty Data', () => {
+    it('TC-INT-EX-006 : User Cant Export Trip Dataset With Empty Data', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
@@ -57,10 +57,10 @@ describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantExportWashDatasetWithEmptyData')
-            cy.get('@UserCantExportWashDatasetWithEmptyData').then(dt => {
+            }).as('UserCantExportTripDatasetWithEmptyData')
+            cy.get('@UserCantExportTripDatasetWithEmptyData').then(dt => {
                 cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('wash not found')
+                expect(dt.body.message).contain('trip not found')
                 
                 // Get Item Holder
                 const res = dt.body
