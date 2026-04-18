@@ -1,3 +1,9 @@
+Cypress.Commands.add('templateGetExportExcel', (res) => {
+    expect(res.status).to.eq(200)
+    expect(res.headers['content-type']).to.include('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    expect(res.headers['content-disposition']).to.include('attachment')
+});
+
 Cypress.Commands.add('templateGet', (status_code, obj, is_paginate) => {
     // Builder
     const dataType = (is_paginate === true || is_paginate === null) ? 'object' : 'array'
