@@ -6,20 +6,16 @@ describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
 
     it('TC-INT-EX-001 : User Can Export Wash Dataset', () => {
         const payload = {
-            username : "flazefy",
+            username: 'flazefy',
             password: 'nopass123',
         }
+        const expectedHeader = [
+            'vehicle_name', 'wash_desc', 'wash_by', 'is_wash_body', 'is_wash_window', 'is_wash_dashboard', 'is_wash_tires', 'is_wash_trash', 'is_wash_engine', 'is_wash_seat', 'is_wash_carpet', 'is_wash_pillows', 'wash_address', 'wash_start_time', 'wash_end_time', 'is_fill_window_washing_water', 'is_wash_hollow', 'datetime'
+        ]
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
-            cy.request({
-                method: method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).as('UserCanExportWashDataset')
-            cy.get('@UserCanExportWashDataset').then(dt => {
-                cy.templateGetExportExcel(dt)
+            cy.templateExportExcel({
+                url, token, fileNameStartWith: `Wash-${payload.username}`, expectedHeader
             })
         })
     })

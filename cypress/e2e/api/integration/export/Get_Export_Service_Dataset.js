@@ -9,17 +9,13 @@ describe('MyRide Integration Test - Service - Get : Export Service Dataset', () 
             username : "flazefy",
             password: 'nopass123',
         }
-
+        const expectedHeader = [
+            'vehicle_name','vehicle_type','vehicle_plate_number','service_category','service_price_total','service_location','service_note','created_at','updated_at','remind_at'
+        ]
+        
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
-            cy.request({
-                method: method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).as('UserCanExportServiceDataset')
-            cy.get('@UserCanExportServiceDataset').then(dt => {
-                cy.templateGetExportExcel(dt)
+            cy.templateExportExcel({
+                url, token, fileNameStartWith: `Service-${payload.username}`, expectedHeader
             })
         })
     })

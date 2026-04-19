@@ -1,8 +1,31 @@
-Cypress.Commands.add('templateGetExportExcel', (res) => {
-    expect(res.status).to.eq(200)
-    expect(res.headers['content-type']).to.include('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    expect(res.headers['content-disposition']).to.include('attachment')
-});
+Cypress.Commands.add('templateExportExcel', ({ url, token, fileNameStartWith, expectedHeader }) => {
+    const filePath = `cypress/downloads/${fileNameStartWith}.xlsx`
+
+    cy.task('downloadAndParseExcel', {
+        url:`${Cypress.config('baseUrl')}${url}`,
+        token,
+        filePath
+    }).then((res) => {
+        // Validate status code
+        expect(res.status).to.eq(200)
+
+        // Validate content type
+        expect(res.contentType).to.include('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        
+        // Validate content disposition
+        const disposition = res.contentDisposition
+        expect(disposition).to.include('attachment')
+        
+        // Validate dataset's header 
+        if (expectedHeader) {
+            expect(res.header.length).to.eq(expectedHeader.length)
+            expect(res.header).to.include.members(expectedHeader)
+        }
+        
+        // Validate dataset body / item
+        expect(res.rowCount).to.be.greaterThan(1)
+    })
+})
 
 Cypress.Commands.add('templateGet', (status_code, obj, is_paginate) => {
     // Builder

@@ -2,3 +2,4 @@
 *.png
 audit/firebase/init.js
 .env
+/cypress/downloads

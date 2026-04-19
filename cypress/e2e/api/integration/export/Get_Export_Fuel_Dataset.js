@@ -9,17 +9,13 @@ describe('MyRide Integration Test - Fuel - Get : Export Fuel Dataset', () => {
             username : "flazefy",
             password: 'nopass123',
         }
-
+        const expectedHeader = [
+            'vehicle_name','vehicle_type','vehicle_plate_number','fuel_volume','fuel_price_total','fuel_brand','fuel_type','fuel_ron','datetime'
+        ]
+        
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
-            cy.request({
-                method: method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).as('UserCanExportFuelDataset')
-            cy.get('@UserCanExportFuelDataset').then(dt => {
-                cy.templateGetExportExcel(dt)
+            cy.templateExportExcel({
+                url, token, fileNameStartWith: `Fuel-${payload.username}`, expectedHeader
             })
         })
     })

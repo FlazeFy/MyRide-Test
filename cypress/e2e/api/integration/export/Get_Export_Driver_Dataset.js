@@ -9,17 +9,13 @@ describe('MyRide Integration Test - Driver - Get : Export Driver Dataset', () =>
             username : "flazefy",
             password: 'nopass123',
         }
-
+        const expectedHeader = [
+            'username','fullname','email','telegram_user_id','telegram_is_valid','phone','notes','created_at','updated_at'
+        ]
+        
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
-            cy.request({
-                method: method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).as('UserCanExportDriverDataset')
-            cy.get('@UserCanExportDriverDataset').then(dt => {
-                cy.templateGetExportExcel(dt)
+            cy.templateExportExcel({
+                url, token, fileNameStartWith: `Driver-${payload.username}`, expectedHeader
             })
         })
     })

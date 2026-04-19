@@ -9,17 +9,13 @@ describe('MyRide Integration Test - Inventory - Get : Export Inventory Dataset',
             username : "flazefy",
             password: 'nopass123',
         }
-
+        const expectedHeader = [
+            'vehicle_name','vehicle_type','vehicle_plate_number','inventory_name','inventory_category','inventory_qty','inventory_storage','created_at','updated_at'
+        ]
+        
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
-            cy.request({
-                method: method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).as('UserCanExportInventoryDataset')
-            cy.get('@UserCanExportInventoryDataset').then(dt => {
-                cy.templateGetExportExcel(dt)
+            cy.templateExportExcel({
+                url, token, fileNameStartWith: `Inventory-${payload.username}`, expectedHeader
             })
         })
     })
