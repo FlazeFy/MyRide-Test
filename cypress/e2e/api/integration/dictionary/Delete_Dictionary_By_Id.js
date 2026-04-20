@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Dictionary - Delete : Dictionary By Id', () 
                 }
             }).as('AdminCanRemoveDictionaryUsingValidID')
             cy.get('@AdminCanRemoveDictionaryUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'dictionary permentally deleted')
+                cy.templateDelete(dt, 200, 'dictionary permanently deleted')
             })
         })
     })

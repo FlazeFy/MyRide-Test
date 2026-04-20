@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Inventory - Delete : Inventory By Id', () =>
                 }
             }).as('UserCanRemoveInventoryUsingValidID')
             cy.get('@UserCanRemoveInventoryUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'inventory permentally deleted')
+                cy.templateDelete(dt, 200, 'inventory permanently deleted')
             })
         })
     })

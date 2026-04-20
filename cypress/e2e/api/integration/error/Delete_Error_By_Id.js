@@ -42,7 +42,7 @@ describe('MyRide Integration Test - Error - Delete : Error By Id', () => {
                 }
             }).as('AdminCanRemoveErrorUsingValidID')
             cy.get('@AdminCanRemoveErrorUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'error permentally deleted')
+                cy.templateDelete(dt, 200, 'error permanently deleted')
             })
         })
     })

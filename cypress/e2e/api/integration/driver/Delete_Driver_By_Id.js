@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Driver - Delete : Driver By Id', () => {
                 }
             }).as('UserCanRemoveDriverUsingValidID')
             cy.get('@UserCanRemoveDriverUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'driver permentally deleted')
+                cy.templateDelete(dt, 200, 'driver permanently deleted')
             })
         })
     })

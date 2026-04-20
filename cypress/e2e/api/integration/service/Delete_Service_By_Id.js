@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Service - Delete : Service By Id', () => {
                 }
             }).as('UserCanRemoveServiceUsingValidID')
             cy.get('@UserCanRemoveServiceUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'service permentally deleted')
+                cy.templateDelete(dt, 200, 'service permanently deleted')
             })
         })
     })

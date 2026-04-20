@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Fuel - Delete : Fuel By Id', () => {
                 }
             }).as('UserCanRemoveFuelUsingValidID')
             cy.get('@UserCanRemoveFuelUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'fuel permentally deleted')
+                cy.templateDelete(dt, 200, 'fuel permanently deleted')
             })
         })
     })

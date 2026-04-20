@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Reminder - Delete : Reminder By Id', () => {
                 }
             }).as('UserCanRemoveReminderUsingValidID')
             cy.get('@UserCanRemoveReminderUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'reminder permentally deleted')
+                cy.templateDelete(dt, 200, 'reminder permanently deleted')
             })
         })
     })

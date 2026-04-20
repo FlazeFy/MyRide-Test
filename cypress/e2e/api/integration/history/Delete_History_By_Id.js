@@ -66,7 +66,7 @@ describe('MyRide Integration Test - History - Delete : History By Id', () => {
                 }
             }).as('UserCanRemoveHistoryUsingValidID')
             cy.get('@UserCanRemoveHistoryUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'history permentally deleted')
+                cy.templateDelete(dt, 200, 'history permanently deleted')
             })
         })
     })

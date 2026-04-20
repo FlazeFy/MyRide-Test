@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Wash - Delete : Wash By Id', () => {
                 }
             }).as('UserCanRemoveWashUsingValidID')
             cy.get('@UserCanRemoveWashUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'wash permentally deleted')
+                cy.templateDelete(dt, 200, 'wash permanently deleted')
             })
         })
     })

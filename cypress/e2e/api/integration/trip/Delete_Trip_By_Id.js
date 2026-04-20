@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Trip - Delete : Trip By Id', () => {
                 }
             }).as('UserCanRemoveTripUsingValidID')
             cy.get('@UserCanRemoveTripUsingValidID').then(dt => {
-                cy.templateDelete(dt, 200, 'trip permentally deleted')
+                cy.templateDelete(dt, 200, 'trip permanently deleted')
             })
         })
     })
