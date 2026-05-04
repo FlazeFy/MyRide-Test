@@ -1,22 +1,20 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
+describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => {
     const method = 'post'
-    const url = '/api/v1/fuel'
+    const url = '/api/v1/inventory'
 
-    it('TC-INT-FL-017 : User Cant Create Fuel History Using Invalid Rules For Fuel Ron', () => {
+    it('TC-INT-IN-018 : User Cant Create Inventory Using Invalid Rules For Inventory Category', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
         }
         const payload = {
             vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '102',
-            fuel_at: '2026-01-14 00:00:08'
+            inventory_name: 'Secondary Tire',
+            inventory_category: 'Food',
+            inventory_qty: 2,
+            inventory_storage: 'Roof Box'
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
@@ -28,28 +26,26 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
                 },
                 body: payload,
                 failOnStatusCode: false,
-            }).as('UserCantCreateFuelHistoryUsingInvalidRulesForFuelRon')
-            cy.get('@UserCantCreateFuelHistoryUsingInvalidRulesForFuelRon').then(dt => {
+            }).as('UserCantCreateInventoryUsingInvalidRulesForInventoryCategory')
+            cy.get('@UserCantCreateInventoryUsingInvalidRulesForInventoryCategory').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "fuel_ron": ["Fuel Ron is not available"]
+                    "inventory_category": ["Inventory Category is not available"]
                 })
             })
         })
     })
 
-    it('TC-INT-FL-018 : User Cant Create Fuel History Using Invalid Fuel Volume', () => {
+    it('TC-INT-IN-019 : User Cant Create Inventory Using Invalid Inventory Qty', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
         }
         const payload = {
             vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 300,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            inventory_name: 'Secondary Tire',
+            inventory_category: 'Personal',
+            inventory_qty: 0,
+            inventory_storage: 'Roof Box'
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
@@ -61,27 +57,25 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
                 },
                 body: payload,
                 failOnStatusCode: false,
-            }).as('UserCantCreateFuelHistoryUsingInvalidFuelVolume')
-            cy.get('@UserCantCreateFuelHistoryUsingInvalidFuelVolume').then(dt => {
+            }).as('UserCantCreateInventoryUsingInvalidInventoryQty')
+            cy.get('@UserCantCreateInventoryUsingInvalidInventoryQty').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "fuel_volume": ["The fuel volume field must not be greater than 99."]
+                    "inventory_qty": ["The inventory qty field must be at least 1."]
                 })
             })
         })
     })
 
-    it('TC-INT-FL-019 : User Cant Create Fuel History Using Empty Fuel Volume', () => {
+    it('TC-INT-IN-020 : User Cant Create Inventory Using Empty Inventory Name', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123',
         }
         const payload = {
             vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            inventory_category: 'Personal',
+            inventory_qty: 2,
+            inventory_storage: 'Roof Box'
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
@@ -93,28 +87,26 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
                 },
                 body: payload,
                 failOnStatusCode: false,
-            }).as('UserCantCreateFuelHistoryUsingEmptyFuelVolume')
-            cy.get('@UserCantCreateFuelHistoryUsingEmptyFuelVolume').then(dt => {
+            }).as('UserCantCreateInventoryUsingEmptyInventoryName')
+            cy.get('@UserCantCreateInventoryUsingEmptyInventoryName').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "fuel_volume": ["The fuel volume field is required."]
+                    "inventory_name": ["The inventory name field is required."]
                 })
             })
         })
     })
 
-    it('TC-INT-FL-020 : User Cant Create Fuel History Using Invalid Vehicle Id (UUID)', () => {
+    it('TC-INT-IN-021 : User Cant Create Inventory Using Invalid Vehicle Id (UUID)', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
         }
         const payload = {
             vehicle_id: '1',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            inventory_name: 'Secondary Tire',
+            inventory_category: 'Personal',
+            inventory_qty: 2,
+            inventory_storage: 'Roof Box'
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
@@ -126,8 +118,8 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
                 },
                 body: payload,
                 failOnStatusCode: false,
-            }).as('UserCantCreateFuelHistoryUsingInvalidVehicleId(UUID)')
-            cy.get('@UserCantCreateFuelHistoryUsingInvalidVehicleId(UUID)').then(dt => {
+            }).as('UserCantCreateInventoryUsingInvalidVehicleId(UUID)')
+            cy.get('@UserCantCreateInventoryUsingInvalidVehicleId(UUID)').then(dt => {
                 cy.templateDelete(dt, 400, {
                     "vehicle_id": ["The vehicle id field must be 36 characters."]
                 })
@@ -135,19 +127,17 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
         })
     })
 
-    it('TC-INT-FL-021 : User Cant Create Fuel History Using Invalid Vehicle Id (Not Found)', () => {
+    it('TC-INT-IN-022 : User Cant Create Inventory Using Invalid Vehicle Id (Not Found)', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
         }
         const payload = {
             vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c069',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            inventory_name: 'Secondary Tire',
+            inventory_category: 'Personal',
+            inventory_qty: 2,
+            inventory_storage: 'Roof Box'
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
@@ -159,22 +149,20 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
                 },
                 body: payload,
                 failOnStatusCode: false,
-            }).as('UserCantCreateFuelHistoryUsingInvalidVehicleId(NotFound)')
-            cy.get('@UserCantCreateFuelHistoryUsingInvalidVehicleId(NotFound)').then(dt => {
+            }).as('UserCantCreateInventoryUsingInvalidVehicleId(NotFound)')
+            cy.get('@UserCantCreateInventoryUsingInvalidVehicleId(NotFound)').then(dt => {
                 cy.templateDelete(dt, 404, 'vehicle not found')
             })
         })
     })
 
-    it('TC-INT-FL-022 : User Cant Create Fuel History Using Invalid Auth', () => {
+    it('TC-INT-IN-023 : User Cant Create Inventory Using Invalid Auth', () => {
         const payload = {
             vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            inventory_name: 'Secondary Tire',
+            inventory_category: 'Personal',
+            inventory_qty: 2,
+            inventory_storage: 'Roof Box'
         }
 
         cy.request({
@@ -182,25 +170,23 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
             url,
             body: payload,
             failOnStatusCode: false,
-        }).as('UserCantCreateFuelHistoryUsingInvalidAuth')
-        cy.get('@UserCantCreateFuelHistoryUsingInvalidAuth').then(dt => {
+        }).as('UserCantCreateInventoryUsingInvalidAuth')
+        cy.get('@UserCantCreateInventoryUsingInvalidAuth').then(dt => {
             cy.templateDelete(dt, 401, 'you need to include the authorization token from login')
         })
     })
 
-    it('TC-INT-FL-023 : User Can Create Fuel History Using Valid Data', () => {
+    it('TC-INT-IN-024 : User Can Create Inventory Using Valid Data', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123',
         }
         const payload = {
             vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            inventory_name: 'Secondary Tire',
+            inventory_category: 'Personal',
+            inventory_qty: 2,
+            inventory_storage: 'Roof Box'
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
@@ -211,9 +197,9 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
                     Authorization: `Bearer ${token}`
                 },
                 body: payload,
-            }).as('UserCanCreateFuelHistoryUsingValidData')
-            cy.get('@UserCanCreateFuelHistoryUsingValidData').then(dt => {
-                cy.templateDelete(dt, 201, 'fuel created')
+            }).as('UserCanCreateInventoryUsingValidData')
+            cy.get('@UserCanCreateInventoryUsingValidData').then(dt => {
+                cy.templateDelete(dt, 201, 'inventory created')
             })
         })
     })

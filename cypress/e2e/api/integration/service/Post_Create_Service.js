@@ -129,7 +129,7 @@ describe('MyRide Integration Test - Service - Post : Create Service', () => {
             }).as('UserCantCreateServiceHistoryUsingInvalidVehicleId(UUID)')
             cy.get('@UserCantCreateServiceHistoryUsingInvalidVehicleId(UUID)').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "vehicle_id": ["The vehicle id field must be at least 36 characters."]
+                    "vehicle_id": ["The vehicle id field must be 36 characters."]
                 })
             })
         })
@@ -225,7 +225,6 @@ describe('MyRide Integration Test - Service - Post : Create Service', () => {
                 failOnStatusCode: false,
             }).as('UserCantCreateServiceHistoryUsingInvalidRemindAt(RemindAtBeforeCreatedAt)')
             cy.get('@UserCantCreateServiceHistoryUsingInvalidRemindAt(RemindAtBeforeCreatedAt)').then(dt => {
-                console.log(dt)
                 cy.templateDelete(dt, 400, {
                     "remind_at": ["The remind at field must be a date after or equal to created at."]
                 })
