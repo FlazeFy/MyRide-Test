@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Auth - Post : Create Fuel', () => {
+describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
     const method = 'post'
     const url = '/api/v1/fuel'
 

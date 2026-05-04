@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
+describe('MyRide Integration Test - Dictionary - Post : Create Dictionary', () => {
     const method = 'post'
     const url = '/api/v1/dictionary'
 
