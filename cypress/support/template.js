@@ -60,7 +60,7 @@ Cypress.Commands.add('templatePost', (obj, builder) => {
 Cypress.Commands.add('templateDelete', (obj, status, msg) => {
     // Test
     expect(obj.status).to.equal(status)
-    expect(obj.body.status).to.equal(status !== 200 ? 'failed' : 'success')
+    expect(obj.body.status).to.equal(status !== 200 && status !== 201 ? 'failed' : 'success')
     
     const message = obj.body.message
     if (typeof msg === "string") {

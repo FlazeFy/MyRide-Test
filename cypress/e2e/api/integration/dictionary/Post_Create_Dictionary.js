@@ -4,7 +4,7 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
     const method = 'post'
     const url = '/api/v1/dictionary'
 
-    it('TC-INT-DC-003 : Admin Cant Create Dictionary Using Invalid Rules For Dictionary Type', () => {
+    it('TC-INT-DC-006 : Admin Cant Create Dictionary Using Invalid Rules For Dictionary Type', () => {
         const payloadAuth = {
             username : "testeradmin",
             password: 'nopass123'
@@ -17,10 +17,11 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${id}`,
+                url,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
+                body: payload,
                 failOnStatusCode: false,
             }).as('AdminCantCreateDictionaryUsingInvalidRulesForDictionaryType')
             cy.get('@AdminCantCreateDictionaryUsingInvalidRulesForDictionaryType').then(dt => {
@@ -31,7 +32,7 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         })
     })
 
-    it('TC-INT-DC-004 : Admin Cant Create Dictionary Using Invalid Char Length Dictionary Name', () => {
+    it('TC-INT-DC-007 : Admin Cant Create Dictionary Using Invalid Char Length Dictionary Name', () => {
         const payloadAuth = {
             username : "testeradmin",
             password: 'nopass123'
@@ -44,10 +45,11 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${id}`,
+                url,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
+                body: payload,
                 failOnStatusCode: false,
             }).as('AdminCantCreateDictionaryUsingInvalidCharLengthDictionaryName')
             cy.get('@AdminCantCreateDictionaryUsingInvalidCharLengthDictionaryName').then(dt => {
@@ -58,7 +60,7 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         })
     })
 
-    it('TC-INT-DC-004 : Admin Cant Create Dictionary Using Empty Dictionary Name', () => {
+    it('TC-INT-DC-008 : Admin Cant Create Dictionary Using Empty Dictionary Name', () => {
         const payloadAuth = {
             username : "testeradmin",
             password: 'nopass123',
@@ -70,10 +72,11 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${id}`,
+                url,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
+                body: payload,
                 failOnStatusCode: false,
             }).as('AdminCantCreateDictionaryUsingEmptyDictionaryName')
             cy.get('@AdminCantCreateDictionaryUsingEmptyDictionaryName').then(dt => {
@@ -84,7 +87,7 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         })
     })
 
-    it('TC-INT-DC-005 : Admin Can Create Dictionary Using Valid ID', () => {
+    it('TC-INT-DC-009 : Admin Can Create Dictionary Using Valid Data', () => {
         const payloadAuth = {
             username : "testeradmin",
             password: 'nopass123',
@@ -97,18 +100,19 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${id}`,
+                url,
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
-            }).as('AdminCanCreateDictionaryUsingValidID')
-            cy.get('@AdminCanCreateDictionaryUsingValidID').then(dt => {
+                },
+                body: payload,
+            }).as('AdminCanCreateDictionaryUsingValidData')
+            cy.get('@AdminCanCreateDictionaryUsingValidData').then(dt => {
                 cy.templateDelete(dt, 201, 'dictionary created')
             })
         })
     })
 
-    it('TC-INT-DC-004 : Admin Cant Create Dictionary Using Duplicated Dictionary Name', () => {
+    it('TC-INT-DC-010 : Admin Cant Create Dictionary Using Duplicated Dictionary Name', () => {
         const payloadAuth = {
             username : "testeradmin",
             password: 'nopass123',
@@ -121,11 +125,12 @@ describe('MyRide Integration Test - Auth - Post : Create Dictionary', () => {
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
                 method: method,
-                url: `${url}/${id}`,
+                url,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
+                body: payload,
             }).as('AdminCantCreateDictionaryUsingDuplicatedDictionaryName')
             cy.get('@AdminCantCreateDictionaryUsingDuplicatedDictionaryName').then(dt => {
                 cy.templateDelete(dt, 409, "dictionary name has been used. try another")
