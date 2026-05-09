@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Dictionary - Get : All Dictionary By Type', () => {
+describe('Integration Test - Dictionary - Get : All Dictionary By Type', () => {
     const method = 'get'
     const url = '/api/v1/dictionary/type'
 
@@ -13,7 +13,7 @@ describe('MyRide Integration Test - Dictionary - Get : All Dictionary By Type', 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Dictionary - Get : All Dictionary By Type', 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${context}`,
                 headers: {
                     Authorization: `Bearer ${token}`

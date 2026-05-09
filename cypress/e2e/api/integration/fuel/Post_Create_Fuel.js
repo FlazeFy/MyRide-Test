@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
+describe('Integration Test - Fuel - Post : Create Fuel', () => {
     const method = 'post'
     const url = '/api/v1/fuel'
 
@@ -21,7 +21,7 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -54,7 +54,7 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -86,7 +86,7 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -119,7 +119,7 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -152,7 +152,7 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -178,7 +178,7 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url,
             body: payload,
             failOnStatusCode: false,
@@ -205,7 +205,7 @@ describe('MyRide Integration Test - Fuel - Post : Create Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Service - Get : Service Spending', () => {
+describe('Integration Test - Service - Get : Service Spending', () => {
     const method = 'get'
     const url = '/api/v1/service/spending'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Service - Get : Service Spending', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -48,7 +48,7 @@ describe('MyRide Integration Test - Service - Get : Service Spending', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -68,7 +68,7 @@ describe('MyRide Integration Test - Service - Get : Service Spending', () => {
 
     it('TC-INT-SV-003 : User Cant See Service Spending With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

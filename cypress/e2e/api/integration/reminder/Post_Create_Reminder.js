@@ -1,7 +1,7 @@
 import '../../../../support/template'
 import { getDatePlusDays } from '../../../helpers/generator'
 
-describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
+describe('Integration Test - Reminder - Post : Create Reminder', () => {
     const method = 'post'
     const url = '/api/v1/reminder'
 
@@ -20,7 +20,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -52,7 +52,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -82,7 +82,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -113,7 +113,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -143,7 +143,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -174,7 +174,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -202,7 +202,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url,
             body: payload,
             failOnStatusCode: false,
@@ -227,7 +227,7 @@ describe('MyRide Integration Test - Reminder - Post : Create Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

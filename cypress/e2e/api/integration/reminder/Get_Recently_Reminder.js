@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Reminder - Get : Recently Reminder', () => {
+describe('Integration Test - Reminder - Get : Recently Reminder', () => {
     const method = 'get'
     const url = '/api/v1/reminder/recently'
 
@@ -35,7 +35,7 @@ describe('MyRide Integration Test - Reminder - Get : Recently Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ describe('MyRide Integration Test - Reminder - Get : Recently Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -85,7 +85,7 @@ describe('MyRide Integration Test - Reminder - Get : Recently Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -111,7 +111,7 @@ describe('MyRide Integration Test - Reminder - Get : Recently Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -131,7 +131,7 @@ describe('MyRide Integration Test - Reminder - Get : Recently Reminder', () => {
 
     it('TC-INT-RM-008 : User Cant See Recently Reminder With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

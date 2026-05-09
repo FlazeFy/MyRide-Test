@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Error - Get : All Error', () => {
+describe('Integration Test - Error - Get : All Error', () => {
     const method = 'get'
     const url = '/api/v1/error'
 
@@ -41,7 +41,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -91,7 +91,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -117,7 +117,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -137,7 +137,7 @@ describe('MyRide Integration Test - Error - Get : All Error', () => {
 
     it('TC-INT-ER-007 : User Cant See All Error With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
+describe('Integration Test - Wash - Post : Create Wash', () => {
     const method = 'post'
     const url = '/api/v1/wash'
 
@@ -32,7 +32,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -76,7 +76,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -120,7 +120,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -164,7 +164,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -208,7 +208,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -252,7 +252,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -294,7 +294,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -338,7 +338,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -377,7 +377,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url,
             body: payload,
             failOnStatusCode: false,
@@ -415,7 +415,7 @@ describe('MyRide Integration Test - Wash - Post : Create Wash', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Service - Get : Export Service Dataset', () => {
+describe('Integration Test - Service - Get : Export Service Dataset', () => {
     const method = 'get'
     const url = '/api/v1/export/service'
 
@@ -22,7 +22,7 @@ describe('MyRide Integration Test - Service - Get : Export Service Dataset', () 
 
     it('TC-INT-EX-011 : User Cant Export Service Dataset With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Service - Get : Export Service Dataset', () 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

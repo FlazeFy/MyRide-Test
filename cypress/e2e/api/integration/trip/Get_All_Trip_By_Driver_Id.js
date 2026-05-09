@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
+describe('Integration Test - Trip - Get : All Trip By Driver Id', () => {
     const method = 'get'
     const url = '/api/v1/trip/driver'
 
@@ -44,7 +44,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${driverId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -70,7 +70,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${driverId}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -96,7 +96,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${driverId}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -123,7 +123,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${driverId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -145,7 +145,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
         const driverId = '5eaa10e9-1e2a-a789-0c96-fb3714ee9b85'
 
         cy.request({
-            method: method,
+            method,
             url: `${url}/${driverId}`,
             headers: {
                 Accept: `application/json`
@@ -171,7 +171,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${driverId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -198,7 +198,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${driverId}`,
                 headers: {
                     Authorization: `Bearer ${token}`

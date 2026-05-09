@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Auth - Post : Login', () => {
+describe('Integration Test - Auth - Post : Login', () => {
     const method = 'post'
     const url = '/api/v1/login'
 
@@ -11,7 +11,7 @@ describe('MyRide Integration Test - Auth - Post : Login', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url: url,
             body: test_data
         }).as('SuccessPostLoginWithValidData')
@@ -64,7 +64,7 @@ describe('MyRide Integration Test - Auth - Post : Login', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url: url,
             body: test_data,
             failOnStatusCode: false
@@ -89,7 +89,7 @@ describe('MyRide Integration Test - Auth - Post : Login', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url: url,
             body: test_data,
             failOnStatusCode: false
@@ -115,7 +115,7 @@ describe('MyRide Integration Test - Auth - Post : Login', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url: url,
             body: test_data,
             failOnStatusCode: false

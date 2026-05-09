@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Vehicle - Put : Recover Deleted Vehicle By Id', () => {
+describe('Integration Test - Vehicle - Put : Recover Deleted Vehicle By Id', () => {
     const method = 'put'
     const url = '/api/v1/vehicle/recover'
 
@@ -13,7 +13,7 @@ describe('MyRide Integration Test - Vehicle - Put : Recover Deleted Vehicle By I
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -37,7 +37,7 @@ describe('MyRide Integration Test - Vehicle - Put : Recover Deleted Vehicle By I
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ describe('MyRide Integration Test - Vehicle - Put : Recover Deleted Vehicle By I
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -80,7 +80,7 @@ describe('MyRide Integration Test - Vehicle - Put : Recover Deleted Vehicle By I
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`

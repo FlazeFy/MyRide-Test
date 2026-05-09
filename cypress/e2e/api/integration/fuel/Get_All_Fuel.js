@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
+describe('Integration Test - Fuel - Get : All Fuel', () => {
     const method = 'get'
     const url = '/api/v1/fuel'
 
@@ -44,7 +44,7 @@ describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -69,7 +69,7 @@ describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -94,7 +94,7 @@ describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -120,7 +120,7 @@ describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -140,7 +140,7 @@ describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
 
     it('TC-INT-FL-005 : User Cant See All Fuel With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -166,7 +166,7 @@ describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?vehicle_id=${fuelId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -193,7 +193,7 @@ describe('MyRide Integration Test - Fuel - Get : All Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?vehicle_id=${fuelId}`,
                 headers: {
                     Authorization: `Bearer ${token}`

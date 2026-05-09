@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Chat - Get : All Chat By Type', () => {
+describe('Integration Test - Chat - Get : All Chat By Type', () => {
     const method = 'get'
     const url = '/api/v1/chat'
 
@@ -38,7 +38,7 @@ describe('MyRide Integration Test - Chat - Get : All Chat By Type', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${chatType}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -64,7 +64,7 @@ describe('MyRide Integration Test - Chat - Get : All Chat By Type', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${chatType}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -90,7 +90,7 @@ describe('MyRide Integration Test - Chat - Get : All Chat By Type', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${chatType}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -117,7 +117,7 @@ describe('MyRide Integration Test - Chat - Get : All Chat By Type', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${chatType}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -139,7 +139,7 @@ describe('MyRide Integration Test - Chat - Get : All Chat By Type', () => {
         const chatType = 'ai'
 
         cy.request({
-            method: method,
+            method,
             url: `${url}/${chatType}`,
             headers: {
                 Accept: `application/json`
@@ -165,7 +165,7 @@ describe('MyRide Integration Test - Chat - Get : All Chat By Type', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${chatType}`,
                 headers: {
                     Authorization: `Bearer ${token}`

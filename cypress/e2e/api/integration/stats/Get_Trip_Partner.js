@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Stats - Get : Partner Trip', () => {
+describe('Integration Test - Stats - Get : Partner Trip', () => {
     const method = 'get'
     const url = '/api/v1/stats/partner'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Stats - Get : Partner Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Stats - Get : Partner Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -67,7 +67,7 @@ describe('MyRide Integration Test - Stats - Get : Partner Trip', () => {
 
     it('TC-INT-ST-008 : User Cant See Partner Trip List With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

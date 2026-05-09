@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Fuel - Get : Fuel Summary', () => {
+describe('Integration Test - Fuel - Get : Fuel Summary', () => {
     const method = 'get'
     const url = '/api/v1/fuel/summary'
 
@@ -30,7 +30,7 @@ describe('MyRide Integration Test - Fuel - Get : Fuel Summary', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${period}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -52,7 +52,7 @@ describe('MyRide Integration Test - Fuel - Get : Fuel Summary', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${period}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -68,7 +68,7 @@ describe('MyRide Integration Test - Fuel - Get : Fuel Summary', () => {
         const period = '01-2026'
 
         cy.request({
-            method: method,
+            method,
             url: `${url}/${period}`,
             headers: {
                 Accept: `application/json`

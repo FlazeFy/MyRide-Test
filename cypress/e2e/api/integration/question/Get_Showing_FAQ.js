@@ -1,12 +1,12 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Question - Get : Showing FAQ', () => {
+describe('Integration Test - Question - Get : Showing FAQ', () => {
     const method = 'get'
     const url = '/api/v1/question/faq'
 
     it('TC-INT-QS-001 : Success Get Showing FAQ With Valid Data', () => {
         cy.request({
-            method: method,
+            method,
             url: url,
         }).as('SuccessGetShowingFAQWithValidData')
         cy.get('@SuccessGetShowingFAQWithValidData').then(dt => {
@@ -29,7 +29,7 @@ describe('MyRide Integration Test - Question - Get : Showing FAQ', () => {
 
     it('TC-INT-QS-002 : Failed Get Showing FAQ With Empty Data', () => {
         cy.request({
-            method: method,
+            method,
             url: url,
             failOnStatusCode: false,
         }).as('FailedGetShowingFAQWithEmptyData')

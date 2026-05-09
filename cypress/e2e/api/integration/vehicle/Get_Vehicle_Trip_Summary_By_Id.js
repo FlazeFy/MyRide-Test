@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id', () => {
+describe('Integration Test - Vehicle - Get : Vehicle Trip Summary By Id', () => {
     const method = 'get'
     const url = '/api/v1/vehicle/trip/summary'
 
@@ -38,7 +38,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -80,7 +80,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -107,7 +107,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -129,7 +129,7 @@ describe('MyRide Integration Test - Vehicle - Get : Vehicle Trip Summary By Id',
         const id = '7d53371a-e363-2ad3-25fe-180dae88c062'
 
         cy.request({
-            method: method,
+            method,
             url: `${url}/${id}`,
             headers: {
                 Accept: `application/json`

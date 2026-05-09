@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - History - Get : All History', () => {
+describe('Integration Test - History - Get : All History', () => {
     const method = 'get'
     const url = '/api/v1/history'
 
@@ -35,7 +35,7 @@ describe('MyRide Integration Test - History - Get : All History', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ describe('MyRide Integration Test - History - Get : All History', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -85,7 +85,7 @@ describe('MyRide Integration Test - History - Get : All History', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -111,7 +111,7 @@ describe('MyRide Integration Test - History - Get : All History', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -131,7 +131,7 @@ describe('MyRide Integration Test - History - Get : All History', () => {
 
     it('TC-INT-HS-005 : User Cant See All History With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

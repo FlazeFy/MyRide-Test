@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Get : Last Trip', () => {
+describe('Integration Test - Trip - Get : Last Trip', () => {
     const method = 'get'
     const url = '/api/v1/trip/last'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Trip - Get : Last Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ describe('MyRide Integration Test - Trip - Get : Last Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -79,7 +79,7 @@ describe('MyRide Integration Test - Trip - Get : Last Trip', () => {
 
     it('TC-INT-TR-014 : User Cant See Last Trip With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

@@ -1,12 +1,12 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Get : Trip Discovered', () => {
+describe('Integration Test - Trip - Get : Trip Discovered', () => {
     const method = 'get'
     const url = '/api/v1/trip/discovered'
 
     it('TC-INT-TR-010 : User Can See Trip Public Discovered Valid Data', () => {
         cy.request({
-            method: method,
+            method,
             url: url,
         }).as('UserCanSeeTripDiscoveredValidData')
         cy.get('@UserCanSeeTripDiscoveredValidData').then(dt => {
@@ -37,7 +37,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Discovered', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: url,
                 headers: {
                     Authorization: `Bearer ${token}`

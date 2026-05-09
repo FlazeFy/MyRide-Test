@@ -1,12 +1,12 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Stats - Get : Summary', () => {
+describe('Integration Test - Stats - Get : Summary', () => {
     const method = 'get'
     const url = '/api/v1/stats/summary'
 
     it('TC-INT-ST-001 : User Can See Summary With Valid Data', () => {
         cy.request({
-            method: method,
+            method,
             url: url,
         }).as('SuccessGetSummaryWithValidData')
         cy.get('@SuccessGetSummaryWithValidData').then(dt => {

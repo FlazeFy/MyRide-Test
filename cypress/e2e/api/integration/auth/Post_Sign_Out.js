@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Auth - Post : Sign Out', () => {
+describe('Integration Test - Auth - Post : Sign Out', () => {
     const method = 'post'
     const url = '/api/v1/logout'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Auth - Post : Sign Out', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -27,7 +27,7 @@ describe('MyRide Integration Test - Auth - Post : Sign Out', () => {
 
     it('TC-INT-AU-006 : User Cant Sign Out With Empty Token', () => {
         cy.request({
-            method: method,
+            method,
             url: url,
             failOnStatusCode: false,
             headers: {
@@ -42,7 +42,7 @@ describe('MyRide Integration Test - Auth - Post : Sign Out', () => {
 
     it('TC-INT-AU-007 : User Cant Sign Out With Invalid Token', () => {
         cy.request({
-            method: method,
+            method,
             url: url,
             failOnStatusCode: false,
             headers: {

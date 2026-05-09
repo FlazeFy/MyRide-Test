@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Error - Delete : Error By Id', () => {
+describe('Integration Test - Error - Delete : Error By Id', () => {
     const method = 'delete'
     const url = '/api/v1/error/destroy'
 
@@ -13,7 +13,7 @@ describe('MyRide Integration Test - Error - Delete : Error By Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -35,7 +35,7 @@ describe('MyRide Integration Test - Error - Delete : Error By Id', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`

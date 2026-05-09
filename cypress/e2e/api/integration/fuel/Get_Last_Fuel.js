@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Fuel - Get : Last Fuel', () => {
+describe('Integration Test - Fuel - Get : Last Fuel', () => {
     const method = 'get'
     const url = '/api/v1/fuel/last'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Fuel - Get : Last Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -52,7 +52,7 @@ describe('MyRide Integration Test - Fuel - Get : Last Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -72,7 +72,7 @@ describe('MyRide Integration Test - Fuel - Get : Last Fuel', () => {
 
     it('TC-INT-FL-013 : User Cant See Last Fuel With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

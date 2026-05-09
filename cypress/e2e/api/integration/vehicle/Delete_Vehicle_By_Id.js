@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', () => {
+describe('Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', () => {
     const method = 'delete'
     const url = '/api/v1/vehicle/delete'
 
@@ -13,7 +13,7 @@ describe('MyRide Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', ()
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -37,7 +37,7 @@ describe('MyRide Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', ()
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ describe('MyRide Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', ()
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -80,7 +80,7 @@ describe('MyRide Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', ()
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${id}`,
                 headers: {
                     Authorization: `Bearer ${token}`

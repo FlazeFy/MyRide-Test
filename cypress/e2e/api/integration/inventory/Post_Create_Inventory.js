@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => {
+describe('Integration Test - Inventory - Post : Create Inventory', () => {
     const method = 'post'
     const url = '/api/v1/inventory'
 
@@ -19,7 +19,7 @@ describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => 
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -50,7 +50,7 @@ describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => 
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -80,7 +80,7 @@ describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => 
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -111,7 +111,7 @@ describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => 
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -142,7 +142,7 @@ describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => 
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -166,7 +166,7 @@ describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => 
         }
 
         cy.request({
-            method: method,
+            method,
             url,
             body: payload,
             failOnStatusCode: false,
@@ -191,7 +191,7 @@ describe('MyRide Integration Test - Inventory - Post : Create Inventory', () => 
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

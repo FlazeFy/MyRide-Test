@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Wash - Get : All Wash', () => {
+describe('Integration Test - Wash - Get : All Wash', () => {
     const method = 'get'
     const url = '/api/v1/wash'
 
@@ -51,7 +51,7 @@ describe('MyRide Integration Test - Wash - Get : All Wash', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -76,7 +76,7 @@ describe('MyRide Integration Test - Wash - Get : All Wash', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -101,7 +101,7 @@ describe('MyRide Integration Test - Wash - Get : All Wash', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -127,7 +127,7 @@ describe('MyRide Integration Test - Wash - Get : All Wash', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -147,7 +147,7 @@ describe('MyRide Integration Test - Wash - Get : All Wash', () => {
 
     it('TC-INT-WS-005 : User Cant See All Wash With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -173,7 +173,7 @@ describe('MyRide Integration Test - Wash - Get : All Wash', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -198,7 +198,7 @@ describe('MyRide Integration Test - Wash - Get : All Wash', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`

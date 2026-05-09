@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => {
+describe('Integration Test - Stats - Get : Total Trip By Context', () => {
     const method = 'get'
     const url = '/api/v1/stats/total/trip/monthly'
 
@@ -14,7 +14,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${year}/${vehicle_id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -51,7 +51,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${year}/${vehicle_id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -79,7 +79,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${year}/${vehicle_id}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -102,7 +102,7 @@ describe('MyRide Integration Test - Stats - Get : Total Trip By Context', () => 
         const year = 2024
 
         cy.request({
-            method: method,
+            method,
             url: `${url}/${year}/${vehicle_id}`,
             headers: {
                 Accept: `application/json`

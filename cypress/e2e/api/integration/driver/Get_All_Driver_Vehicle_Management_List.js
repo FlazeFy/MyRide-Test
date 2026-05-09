@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Driver - Get : All Driver Vehicle Management List Management List', () => {
+describe('Integration Test - Driver - Get : All Driver Vehicle Management List Management List', () => {
     const method = 'get'
     const url = '/api/v1/driver/vehicle/list'
 
@@ -35,7 +35,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver Vehicle Management
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver Vehicle Management
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -79,7 +79,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver Vehicle Management
 
     it('TC-INT-DR-016 : User Cant See All Driver Vehicle Management List With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Inventory - Get : Inventory By Vehicle Id', () => {
+describe('Integration Test - Inventory - Get : Inventory By Vehicle Id', () => {
     const method = 'get'
     const url = '/api/v1/inventory/vehicle'
 
@@ -42,7 +42,7 @@ describe('MyRide Integration Test - Inventory - Get : Inventory By Vehicle Id', 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${vehicleId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -63,7 +63,7 @@ describe('MyRide Integration Test - Inventory - Get : Inventory By Vehicle Id', 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${vehicleId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -85,7 +85,7 @@ describe('MyRide Integration Test - Inventory - Get : Inventory By Vehicle Id', 
         const vehicleId = '7d53371a-e363-2ad3-25fe-180dae88c062'
 
         cy.request({
-            method: method,
+            method,
             url: `${url}/${vehicleId}`,
             headers: {
                 Accept: `application/json`
@@ -111,7 +111,7 @@ describe('MyRide Integration Test - Inventory - Get : Inventory By Vehicle Id', 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${vehicleId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -138,7 +138,7 @@ describe('MyRide Integration Test - Inventory - Get : Inventory By Vehicle Id', 
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${vehicleId}`,
                 headers: {
                     Authorization: `Bearer ${token}`

@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Driver - Get : All Driver', () => {
+describe('Integration Test - Driver - Get : All Driver', () => {
     const method = 'get'
     const url = '/api/v1/driver'
 
@@ -42,7 +42,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -67,7 +67,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -92,7 +92,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -118,7 +118,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -138,7 +138,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver', () => {
 
     it('TC-INT-DR-008 : User Cant See All Driver With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Driver - Get : Export Driver Dataset', () => {
+describe('Integration Test - Driver - Get : Export Driver Dataset', () => {
     const method = 'get'
     const url = '/api/v1/export/driver'
 
@@ -22,7 +22,7 @@ describe('MyRide Integration Test - Driver - Get : Export Driver Dataset', () =>
 
     it('TC-INT-EX-017 : User Cant Export Driver Dataset With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Driver - Get : Export Driver Dataset', () =>
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

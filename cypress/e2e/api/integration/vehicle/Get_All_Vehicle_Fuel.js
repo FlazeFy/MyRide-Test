@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Vehicle - Get : All Vehicle Fuel', () => {
+describe('Integration Test - Vehicle - Get : All Vehicle Fuel', () => {
     const method = 'get'
     const url = '/api/v1/vehicle/fuel'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -50,7 +50,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Fuel', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -70,7 +70,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Fuel', () => {
 
     it('TC-INT-VH-006 : User Cant See All Vehicle Fuel With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

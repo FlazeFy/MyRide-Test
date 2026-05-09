@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Get : All Trip', () => {
+describe('Integration Test - Trip - Get : All Trip', () => {
     const method = 'get'
     const url = '/api/v1/trip'
 
@@ -43,7 +43,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -68,7 +68,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -93,7 +93,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -119,7 +119,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -139,7 +139,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-005 : User Cant See All Trip With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -165,7 +165,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?trip_id=${tripId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -192,7 +192,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?trip_id=${tripId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -219,7 +219,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -244,7 +244,7 @@ describe('MyRide Integration Test - Trip - Get : All Trip', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`

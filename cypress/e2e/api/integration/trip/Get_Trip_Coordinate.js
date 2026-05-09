@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Get : Trip Coordinate', () => {
+describe('Integration Test - Trip - Get : Trip Coordinate', () => {
     const method = 'get'
     const url = '/api/v1/trip/coordinate'
 
@@ -43,7 +43,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -63,7 +63,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -83,7 +83,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Coordinate', () => {
 
     it('TC-INT-TR-020 : User Cant See Trip Coordinate With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -109,7 +109,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -130,7 +130,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`

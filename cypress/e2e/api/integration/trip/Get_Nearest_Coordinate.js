@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Get : Nearest Coordinate', () => {
+describe('Integration Test - Trip - Get : Nearest Coordinate', () => {
     const method = 'get'
     const url = '/api/v1/trip/coordinate/nearest'
 
@@ -38,7 +38,7 @@ describe('MyRide Integration Test - Trip - Get : Nearest Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${coor}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -64,7 +64,7 @@ describe('MyRide Integration Test - Trip - Get : Nearest Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${coor}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -90,7 +90,7 @@ describe('MyRide Integration Test - Trip - Get : Nearest Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${coor}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -117,7 +117,7 @@ describe('MyRide Integration Test - Trip - Get : Nearest Coordinate', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}/${coor}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -139,7 +139,7 @@ describe('MyRide Integration Test - Trip - Get : Nearest Coordinate', () => {
         const coor = '-6.193307477576132,106.8290024771821'
 
         cy.request({
-            method: method,
+            method,
             url: `${url}/${coor}`,
             headers: {
                 Accept: `application/json`

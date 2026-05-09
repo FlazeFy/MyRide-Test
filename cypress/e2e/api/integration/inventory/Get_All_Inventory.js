@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
+describe('Integration Test - Inventory - Get : All Inventory', () => {
     const method = 'get'
     const url = '/api/v1/inventory'
 
@@ -46,7 +46,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -71,7 +71,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -96,7 +96,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -122,7 +122,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -142,7 +142,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-005 : User Cant See All Inventory With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -168,7 +168,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?vehicle_id=${vehicleId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -195,7 +195,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?vehicle_id=${vehicleId}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -222,7 +222,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -247,7 +247,7 @@ describe('MyRide Integration Test - Inventory - Get : All Inventory', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?search=${search}`,
                 headers: {
                     Authorization: `Bearer ${token}`

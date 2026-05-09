@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () => {
+describe('Integration Test - Vehicle - Get : All Vehicle Readiness', () => {
     const method = 'get'
     const url = '/api/v1/vehicle/readiness'
 
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -72,7 +72,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -97,7 +97,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url: `${url}?per_page_key=${itemPerPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -123,7 +123,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -143,7 +143,7 @@ describe('MyRide Integration Test - Vehicle - Get : All Vehicle Readiness', () =
 
     it('TC-INT-VH-011 : User Cant See All Vehicle Readiness With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Get : Trip Calendar', () => {
+describe('Integration Test - Trip - Get : Trip Calendar', () => {
     const method = 'get'
     const url = '/api/v1/trip/calendar'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Calendar', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -51,7 +51,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Calendar', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -71,7 +71,7 @@ describe('MyRide Integration Test - Trip - Get : Trip Calendar', () => {
 
     it('TC-INT-TR-017 : User Cant See Trip Calendar With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

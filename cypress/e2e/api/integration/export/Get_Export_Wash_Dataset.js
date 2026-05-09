@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
+describe('Integration Test - Wash - Get : Export Wash Dataset', () => {
     const method = 'get'
     const url = '/api/v1/export/wash'
 
@@ -22,7 +22,7 @@ describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
 
     it('TC-INT-EX-002 : User Cant Export Wash Dataset With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Wash - Get : Export Wash Dataset', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

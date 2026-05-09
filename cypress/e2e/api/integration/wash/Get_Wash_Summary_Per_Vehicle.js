@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Wash - Get : Wash Summary Per Vehicle', () => {
+describe('Integration Test - Wash - Get : Wash Summary Per Vehicle', () => {
     const method = 'get'
     const url = '/api/v1/wash/summary'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Wash - Get : Wash Summary Per Vehicle', () =
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Wash - Get : Wash Summary Per Vehicle', () =
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -67,7 +67,7 @@ describe('MyRide Integration Test - Wash - Get : Wash Summary Per Vehicle', () =
 
     it('TC-INT-WS-010 : User Cant See Wash Summary Per Vehicle With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

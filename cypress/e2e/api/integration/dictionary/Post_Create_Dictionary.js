@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Dictionary - Post : Create Dictionary', () => {
+describe('Integration Test - Dictionary - Post : Create Dictionary', () => {
     const method = 'post'
     const url = '/api/v1/dictionary'
 
@@ -16,7 +16,7 @@ describe('MyRide Integration Test - Dictionary - Post : Create Dictionary', () =
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -44,7 +44,7 @@ describe('MyRide Integration Test - Dictionary - Post : Create Dictionary', () =
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -71,7 +71,7 @@ describe('MyRide Integration Test - Dictionary - Post : Create Dictionary', () =
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -99,7 +99,7 @@ describe('MyRide Integration Test - Dictionary - Post : Create Dictionary', () =
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -124,7 +124,7 @@ describe('MyRide Integration Test - Dictionary - Post : Create Dictionary', () =
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

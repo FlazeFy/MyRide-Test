@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
+describe('Integration Test - Trip - Post : Create Trip', () => {
     const method = 'post'
     const url = '/api/v1/trip'
 
@@ -24,7 +24,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -96,7 +96,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -130,7 +130,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -164,7 +164,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -198,7 +198,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -234,7 +234,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -270,7 +270,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -304,7 +304,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -333,7 +333,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
         }
 
         cy.request({
-            method: method,
+            method,
             url,
             body: payload,
             failOnStatusCode: false,
@@ -363,7 +363,7 @@ describe('MyRide Integration Test - Trip - Post : Create Trip', () => {
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

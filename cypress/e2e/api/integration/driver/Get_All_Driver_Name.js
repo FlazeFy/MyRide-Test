@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Driver - Get : All Driver Name', () => {
+describe('Integration Test - Driver - Get : All Driver Name', () => {
     const method = 'get'
     const url = '/api/v1/driver/name'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver Name', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -45,7 +45,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver Name', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -65,7 +65,7 @@ describe('MyRide Integration Test - Driver - Get : All Driver Name', () => {
 
     it('TC-INT-DR-003 : User Cant See All Driver Name With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

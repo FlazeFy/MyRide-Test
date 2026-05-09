@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Service - Get : Next Service', () => {
+describe('Integration Test - Service - Get : Next Service', () => {
     const method = 'get'
     const url = '/api/v1/service/next'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Service - Get : Next Service', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ describe('MyRide Integration Test - Service - Get : Next Service', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -80,7 +80,7 @@ describe('MyRide Integration Test - Service - Get : Next Service', () => {
 
     it('TC-INT-SV-015 : User Cant See Next Service With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`

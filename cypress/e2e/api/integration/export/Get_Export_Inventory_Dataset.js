@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Inventory - Get : Export Inventory Dataset', () => {
+describe('Integration Test - Inventory - Get : Export Inventory Dataset', () => {
     const method = 'get'
     const url = '/api/v1/export/inventory'
 
@@ -22,7 +22,7 @@ describe('MyRide Integration Test - Inventory - Get : Export Inventory Dataset',
 
     it('TC-INT-EX-014 : User Cant Export Inventory Dataset With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Inventory - Get : Export Inventory Dataset',
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

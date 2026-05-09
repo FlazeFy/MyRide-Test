@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Fuel - Get : Export Fuel Dataset', () => {
+describe('Integration Test - Fuel - Get : Export Fuel Dataset', () => {
     const method = 'get'
     const url = '/api/v1/export/fuel'
 
@@ -22,7 +22,7 @@ describe('MyRide Integration Test - Fuel - Get : Export Fuel Dataset', () => {
 
     it('TC-INT-EX-008 : User Cant Export Fuel Dataset With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
@@ -47,7 +47,7 @@ describe('MyRide Integration Test - Fuel - Get : Export Fuel Dataset', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`

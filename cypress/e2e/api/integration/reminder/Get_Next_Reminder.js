@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('MyRide Integration Test - Reminder - Get : Next Reminder', () => {
+describe('Integration Test - Reminder - Get : Next Reminder', () => {
     const method = 'get'
     const url = '/api/v1/reminder/next'
 
@@ -12,7 +12,7 @@ describe('MyRide Integration Test - Reminder - Get : Next Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -46,7 +46,7 @@ describe('MyRide Integration Test - Reminder - Get : Next Reminder', () => {
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
-                method: method,
+                method,
                 url,
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -66,7 +66,7 @@ describe('MyRide Integration Test - Reminder - Get : Next Reminder', () => {
 
     it('TC-INT-RM-003 : User Cant See Next Reminder With Invalid Auth', () => {
         cy.request({
-            method: method,
+            method,
             url,
             headers: {
                 Accept: `application/json`
