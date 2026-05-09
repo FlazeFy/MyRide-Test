@@ -3,3 +3,6 @@
 audit/firebase/init.js
 .env
 /cypress/downloads
+/cypress/reports
+/allure-report
+/allure-results

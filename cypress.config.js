@@ -5,15 +5,19 @@ const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor
 const fs = require('fs')
 const XLSX = require('xlsx')
 const axios = require('axios')
+const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 
 module.exports = defineConfig({
     e2e: {
         baseUrl: 'http://127.0.0.1:8000',
+        env: {
+            allure: true,
+            allureReuseAfterSpec: true
+        },
         specPattern: [
             'cypress/e2e/**/*.feature',
             'cypress/e2e/**/*.js'
         ],
-
         async setupNodeEvents(on, config) {
             await addCucumberPreprocessorPlugin(on, config)
 
@@ -51,8 +55,9 @@ module.exports = defineConfig({
                         rowCount: data.length
                     }
                 }
-
             })
+
+            allureWriter(on, config)
 
             return config
         },
