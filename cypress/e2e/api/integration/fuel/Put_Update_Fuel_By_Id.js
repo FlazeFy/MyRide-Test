@@ -1,6 +1,6 @@
 import '../../../../support/template'
 
-describe('Integration Test - Fuel - Post : Update Fuel By ID', () => {
+describe('Integration Test - Fuel - Put : Update Fuel By ID', () => {
     const id = 'd253ebdc-b7c1-da7c-1bed-053201f7f748'
     const method = 'put'
     const url = `/api/v1/fuel/${id}`
