@@ -1,0 +1,20 @@
+{
+    "vehicle_id": "7d53371a-e363-2ad3-25fe-180dae88c062",
+    "wash_desc": "lorem ipsum",
+    "wash_by": "Carwash",
+    "is_wash_body": true,
+    "is_wash_window": true,
+    "is_wash_dashboard": true,
+    "is_wash_tires": true,
+    "is_wash_trash": true,
+    "is_wash_engine": true,
+    "is_wash_seat": false,
+    "is_wash_carpet": false,
+    "is_wash_pillows": false,
+    "wash_address": "Jl. Tandean",
+    "wash_start_time": "2026-01-14 00:00:10",
+    "wash_end_time": "2026-01-14 00:00:20",
+    "wash_price": 100000,
+    "is_fill_window_washing_water": true,
+    "is_wash_hollow": true
+}
