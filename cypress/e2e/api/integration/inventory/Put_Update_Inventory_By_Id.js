@@ -5,7 +5,7 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
     const method = 'put'
     const url = `/api/v1/inventory/${id}`
 
-    it('TC-INT-IN-018 : User Cant Update Inventory Using Invalid Rules For Inventory Category', () => {
+    it('TC-INT-IN-025 : User Cant Update Inventory Using Invalid Rules For Inventory Category', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
@@ -36,7 +36,7 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
         })
     })
 
-    it('TC-INT-IN-019 : User Cant Update Inventory Using Invalid Inventory Qty', () => {
+    it('TC-INT-IN-026 : User Cant Update Inventory Using Invalid Inventory Qty', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
@@ -67,7 +67,7 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
         })
     })
 
-    it('TC-INT-IN-020 : User Cant Update Inventory Using Empty Inventory Name', () => {
+    it('TC-INT-IN-027 : User Cant Update Inventory Using Empty Inventory Name', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123',
@@ -97,7 +97,7 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
         })
     })
 
-    it('TC-INT-IN-021 : User Cant Update Inventory Using Invalid Vehicle Id (UUID)', () => {
+    it('TC-INT-IN-028 : User Cant Update Inventory Using Invalid Vehicle Id (UUID)', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
@@ -128,7 +128,7 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
         })
     })
 
-    it('TC-INT-IN-022 : User Cant Update Inventory Using Invalid Vehicle Id (Not Found)', () => {
+    it('TC-INT-IN-029 : User Cant Update Inventory Using Invalid Vehicle Id (Not Found)', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123'
@@ -152,12 +152,13 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
                 failOnStatusCode: false,
             }).as('UserCantUpdateInventoryUsingInvalidVehicleId(NotFound)')
             cy.get('@UserCantUpdateInventoryUsingInvalidVehicleId(NotFound)').then(dt => {
+                console.log(dt)
                 cy.templateDelete(dt, 404, 'vehicle not found')
             })
         })
     })
 
-    it('TC-INT-IN-023 : User Cant Update Inventory Using Invalid Auth', () => {
+    it('TC-INT-IN-030 : User Cant Update Inventory Using Invalid Auth', () => {
         const payload = {
             vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
             inventory_name: 'Secondary Tire',
@@ -177,7 +178,7 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
         })
     })
 
-    it('TC-INT-IN-024 : User Can Update Inventory Using Valid Data', () => {
+    it('TC-INT-IN-031 : User Can Update Inventory Using Valid Data', () => {
         const payloadAuth = {
             username : "flazefy",
             password: 'nopass123',
@@ -200,7 +201,7 @@ describe('Integration Test - Inventory - Put : Update Inventory By ID', () => {
                 body: payload,
             }).as('UserCanUpdateInventoryUsingValidData')
             cy.get('@UserCanUpdateInventoryUsingValidData').then(dt => {
-                cy.templateDelete(dt, 201, 'inventory updated')
+                cy.templateDelete(dt, 200, 'inventory updated')
             })
         })
     })
