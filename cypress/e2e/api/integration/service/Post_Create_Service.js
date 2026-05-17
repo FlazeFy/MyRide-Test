@@ -1,246 +1,127 @@
 import '../../../../support/template'
+import basePayload from '../../../resources/data/service.json'
 
 describe('Integration Test - Service - Post : Create Service', () => {
     const method = 'post'
     const url = '/api/v1/service'
 
-    it('TC-INT-SV-023 : User Cant Create Service History Using Invalid Rules For Service Category', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
+    const testCases = [
+        {
+            "title": "TC-INT-SV-023 : User Cant Create Service History Using Invalid Rules For Service Category",
+            "alias": "UserCantCreateServiceHistoryUsingInvalidRulesForServiceRon",
+            "payload": {
+                "service_category": "Refuel"
+            },
+            "expected_status": 400,
+            "expected_response": {
+                "service_category": ["Service Category is not available"]
+            }
+        },
+        {
+            "title": "TC-INT-SV-024 : User Cant Create Service History Using Invalid Service Price Total",
+            "alias": "UserCantCreateServiceHistoryUsingInvalidServicePriceTotal",
+            "payload": {
+                "service_price_total": -1500000
+            },
+            "expected_status": 400,
+            "expected_response": {
+                "service_price_total": ["The service price total field must be at least 1."]
+            }
+        },
+        {
+            "title": "TC-INT-SV-025 : User Cant Create Service History Using Empty Service Note",
+            "alias": "UserCantCreateServiceHistoryUsingEmptyServiceNote",
+            "payload": {
+                "service_note": null
+            },
+            "expected_status": 400,
+            "expected_response": {
+                "service_note": ["The service note field is required."]
+            }
+        },
+        {
+            "title": "TC-INT-SV-026 : User Cant Create Service History Using Invalid Vehicle Id (UUID)",
+            "alias": "UserCantCreateServiceHistoryUsingInvalidVehicleId(UUID)",
+            "payload": {
+                "vehicle_id": "1"
+            },
+            "expected_status": 400,
+            "expected_response": {
+                "vehicle_id": ["The vehicle id field must be 36 characters."]
+            }
+        },
+        {
+            "title": "TC-INT-SV-027 : User Cant Create Service History Using Invalid Vehicle Id (Not Found)",
+            "alias": "UserCantCreateServiceHistoryUsingInvalidVehicleId(NotFound)",
+            "payload": {
+                "vehicle_id": "7d53371a-e363-2ad3-25fe-180dae88c069"
+            },
+            "expected_status": 404,
+            "expected_response": "vehicle not found"
+        },
+        {
+            "title": "TC-INT-SV-028 : User Cant Create Service History Using Invalid Remind At Datetime Format",
+            "alias": "UserCantCreateServiceHistoryUsingInvalidRemindAtDatetimeFormat",
+            "payload": {
+                "remind_at": "2026-01-16"
+            },
+            "expected_status": 400,
+            "expected_response": {
+                "remind_at": ["The remind at field must match the format Y-m-d H:i:s."]
+            }
+        },
+        {
+            "title": "TC-INT-SV-029 : User Cant Create Service History Using Invalid Remind At (Remind At Before Created At)",
+            "alias": "UserCantCreateServiceHistoryUsingInvalidRemindAt(RemindAtBeforeCreatedAt)",
+            "payload": {
+                "remind_at": "2026-01-12 00:00:08"
+            },
+            "expected_status": 400,
+            "expected_response": {
+                "remind_at": ["The remind at field must be a date after or equal to created at."]
+            }
         }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            service_note: 'lorem ipsum',
-            service_category: 'Refuel',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-16 00:00:08',
-            created_at: '2026-01-14 00:00:08'
-        }
+    ]
 
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantCreateServiceHistoryUsingInvalidRulesForServiceRon')
-            cy.get('@UserCantCreateServiceHistoryUsingInvalidRulesForServiceRon').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "service_category": ["Service Category is not available"]
+    const payloadAuth = {
+        username : "flazefy",
+        password: 'nopass123'
+    }
+
+    // Looping Negative Test Case
+    testCases.forEach(tc => {
+        it(tc.title, () => {
+            const payload = {
+                ...basePayload,
+                ...tc.payload
+            }
+
+            if (tc.payload.service_note === null) {
+                delete payload.service_note
+            }
+
+            cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
+                cy.request({
+                    method,
+                    url,
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: payload,
+                    failOnStatusCode: false,
+                }).as(tc.alias)
+
+                cy.get(`@${tc.alias}`).then(dt => {
+                    cy.templateDelete(dt, tc.expected_status, tc.expected_response)
                 })
             })
         })
     })
 
-    it('TC-INT-SV-024 : User Cant Create Service History Using Invalid Service Price Total', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            service_note: 'lorem ipsum',
-            service_category: 'Inspection',
-            service_location: 'Jl Tandean',
-            service_price_total: -1500000,
-            remind_at: '2026-01-16 00:00:08',
-            created_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantCreateServiceHistoryUsingInvalidServicePriceTotal')
-            cy.get('@UserCantCreateServiceHistoryUsingInvalidServicePriceTotal').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "service_price_total": ["The service price total field must be at least 1."]
-                })
-            })
-        })
-    })
-
-    it('TC-INT-SV-025 : User Cant Create Service History Using Empty Service Note', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123',
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            service_category: 'Inspection',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-16 00:00:08',
-            created_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantCreateServiceHistoryUsingEmptyServiceNote')
-            cy.get('@UserCantCreateServiceHistoryUsingEmptyServiceNote').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "service_note": ["The service note field is required."]
-                })
-            })
-        })
-    })
-
-    it('TC-INT-SV-026 : User Cant Create Service History Using Invalid Vehicle Id (UUID)', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '1',
-            service_note: 'lorem ipsum',
-            service_category: 'Refuel',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-16 00:00:08',
-            created_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantCreateServiceHistoryUsingInvalidVehicleId(UUID)')
-            cy.get('@UserCantCreateServiceHistoryUsingInvalidVehicleId(UUID)').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "vehicle_id": ["The vehicle id field must be 36 characters."]
-                })
-            })
-        })
-    })
-
-    it('TC-INT-SV-027 : User Cant Create Service History Using Invalid Vehicle Id (Not Found)', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c069',
-            service_note: 'lorem ipsum',
-            service_category: 'Inspection',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-16 00:00:08',
-            created_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantCreateServiceHistoryUsingInvalidVehicleId(NotFound)')
-            cy.get('@UserCantCreateServiceHistoryUsingInvalidVehicleId(NotFound)').then(dt => {
-                cy.templateDelete(dt, 404, 'vehicle not found')
-            })
-        })
-    })
-
-    it('TC-INT-SV-028 : User Cant Create Service History Using Invalid Remind At Datetime Format', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            service_note: 'lorem ipsum',
-            service_category: 'Inspection',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-16',
-            created_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantCreateServiceHistoryUsingInvalidRemindAtDatetimeFormat')
-            cy.get('@UserCantCreateServiceHistoryUsingInvalidRemindAtDatetimeFormat').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "remind_at": ["The remind at field must match the format Y-m-d H:i:s."]
-                })
-            })
-        })
-    })
-
-    it('TC-INT-SV-029 : User Cant Create Service History Using Invalid Remind At (Remind At Before Created At)', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            service_note: 'lorem ipsum',
-            service_category: 'Inspection',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-12 00:00:08',
-            created_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantCreateServiceHistoryUsingInvalidRemindAt(RemindAtBeforeCreatedAt)')
-            cy.get('@UserCantCreateServiceHistoryUsingInvalidRemindAt(RemindAtBeforeCreatedAt)').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "remind_at": ["The remind at field must be a date after or equal to created at."]
-                })
-            })
-        })
-    })
-
+    // Invalid Auth
     it('TC-INT-SV-030 : User Cant Create Service History Using Invalid Auth', () => {
         const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            service_note: 'lorem ipsum',
-            service_category: 'Inspection',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-16 00:00:08',
-            created_at: '2026-01-14 00:00:08'
+            ...basePayload
         }
 
         cy.request({
@@ -249,24 +130,16 @@ describe('Integration Test - Service - Post : Create Service', () => {
             body: payload,
             failOnStatusCode: false,
         }).as('UserCantCreateServiceHistoryUsingInvalidAuth')
+
         cy.get('@UserCantCreateServiceHistoryUsingInvalidAuth').then(dt => {
             cy.templateDelete(dt, 401, 'you need to include the authorization token from login')
         })
     })
 
+    // Positive Test Case
     it('TC-INT-SV-031 : User Can Create Service History Using Valid Data', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123',
-        }
         const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            service_note: 'lorem ipsum',
-            service_category: 'Inspection',
-            service_location: 'Jl Tandean',
-            service_price_total: 1500000,
-            remind_at: '2026-01-16 00:00:08',
-            created_at: '2026-01-14 00:00:08'
+            ...basePayload
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
@@ -278,6 +151,7 @@ describe('Integration Test - Service - Post : Create Service', () => {
                 },
                 body: payload,
             }).as('UserCanCreateServiceHistoryUsingValidData')
+
             cy.get('@UserCanCreateServiceHistoryUsingValidData').then(dt => {
                 cy.templateDelete(dt, 201, 'service created')
             })
