@@ -1,212 +1,112 @@
 import '../../../../support/template'
+import basePayload from '../../../resources/data/fuel.json'
 
 describe('Integration Test - Fuel - Put : Update Fuel By ID', () => {
     const id = 'd253ebdc-b7c1-da7c-1bed-053201f7f748'
     const method = 'put'
     const url = `/api/v1/fuel/${id}`
 
-    it('TC-INT-FL-024 : User Cant Update Fuel History Using Invalid Rules For Fuel Ron', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
+    const testCases = [
+        {
+            title: 'TC-INT-FL-024 : User Cant Update Fuel History Using Invalid Rules For Fuel Ron',
+            alias: 'UserCantUpdateFuelHistoryUsingInvalidRulesForFuelRon',
+            payload: {
+                fuel_ron: '102'
+            },
+            expected_status: 400,
+            expected_response: {
+                fuel_ron: ['Fuel Ron is not available']
+            }
+        },
+        {
+            title: 'TC-INT-FL-025 : User Cant Update Fuel History Using Invalid Fuel Volume',
+            alias: 'UserCantUpdateFuelHistoryUsingInvalidFuelVolume',
+            payload: {
+                fuel_volume: 300
+            },
+            expected_status: 400,
+            expected_response: {
+                fuel_volume: ['The fuel volume field must not be greater than 99.']
+            }
+        },
+        {
+            title: 'TC-INT-FL-026 : User Cant Update Fuel History Using Empty Fuel Volume',
+            alias: 'UserCantUpdateFuelHistoryUsingEmptyFuelVolume',
+            payload: {
+                fuel_volume: null
+            },
+            expected_status: 400,
+            expected_response: {
+                fuel_volume: ['The fuel volume field is required.']
+            }
+        },
+        {
+            title: 'TC-INT-FL-027 : User Cant Update Fuel History Using Invalid Vehicle Id (UUID)',
+            alias: 'UserCantUpdateFuelHistoryUsingInvalidVehicleId(UUID)',
+            payload: {
+                vehicle_id: '1'
+            },
+            expected_status: 400,
+            expected_response: {
+                vehicle_id: ['The vehicle id field must be 36 characters.']
+            }
+        },
+        {
+            title: 'TC-INT-FL-028 : User Cant Update Fuel History Using Invalid Vehicle Id (Not Found)',
+            alias: 'UserCantUpdateFuelHistoryUsingInvalidVehicleId(NotFound)',
+            payload: {
+                vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c069'
+            },
+            expected_status: 404,
+            expected_response: 'vehicle not found'
+        },
+        {
+            title: 'TC-INT-FL-029 : User Cant Update Fuel History Using Invalid Fuel Type (Based On Brand)',
+            alias: 'UserCantUpdateFuelHistoryUsingInvalidFuelType(BasedOnBrand)',
+            payload: {
+                fuel_type: 'Dexlite'
+            },
+            expected_status: 400,
+            expected_response: 'Fuel type is not available for Shell'
         }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '102',
-            fuel_at: '2026-01-14 00:00:08'
-        }
+    ]
 
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantUpdateFuelHistoryUsingInvalidRulesForFuelRon')
-            cy.get('@UserCantUpdateFuelHistoryUsingInvalidRulesForFuelRon').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "fuel_ron": ["Fuel Ron is not available"]
+    const payloadAuth = {
+        username : 'flazefy',
+        password: 'nopass123'
+    }
+
+    // Looping Negative Test Case
+    testCases.forEach(tc => {
+        it(tc.title, () => {
+            const payload = {
+                ...basePayload,
+                ...tc.payload
+            }
+
+            if (tc.payload.fuel_volume === null) delete payload.fuel_volume
+
+            cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
+                cy.request({
+                    method,
+                    url,
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: payload,
+                    failOnStatusCode: false,
+                }).as(tc.alias)
+                cy.get(`@${tc.alias}`).then(dt => {
+                    cy.templateDelete(dt, tc.expected_status, tc.expected_response)
                 })
             })
         })
     })
 
-    it('TC-INT-FL-025 : User Cant Update Fuel History Using Invalid Fuel Volume', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 300,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantUpdateFuelHistoryUsingInvalidFuelVolume')
-            cy.get('@UserCantUpdateFuelHistoryUsingInvalidFuelVolume').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "fuel_volume": ["The fuel volume field must not be greater than 99."]
-                })
-            })
-        })
-    })
-
-    it('TC-INT-FL-026 : User Cant Update Fuel History Using Empty Fuel Volume', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123',
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantUpdateFuelHistoryUsingEmptyFuelVolume')
-            cy.get('@UserCantUpdateFuelHistoryUsingEmptyFuelVolume').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    "fuel_volume": ["The fuel volume field is required."]
-                })
-            })
-        })
-    })
-
-    it('TC-INT-FL-027 : User Cant Update Fuel History Using Invalid Vehicle Id (UUID)', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '1',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantUpdateFuelHistoryUsingInvalidVehicleId(UUID)')
-            cy.get('@UserCantUpdateFuelHistoryUsingInvalidVehicleId(UUID)').then(dt => {
-                cy.templateDelete(dt, 400, {
-                    vehicle_id: ["The vehicle id field must be 36 characters."]
-                })
-            })
-        })
-    })
-
-    it('TC-INT-FL-028 : User Cant Update Fuel History Using Invalid Vehicle Id (Not Found)', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c069',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantUpdateFuelHistoryUsingInvalidVehicleId(NotFound)')
-            cy.get('@UserCantUpdateFuelHistoryUsingInvalidVehicleId(NotFound)').then(dt => {
-                cy.templateDelete(dt, 404, 'vehicle not found')
-            })
-        })
-    })
-
-    it('TC-INT-FL-029 : User Cant Update Fuel History Using Invalid Fuel Type (Based On Brand)', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123'
-        }
-        const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'Dexlite',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
-        }
-
-        cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
-            cy.request({
-                method,
-                url,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: payload,
-                failOnStatusCode: false,
-            }).as('UserCantUpdateFuelHistoryUsingInvalidFuelType(BasedOnBrand)')
-            cy.get('@UserCantUpdateFuelHistoryUsingInvalidFuelType(BasedOnBrand)').then(dt => {
-                cy.templateDelete(dt, 400, `Fuel type is not available for ${payload.fuel_brand}`)
-            })
-        })
-    })
-
+    // Invalid Auth
     it('TC-INT-FL-030 : User Cant Update Fuel History Using Invalid Auth', () => {
         const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            ...basePayload
         }
 
         cy.request({
@@ -220,19 +120,10 @@ describe('Integration Test - Fuel - Put : Update Fuel By ID', () => {
         })
     })
 
+    // Positive Test Case
     it('TC-INT-FL-031 : User Can Update Fuel History Using Valid Data', () => {
-        const payloadAuth = {
-            username : "flazefy",
-            password: 'nopass123',
-        }
         const payload = {
-            vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c062',
-            fuel_volume: 30,
-            fuel_price_total: 350000,
-            fuel_brand: 'Shell',
-            fuel_type: 'V-Power',
-            fuel_ron: '92',
-            fuel_at: '2026-01-14 00:00:08'
+            ...basePayload
         }
 
         cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
