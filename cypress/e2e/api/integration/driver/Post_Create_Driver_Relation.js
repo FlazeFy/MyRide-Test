@@ -27,7 +27,7 @@ describe('Integration Test - Driver - Post : Create Driver - Vehicle Relation', 
             }).as('UserCantCreateDriverRelationUsingInvalidVehicleId')
             cy.get('@UserCantCreateDriverRelationUsingInvalidVehicleId').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "vehicle_id": ["The vehicle id field must be 36 characters."]
+                    vehicle_id: ["The vehicle id field must be 36 characters."]
                 })
             })
         })

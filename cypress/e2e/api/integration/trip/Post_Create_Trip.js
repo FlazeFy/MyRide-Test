@@ -244,7 +244,7 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             }).as('UserCantCreateTripHistoryUsingInvalidVehicleId(UUID)')
             cy.get('@UserCantCreateTripHistoryUsingInvalidVehicleId(UUID)').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "vehicle_id": ["The vehicle id field must be 36 characters."]
+                    vehicle_id: ["The vehicle id field must be 36 characters."]
                 })
             })
         })

@@ -20,7 +20,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
             },
             expected_status: 400,
             expected_response: {
-                "wash_by": ["Wash By is not available"]
+                wash_by: ["Wash By is not available"]
             }
         },
         {
@@ -31,7 +31,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
             },
             expected_status: 400,
             expected_response: {
-                "wash_price": ["The wash price field must be at least 1."]
+                wash_price: ["The wash price field must be at least 1."]
             }
         },
         {
@@ -42,7 +42,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
             },
             expected_status: 400,
             expected_response: {
-                "wash_address": ["The wash address field must not be greater than 75 characters."]
+                wash_address: ["The wash address field must not be greater than 75 characters."]
             }
         },
         {
@@ -53,7 +53,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
             },
             expected_status: 400,
             expected_response: {
-                "wash_start_time": ["The wash start time field is required."]
+                wash_start_time: ["The wash start time field is required."]
             }
         },
         {
@@ -64,7 +64,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
             },
             expected_status: 400,
             expected_response: {
-                "vehicle_id": ["The vehicle id field must be 36 characters."]
+                vehicle_id: ["The vehicle id field must be 36 characters."]
             }
         },
         {
@@ -84,7 +84,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
             },
             expected_status: 400,
             expected_response: {
-                "wash_start_time": ["The wash start time field must match the format Y-m-d H:i:s."]
+                wash_start_time: ["The wash start time field must match the format Y-m-d H:i:s."]
             }
         },
         {
@@ -95,7 +95,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
             },
             expected_status: 400,
             expected_response: {
-                "wash_end_time": ["The wash end time field must be a date after wash start time."]
+                wash_end_time: ["The wash end time field must be a date after wash start time."]
             }
         }
     ]
@@ -108,9 +108,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
                 ...tc.payload
             }
 
-            if (tc.payload.wash_start_time === null) {
-                delete payload.wash_start_time
-            }
+            if (tc.payload.wash_start_time === null) delete payload.wash_start_time
 
             cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
                 cy.request({

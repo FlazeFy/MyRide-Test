@@ -31,7 +31,7 @@ describe('Integration Test - Reminder - Get : Reminder By Vehicle Id', () => {
                 expect(data).to.be.an('array')
 
                 // Get List Key / Column
-                const stringFields = ["reminder_title","reminder_context","reminder_body","remind_at"]
+                const stringFields = ["reminder_title","reminder_context","reminder_body",remind_at]
 
                 // Validate Column
                 cy.templateValidateColumn(data, stringFields, 'string', false)

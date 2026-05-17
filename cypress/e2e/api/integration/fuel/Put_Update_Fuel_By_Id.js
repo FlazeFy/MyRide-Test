@@ -130,7 +130,7 @@ describe('Integration Test - Fuel - Put : Update Fuel By ID', () => {
             }).as('UserCantUpdateFuelHistoryUsingInvalidVehicleId(UUID)')
             cy.get('@UserCantUpdateFuelHistoryUsingInvalidVehicleId(UUID)').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "vehicle_id": ["The vehicle id field must be 36 characters."]
+                    vehicle_id: ["The vehicle id field must be 36 characters."]
                 })
             })
         })

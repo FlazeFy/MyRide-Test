@@ -30,10 +30,10 @@ describe('Integration Test - Service - Get : Next Service', () => {
                 expect(data).to.be.an('object')
 
                 // Get List Key / Column
-                const stringFields = ["service_category","service_location","vehicle_plate_number","remind_at"] 
+                const stringFields = [service_category,"service_location","vehicle_plate_number",remind_at] 
                 // In the database, the remind_at column is nullable. However, for this feature, it is always filled, because the data is retrieved based on whether remind_at is defined or not
-                const stringNullableFields = ["service_note"]
-                const intNullableFields = ["service_price_total"]
+                const stringNullableFields = [service_note]
+                const intNullableFields = [service_price_total]
 
                 // Validate Column
                 cy.templateValidateColumn(data, stringFields, 'string', false)
@@ -41,7 +41,7 @@ describe('Integration Test - Service - Get : Next Service', () => {
                 cy.templateValidateColumn(data, intNullableFields, 'number', true)
 
                 // Validate Contain
-                cy.templateValidateContain(data, ['Routine', 'Repair', 'Inspection', 'Emergency'], "service_category")
+                cy.templateValidateContain(data, ['Routine', 'Repair', 'Inspection', 'Emergency'], service_category)
 
                 // Validate datetime
                 const columnDateTime = [

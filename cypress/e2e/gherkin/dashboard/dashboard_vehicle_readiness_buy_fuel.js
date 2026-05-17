@@ -39,7 +39,7 @@ Then("I should click the action button", () => {
     cy.get("#vehicle_readiness-section table tbody tr td a.btn-action-readiness").eq(0)
         .invoke("attr", "data-id")  
         .then((val) => {
-            cy.wrap(val).as("vehicle_id") 
+            cy.wrap(val).as(vehicle_id) 
         })
 
     cy.get("#vehicle_readiness-section table tbody tr td a.btn-action-readiness").eq(0).click()

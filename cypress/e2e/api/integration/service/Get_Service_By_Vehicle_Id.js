@@ -31,9 +31,9 @@ describe('Integration Test - Service - Get : Service By Vehicle Id', () => {
                 expect(data).to.be.an('array')
 
                 // Get List Key / Column
-                const stringFields = ["service_category","service_location","created_at"]
-                const stringNullableFields = ["service_note","remind_at"]
-                const intNullableFields = ["service_price_total"]
+                const stringFields = [service_category,"service_location","created_at"]
+                const stringNullableFields = [service_note,remind_at]
+                const intNullableFields = [service_price_total]
 
                 // Validate Column
                 cy.templateValidateColumn(data, stringFields, 'string', false)

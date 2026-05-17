@@ -153,7 +153,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
             }).as('UserCantCreateReminderUsingInvalidRemindAtDatetimeFormat')
             cy.get('@UserCantCreateReminderUsingInvalidRemindAtDatetimeFormat').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "remind_at": ["The remind at field must match the format Y-m-d H:i:s."]
+                    remind_at: ["The remind at field must match the format Y-m-d H:i:s."]
                 })
             })
         })
@@ -184,7 +184,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
             }).as('UserCantCreateReminderUsingInvalidRemindAt(RemindAtIsPastDatetime)')
             cy.get('@UserCantCreateReminderUsingInvalidRemindAt(RemindAtIsPastDatetime)').then(dt => {
                 cy.templateDelete(dt, 400, {
-                    "remind_at": ["The remind at field must be a date after now."]
+                    remind_at: ["The remind at field must be a date after now."]
                 })
             })
         })
