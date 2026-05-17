@@ -1,14 +1,15 @@
 import '../../../../support/template'
 import basePayload from '../../../resources/data/trip.json'
 
-describe('Integration Test - Trip - Post : Create Trip', () => {
-    const method = 'post'
-    const url = '/api/v1/trip'
+describe('Integration Test - Trip - Put : Update Trip By ID', () => {
+    const id = '00ccbe31-9ffa-153c-39a5-189b170d785d'
+    const method = 'put'
+    const url = `/api/v1/trip/${id}`
 
     const testCases = [
         {
-            title: 'TC-INT-TR-038 : User Cant Create Trip History Using Invalid Rules For Trip Category',
-            alias: 'UserCantCreateTripHistoryUsingInvalidRulesForTripCategory',
+            title: 'TC-INT-TR-049 : User Cant Update Trip History Using Invalid Rules For Trip Category',
+            alias: 'UserCantUpdateTripHistoryUsingInvalidRulesForTripCategory',
             payload: {
                 trip_category: 'Refuel'
             },
@@ -18,8 +19,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             }
         },
         {
-            title: 'TC-INT-TR-039 : User Cant Create Trip History Using Invalid Trip Origin Name Character Length',
-            alias: 'UserCantCreateTripHistoryUsingInvalidTripOriginNameCharacterLength',
+            title: 'TC-INT-TR-050 : User Cant Update Trip History Using Invalid Trip Origin Name Character Length',
+            alias: 'UserCantUpdateTripHistoryUsingInvalidTripOriginNameCharacterLength',
             payload: {
                 trip_origin_name: 'A'
             },
@@ -29,8 +30,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             }
         },
         {
-            title: 'TC-INT-TR-040 : User Cant Create Trip History Using Invalid Trip Origin Coordinate',
-            alias: 'UserCantCreateTripHistoryUsingInvalidTripOriginCoordinate',
+            title: 'TC-INT-TR-051 : User Cant Update Trip History Using Invalid Trip Origin Coordinate',
+            alias: 'UserCantUpdateTripHistoryUsingInvalidTripOriginCoordinate',
             payload: {
                 trip_origin_coordinate: '-6.170485464990194'
             },
@@ -38,8 +39,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             expected_response: 'trip origin coordinate must be valid coordinate'
         },
         {
-            title: 'TC-INT-TR-041 : User Cant Create Trip History Using Same Origin And Destination Name',
-            alias: 'UserCantCreateTripHistoryUsingSameOriginAndDestinationName',
+            title: 'TC-INT-TR-052 : User Cant Update Trip History Using Same Origin And Destination Name',
+            alias: 'UserCantUpdateTripHistoryUsingSameOriginAndDestinationName',
             payload: {
                 trip_destination_name: 'My Home'
             },
@@ -47,8 +48,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             expected_response: 'trip origin and destination name must be different'
         },
         {
-            title: 'TC-INT-TR-042 : User Cant Create Trip History Using Same Origin And Destination Coordinate',
-            alias: 'UserCantCreateTripHistoryUsingSameOriginAndDestinationCoordinate',
+            title: 'TC-INT-TR-053 : User Cant Update Trip History Using Same Origin And Destination Coordinate',
+            alias: 'UserCantUpdateTripHistoryUsingSameOriginAndDestinationCoordinate',
             payload: {
                 trip_destination_coordinate: '-6.170485464990194, 106.824224764755'
             },
@@ -56,8 +57,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             expected_response: 'trip origin and destination coordinate must be different'
         },
         {
-            title: 'TC-INT-TR-043 : User Cant Create Trip History Using Invalid Departure At (Datetime Format)',
-            alias: 'UserCantCreateTripHistoryUsingInvalidDepartureAt(DatetimeFormat)',
+            title: 'TC-INT-TR-054 : User Cant Update Trip History Using Invalid Departure At (Datetime Format)',
+            alias: 'UserCantUpdateTripHistoryUsingInvalidDepartureAt(DatetimeFormat)',
             payload: {
                 departure_at: '2026-01-16'
             },
@@ -67,8 +68,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             }
         },
         {
-            title: 'TC-INT-TR-044 : User Cant Create Trip History Using Invalid Vehicle Id (UUID)',
-            alias: 'UserCantCreateTripHistoryUsingInvalidVehicleId(UUID)',
+            title: 'TC-INT-TR-055 : User Cant Update Trip History Using Invalid Vehicle Id (UUID)',
+            alias: 'UserCantUpdateTripHistoryUsingInvalidVehicleId(UUID)',
             payload: {
                 vehicle_id: '1'
             },
@@ -78,8 +79,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             }
         },
         {
-            title: 'TC-INT-TR-045 : User Cant Create Trip History Using Invalid Vehicle Id (Not Found)',
-            alias: 'UserCantCreateTripHistoryUsingInvalidVehicleId(NotFound)',
+            title: 'TC-INT-TR-056 : User Cant Update Trip History Using Invalid Vehicle Id (Not Found)',
+            alias: 'UserCantUpdateTripHistoryUsingInvalidVehicleId(NotFound)',
             payload: {
                 vehicle_id: '7d53371a-e363-2ad3-25fe-180dae88c069'
             },
@@ -87,8 +88,8 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             expected_response: 'vehicle not found'
         },
         {
-            title: 'TC-INT-TR-046 : User Cant Create Trip History Using Invalid Driver Id (Not Found)',
-            alias: 'UserCantCreateTripHistoryUsingInvalidDriverId(NotFound)',
+            title: 'TC-INT-TR-057 : User Cant Update Trip History Using Invalid Driver Id (Not Found)',
+            alias: 'UserCantUpdateTripHistoryUsingInvalidDriverId(NotFound)',
             payload: {
                 driver_id: '5eaa10e9-1e2a-a789-0c96-fb3714ee9b81'
             },
@@ -109,6 +110,7 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
                 ...basePayload,
                 ...tc.payload
             }
+
             cy.templateIntegrationLoginAPI(payloadAuth.username, payloadAuth.password).then(token => {
                 cy.request({
                     method,
@@ -119,7 +121,6 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
                     body: payload,
                     failOnStatusCode: false,
                 }).as(tc.alias)
-
                 cy.get(`@${tc.alias}`).then(dt => {
                     cy.templateDelete(dt, tc.expected_status, tc.expected_response)
                 })
@@ -128,7 +129,7 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
     })
 
     // Invalid Auth
-    it('TC-INT-TR-047 : User Cant Create Trip History Using Invalid Auth', () => {
+    it('TC-INT-TR-058 : User Cant Update Trip History Using Invalid Auth', () => {
         const payload = {
             ...basePayload
         }
@@ -138,14 +139,14 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
             url,
             body: payload,
             failOnStatusCode: false,
-        }).as('UserCantCreateTripHistoryUsingInvalidAuth')
-        cy.get('@UserCantCreateTripHistoryUsingInvalidAuth').then(dt => {
+        }).as('UserCantUpdateTripHistoryUsingInvalidAuth')
+        cy.get('@UserCantUpdateTripHistoryUsingInvalidAuth').then(dt => {
             cy.templateDelete(dt, 401, 'you need to include the authorization token from login')
         })
     })
 
     // Positive Test Case
-    it('TC-INT-TR-048 : User Can Create Trip History Using Valid Data', () => {
+    it('TC-INT-TR-059 : User Can Update Trip History Using Valid Data', () => {
         const payload = {
             ...basePayload
         }
@@ -158,9 +159,9 @@ describe('Integration Test - Trip - Post : Create Trip', () => {
                     Authorization: `Bearer ${token}`
                 },
                 body: payload,
-            }).as('UserCanCreateTripHistoryUsingValidData')
-            cy.get('@UserCanCreateTripHistoryUsingValidData').then(dt => {
-                cy.templateDelete(dt, 201, 'trip created')
+            }).as('UserCanUpdateTripHistoryUsingValidData')
+            cy.get('@UserCanUpdateTripHistoryUsingValidData').then(dt => {
+                cy.templateDelete(dt, 200, 'trip updated')
             })
         })
     })

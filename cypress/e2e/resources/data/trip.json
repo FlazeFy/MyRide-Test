@@ -1,0 +1,12 @@
+{
+    "vehicle_id": "7d53371a-e363-2ad3-25fe-180dae88c062",
+    "driver_id": "5eaa10e9-1e2a-a789-0c96-fb3714ee9b85",
+    "trip_desc": "lorem ipsum",
+    "trip_category": "Personal",
+    "trip_person": "Jhon Doe",
+    "trip_origin_name": "My Home",
+    "trip_origin_coordinate": "-6.170485464990194, 106.824224764755",
+    "trip_destination_name": "Blok M Square",
+    "trip_destination_coordinate": "-6.244646319628283, 106.80059535234474",
+    "departure_at": "2026-01-16 00:00:08"
+}
