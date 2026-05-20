@@ -18,8 +18,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('SuccessGetTotalTripByContextWithValidContextAndValidData')
-            cy.get('@SuccessGetTotalTripByContextWithValidContextAndValidData').then(dt => {
+            }).as('UserCanSeeTotalTripByContextWithValidContextAndValidData')
+            cy.get('@UserCanSeeTotalTripByContextWithValidContextAndValidData').then(dt => {
                 cy.templateGet(200,dt, null)
                 expect(dt.body.message).contain('stats fetched')
                 
@@ -55,8 +55,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('FailedGetTotalTripByContextWithInvalidContext')
-            cy.get('@FailedGetTotalTripByContextWithInvalidContext').then(dt => {
+            }).as('UserCantSeeTotalTripByContextWithInvalidContext')
+            cy.get('@UserCantSeeTotalTripByContextWithInvalidContext').then(dt => {
                 cy.templateGet(400,dt, null)
                 expect(dt.body.message).contain('trip_categories is not available')
                 
@@ -82,8 +82,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('SuccessGetTotalTripByContextWithValidContextAndEmptyData')
-            cy.get('@SuccessGetTotalTripByContextWithValidContextAndEmptyData').then(dt => {
+            }).as('UserCantSeeTotalTripByContextWithValidContextAndEmptyData')
+            cy.get('@UserCantSeeTotalTripByContextWithValidContextAndEmptyData').then(dt => {
                 cy.templateGet(404,dt, null)
                 expect(dt.body.message).contain('stats not found')
                 
@@ -104,8 +104,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                 Accept: `application/json`
             },
             failOnStatusCode: false,
-        }).as('FailedGetTotalTripByContextWithInvalidAuth')
-        cy.get('@FailedGetTotalTripByContextWithInvalidAuth').then(dt => {
+        }).as('UserCantSeeTotalTripByContextWithInvalidAuth')
+        cy.get('@UserCantSeeTotalTripByContextWithInvalidAuth').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
             

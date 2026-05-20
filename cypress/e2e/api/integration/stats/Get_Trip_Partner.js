@@ -4,7 +4,7 @@ describe('Integration Test - Stats - Get : Partner Trip', () => {
     const method = 'get'
     const url = '/api/v1/stats/partner'
 
-    it('TC-INT-ST-006 : User Can See List Of Partner Trip', () => {
+    it('TC-INT-ST-018 : User Can See List Of Partner Trip', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -39,7 +39,7 @@ describe('Integration Test - Stats - Get : Partner Trip', () => {
         })
     })
 
-    it('TC-INT-ST-007 : User Cant See Partner Trip List When No Trip Data Exists', () => {
+    it('TC-INT-ST-019 : User Cant See Partner Trip List When No Trip Data Exists', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
@@ -65,7 +65,7 @@ describe('Integration Test - Stats - Get : Partner Trip', () => {
         })
     })
 
-    it('TC-INT-ST-008 : User Cant See Partner Trip List With Invalid Auth', () => {
+    it('TC-INT-ST-020 : User Cant See Partner Trip List With Invalid Auth', () => {
         cy.request({
             method,
             url,

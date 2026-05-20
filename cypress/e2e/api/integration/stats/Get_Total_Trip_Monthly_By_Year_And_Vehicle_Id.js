@@ -1,15 +1,15 @@
 import '../../../../support/template'
 
-describe('Integration Test - Stats - Get : Total Trip By Context', () => {
+describe('Integration Test - Stats - Get : Total Trip Monthly By Year And Vehicle', () => {
     const method = 'get'
     const url = '/api/v1/stats/total/trip/monthly'
 
-    it('TC-INT-ST-003 : Success Get Total Trip Monthly By Year And Vehicle Id With Valid Year & Vehicle And Valid Data', () => {
+    it('TC-INT-ST-010 : User Can See Total Trip Monthly By Year And Vehicle Id With Valid Year & Vehicle And Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
         }
-        const vehicle_id = '2d98f524-de02-11ed-b5ea-0242ac120002'
+        const vehicle_id = '7d53371a-e363-2ad3-25fe-180dae88c062'
         const year = 2024
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
@@ -19,8 +19,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('SuccessGetTotalTripMonthlyByYearAndVehicleIdWithValidYear&VehicleAndValidData')
-            cy.get('@SuccessGetTotalTripMonthlyByYearAndVehicleIdWithValidYear&VehicleAndValidData').then(dt => {
+            }).as('UserCanSeeTotalTripMonthlyByYearAndVehicleIdWithValidYear&VehicleAndValidData')
+            cy.get('@UserCanSeeTotalTripMonthlyByYearAndVehicleIdWithValidYear&VehicleAndValidData').then(dt => {
                 cy.templateGet(200,dt, null)
                 expect(dt.body.message).contain('stats fetched')
                 
@@ -41,7 +41,7 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
         })
     })
 
-    it('TC-INT-ST-010 : Failed Get Total Trip Monthly By Year And Vehicle Id With Invalid Vehicle Id', () => {
+    it('TC-INT-ST-011 : User Cant See Total Trip Monthly By Year And Vehicle Id With Invalid Vehicle Id', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -57,8 +57,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('FailedGetTotalTripMonthlyByYearAndVehicleIdWithInvalidVehicleId')
-            cy.get('@FailedGetTotalTripMonthlyByYearAndVehicleIdWithInvalidVehicleId').then(dt => {
+            }).as('UserCantSeeTotalTripMonthlyByYearAndVehicleIdWithInvalidVehicleId')
+            cy.get('@UserCantSeeTotalTripMonthlyByYearAndVehicleIdWithInvalidVehicleId').then(dt => {
                 cy.templateGet(404,dt, null)
                 expect(dt.body.message).contain('stats not found')
                 
@@ -69,7 +69,7 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
         })
     })
 
-    it('TC-INT-ST-011 : Success Get Total Trip By Context With Valid Context And Empty Data', () => {
+    it('TC-INT-ST-012 : User Can See Total Trip By Context With Valid Context And Empty Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -85,8 +85,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('SuccessGetTripMonthlyByYearAndVehicleIdWithEmptyData')
-            cy.get('@SuccessGetTripMonthlyByYearAndVehicleIdWithEmptyData').then(dt => {
+            }).as('UserCanSeeTripMonthlyByYearAndVehicleIdWithEmptyData')
+            cy.get('@UserCanSeeTripMonthlyByYearAndVehicleIdWithEmptyData').then(dt => {
                 cy.templateGet(404,dt, null)
                 expect(dt.body.message).contain('stats not found')
                 
@@ -97,7 +97,7 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
         })
     })
 
-    it('TC-INT-ST-012 : Failed Get Total Trip By Context With Invalid Auth', () => {
+    it('TC-INT-ST-013 : User Cant See Total Trip By Context With Invalid Auth', () => {
         const vehicle_id = '2d98f524-de02-11ed-b5ea-0242ac120002'
         const year = 2024
 
@@ -108,8 +108,8 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
                 Accept: `application/json`
             },
             failOnStatusCode: false,
-        }).as('FailedGetTripMonthlyByYearAndVehicleIdWithInvalidAuth')
-        cy.get('@FailedGetTripMonthlyByYearAndVehicleIdWithInvalidAuth').then(dt => {
+        }).as('UserCantSeeTripMonthlyByYearAndVehicleIdWithInvalidAuth')
+        cy.get('@UserCantSeeTripMonthlyByYearAndVehicleIdWithInvalidAuth').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
             

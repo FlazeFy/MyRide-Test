@@ -4,7 +4,7 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
     const method = 'get'
     const url = '/api/v1/stats/total/vehicle'
 
-    it('TC-INT-ST-004 : Success Get Total Vehicle By Context With Valid Context And Valid Data', () => {
+    it('TC-INT-ST-014 : User Can See Total Vehicle By Context With Valid Context And Valid Data', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -18,8 +18,8 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('SuccessGetTotalVehicleByContextWithValidContextAndValidData')
-            cy.get('@SuccessGetTotalVehicleByContextWithValidContextAndValidData').then(dt => {
+            }).as('UserCanSeeTotalVehicleByContextWithValidContextAndValidData')
+            cy.get('@UserCanSeeTotalVehicleByContextWithValidContextAndValidData').then(dt => {
                 cy.templateGet(200,dt, null)
                 expect(dt.body.message).contain('stats fetched')
                 
@@ -40,7 +40,7 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
         })
     })
 
-    it('TC-INT-ST-006 : Failed Get Total Vehicle By Context With Invalid Context', () => {
+    it('TC-INT-ST-015 : User Cant See Total Vehicle By Context With Invalid Context', () => {
         const payload = {
             username : "flazefy",
             password: 'nopass123',
@@ -55,8 +55,8 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('FailedGetTotalVehicleByContextWithInvalidContext')
-            cy.get('@FailedGetTotalVehicleByContextWithInvalidContext').then(dt => {
+            }).as('UserCantSeeTotalVehicleByContextWithInvalidContext')
+            cy.get('@UserCantSeeTotalVehicleByContextWithInvalidContext').then(dt => {
                 cy.templateGet(400,dt, null)
                 expect(dt.body.message).contain('Vehicle_categories is not available')
                 
@@ -67,7 +67,7 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
         })
     })
 
-    it('TC-INT-ST-007 : Success Get Total Vehicle By Context With Valid Context And Empty Data', () => {
+    it('TC-INT-ST-016 : User Cant See Total Vehicle By Context With Valid Context And Empty Data', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
@@ -82,8 +82,8 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('SuccessGetTotalVehicleByContextWithValidContextAndEmptyData')
-            cy.get('@SuccessGetTotalVehicleByContextWithValidContextAndEmptyData').then(dt => {
+            }).as('UserCantSeeTotalVehicleByContextWithValidContextAndEmptyData')
+            cy.get('@UserCantSeeTotalVehicleByContextWithValidContextAndEmptyData').then(dt => {
                 cy.templateGet(404,dt, null)
                 expect(dt.body.message).contain('stats not found')
                 
@@ -94,7 +94,7 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
         })
     })
 
-    it('TC-INT-ST-008 : Failed Get Total Vehicle By Context With Invalid Auth', () => {
+    it('TC-INT-ST-017 : User Cant See Total Vehicle By Context With Invalid Auth', () => {
         const context = 'vehicle_merk'
 
         cy.request({
@@ -104,8 +104,8 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
                 Accept: `application/json`
             },
             failOnStatusCode: false,
-        }).as('FailedGetTotalVehicleByContextWithInvalidAuth')
-        cy.get('@FailedGetTotalVehicleByContextWithInvalidAuth').then(dt => {
+        }).as('UserCantSeeTotalVehicleByContextWithInvalidAuth')
+        cy.get('@UserCantSeeTotalVehicleByContextWithInvalidAuth').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
             

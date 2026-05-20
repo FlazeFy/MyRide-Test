@@ -8,8 +8,8 @@ describe('Integration Test - Stats - Get : Summary', () => {
         cy.request({
             method,
             url: url,
-        }).as('SuccessGetSummaryWithValidData')
-        cy.get('@SuccessGetSummaryWithValidData').then(dt => {
+        }).as('UserCanSeeSummaryWithValidData')
+        cy.get('@UserCanSeeSummaryWithValidData').then(dt => {
             cy.templateGet(200,dt, null)
             expect(dt.body.message).contain('stats fetched')
             

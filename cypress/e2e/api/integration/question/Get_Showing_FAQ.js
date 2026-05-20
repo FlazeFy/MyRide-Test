@@ -4,12 +4,12 @@ describe('Integration Test - Question - Get : Showing FAQ', () => {
     const method = 'get'
     const url = '/api/v1/question/faq'
 
-    it('TC-INT-QS-001 : Success Get Showing FAQ With Valid Data', () => {
+    it('TC-INT-QS-001 : User Can See FAQ With Valid Data', () => {
         cy.request({
             method,
             url: url,
-        }).as('SuccessGetShowingFAQWithValidData')
-        cy.get('@SuccessGetShowingFAQWithValidData').then(dt => {
+        }).as('UserCanSeeFAQWithValidData')
+        cy.get('@UserCanSeeFAQWithValidData').then(dt => {
             cy.templateGet(200,dt, null)
             expect(dt.body.message).contain('faq fetched')
             
@@ -27,13 +27,13 @@ describe('Integration Test - Question - Get : Showing FAQ', () => {
         })
     })
 
-    it('TC-INT-QS-002 : Failed Get Showing FAQ With Empty Data', () => {
+    it('TC-INT-QS-002 : User Cant See FAQ With Empty Data', () => {
         cy.request({
             method,
             url: url,
             failOnStatusCode: false,
-        }).as('FailedGetShowingFAQWithEmptyData')
-        cy.get('@FailedGetShowingFAQWithEmptyData').then(dt => {
+        }).as('UserCantSeeFAQWithEmptyData')
+        cy.get('@UserCantSeeFAQWithEmptyData').then(dt => {
             cy.templateGet(404,dt, null)
             expect(dt.body.message).contain('faq not found')
             
