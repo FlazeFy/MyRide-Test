@@ -1,12 +1,12 @@
 import '../../../../support/template'
 
-describe('Integration Test - Service - Get : All Service', () => {
+describe('Integration Test - Reminder - Get : All Reminder', () => {
     const method = 'get'
-    const url = '/api/v1/service'
+    const url = '/api/v1/reminder'
 
     const validateValidResponse = (dt) => {
         cy.templateGet(200,dt, null)
-        expect(dt.body.message).contain('service fetched')
+        expect(dt.body.message).contain('reminder fetched')
         
         // Get Item Holder
         const res = dt.body
@@ -15,30 +15,24 @@ describe('Integration Test - Service - Get : All Service', () => {
         expect(data).to.be.an('object')
 
         // Get List Key / Column
-        const stringFields = ['id','vehicle_plate_number','vehicle_type','service_category','service_location','created_at']
-        const stringNullableFields = ['updated_at','service_note','remind_at']
-        const intNullableFields = ['service_price_total']
+        const stringFields = ['id','vehicle_plate_number','reminder_title','reminder_context','reminder_body','created_at']
+        const stringNullableFields = ['remind_at']
 
         // Validate Column
         cy.templateValidateColumn(data.data, stringFields, 'string', false)
         cy.templateValidateColumn(data.data, stringNullableFields, 'string', true)
-        cy.templateValidateColumn(data.data, intNullableFields, 'number', true)
-
-        // Validate Contain
-        cy.templateValidateContain(data.data, ['Routine', 'Repair', 'Inspection', 'Emergency'], 'service_category')
 
         // Validate datetime
         const columnDateTime = [
             { column_name : 'created_at', date_type: 'datetime', nullable: false },
-            { column_name : 'updated_at', date_type: 'datetime', nullable: true },
             { column_name : 'remind_at', date_type: 'datetime', nullable: true }
         ]
         cy.templateValidateDateTime(data.data, columnDateTime)
     }
 
-    it('TC-INT-SV-004 : User Can See All Service With Valid Data', () => {
+    it('TC-INT-RM-024 : User Can See All Reminder With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -49,8 +43,8 @@ describe('Integration Test - Service - Get : All Service', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('UserCanSeeAllServiceWithValidData')
-            cy.get('@UserCanSeeAllServiceWithValidData').then(dt => {
+            }).as('UserCanSeeAllReminderWithValidData')
+            cy.get('@UserCanSeeAllReminderWithValidData').then(dt => {
                 validateValidResponse(dt)
 
                 // Check if all page accessible
@@ -60,9 +54,9 @@ describe('Integration Test - Service - Get : All Service', () => {
         })
     })
 
-    it('TC-INT-SV-005 : User Can See All Service With Custom Item Per Page', () => {
+    it('TC-INT-RM-025 : User Can See All Reminder With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -74,8 +68,8 @@ describe('Integration Test - Service - Get : All Service', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
-            }).as('UserCanSeeAllServiceWithCustomItemPerPage')
-            cy.get('@UserCanSeeAllServiceWithCustomItemPerPage').then(dt => {
+            }).as('UserCanSeeAllReminderWithCustomItemPerPage')
+            cy.get('@UserCanSeeAllReminderWithCustomItemPerPage').then(dt => {
                 validateValidResponse(dt)
 
                 // Check if item per page query same with data.length
@@ -85,9 +79,9 @@ describe('Integration Test - Service - Get : All Service', () => {
         })
     })
 
-    it('TC-INT-SV-006 : User Cant See All Service With Custom Invalid Item Per Page', () => {
+    it('TC-INT-RM-026 : User Cant See All Reminder With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'
@@ -100,8 +94,8 @@ describe('Integration Test - Service - Get : All Service', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllServiceWithCustomInvalidItemPerPage')
-            cy.get('@UserCantSeeAllServiceWithCustomInvalidItemPerPage').then(dt => {
+            }).as('UserCantSeeAllReminderWithCustomInvalidItemPerPage')
+            cy.get('@UserCantSeeAllReminderWithCustomInvalidItemPerPage').then(dt => {
                 cy.templateGet(400,dt, null)
                 expect(dt.body.message).contain('per_page_key is not a valid page')
                 
@@ -112,7 +106,7 @@ describe('Integration Test - Service - Get : All Service', () => {
         })
     })
 
-    it('TC-INT-SV-007 : User Cant See All Service With Empty Data', () => {
+    it('TC-INT-RM-027 : User Cant See All Reminder With Empty Data', () => {
         const payload = {
             username : "testerempty",
             password: 'nopass123',
@@ -126,10 +120,10 @@ describe('Integration Test - Service - Get : All Service', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllServiceWithEmptyData')
-            cy.get('@UserCantSeeAllServiceWithEmptyData').then(dt => {
+            }).as('UserCantSeeAllReminderWithEmptyData')
+            cy.get('@UserCantSeeAllReminderWithEmptyData').then(dt => {
                 cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('service not found')
+                expect(dt.body.message).contain('reminder not found')
                 
                 // Get Item Holder
                 const res = dt.body
@@ -138,7 +132,7 @@ describe('Integration Test - Service - Get : All Service', () => {
         })
     })
 
-    it('TC-INT-SV-008 : User Cant See All Service With Invalid Auth', () => {
+    it('TC-INT-RM-028 : User Cant See All Reminder With Invalid Auth', () => {
         cy.request({
             method,
             url,
@@ -146,8 +140,8 @@ describe('Integration Test - Service - Get : All Service', () => {
                 Accept: `application/json`
             },
             failOnStatusCode: false,
-        }).as('UserCantSeeAllServiceWithInvalidAuth')
-        cy.get('@UserCantSeeAllServiceWithInvalidAuth').then(dt => {
+        }).as('UserCantSeeAllReminderWithInvalidAuth')
+        cy.get('@UserCantSeeAllReminderWithInvalidAuth').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
             
@@ -157,66 +151,12 @@ describe('Integration Test - Service - Get : All Service', () => {
         })
     })
 
-    it('TC-INT-SV-009 : User Cant See All Service With Custom Invalid Vehicle Id (UUID)', () => {
+    it('TC-INT-RM-029 : User Can See All Reminder With Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
-        const serviceId = '1'
-
-        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
-            cy.request({
-                method,
-                url: `${url}?vehicle_id=${serviceId}`,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                failOnStatusCode: false,
-            }).as('UserCantSeeAllServiceWithCustomInvalidVehicleId(UUID)')
-            cy.get('@UserCantSeeAllServiceWithCustomInvalidVehicleId(UUID)').then(dt => {
-                cy.templateGet(400,dt, null)
-                expect(dt.body.message).contain('vehicle_id must be a valid UUID')
-                
-                // Get Item Holder
-                const res = dt.body
-                expect(res).to.not.have.property('data')
-            })
-        })
-    })
-
-    it('TC-INT-SV-010 : User Cant See All Service With Custom Invalid Vehicle Id (Not Found)', () => {
-        const payload = {
-            username : "flazefy",
-            password: 'nopass123',
-        }
-        const serviceId = 'da79e9ba-bc19-2186-2f4d-c755ec841234'
-
-        cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
-            cy.request({
-                method,
-                url: `${url}?vehicle_id=${serviceId}`,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                failOnStatusCode: false,
-            }).as('UserCantSeeAllServiceWithCustomInvalidVehicleId(NotFound)')
-            cy.get('@UserCantSeeAllServiceWithCustomInvalidVehicleId(NotFound)').then(dt => {
-                cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('service not found')
-                
-                // Get Item Holder
-                const res = dt.body
-                expect(res).to.not.have.property('data')
-            })
-        })
-    })
-
-    it('TC-INT-SV-011 : User Can See All Service With Custom Search', () => {
-        const payload = {
-            username : "flazefy",
-            password: 'nopass123',
-        }
-        const search = 'brake'
+        const search = 'Drop'
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
@@ -225,8 +165,8 @@ describe('Integration Test - Service - Get : All Service', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('UserCanSeeAllServiceWithCustomSearch')
-            cy.get('@UserCanSeeAllServiceWithCustomSearch').then(dt => {
+            }).as('UserCanSeeAllReminderWithCustomSearch')
+            cy.get('@UserCanSeeAllReminderWithCustomSearch').then(dt => {
                 validateValidResponse(dt)
 
                 // Check if all page accessible
@@ -236,12 +176,12 @@ describe('Integration Test - Service - Get : All Service', () => {
         })
     })
 
-    it('TC-INT-SV-012 : User Cant See All Service With Failed Custom Search', () => {
+    it('TC-INT-RM-030 : User Cant See All Reminder With Failed Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
-        const search = 'not found'
+        const search = 'Lorem Sponge'
 
         cy.templateIntegrationLoginAPI(payload.username, payload.password).then(token => {
             cy.request({
@@ -251,10 +191,10 @@ describe('Integration Test - Service - Get : All Service', () => {
                     Authorization: `Bearer ${token}`
                 },
                 failOnStatusCode: false,
-            }).as('UserCantSeeAllServiceWithFailedCustomSearch')
-            cy.get('@UserCantSeeAllServiceWithFailedCustomSearch').then(dt => {
+            }).as('UserCantSeeAllReminderWithFailedCustomSearch')
+            cy.get('@UserCantSeeAllReminderWithFailedCustomSearch').then(dt => {
                 cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('service not found')
+                expect(dt.body.message).contain('reminder not found')
                 
                 // Get Item Holder
                 const res = dt.body
