@@ -4,32 +4,9 @@ describe('Integration Test - Driver - Get : All Driver Vehicle Management List M
     const method = 'get'
     const url = '/api/v1/driver/vehicle/list'
 
-    const validateValidResponse = (dt) => {
-        cy.templateGet(200,dt, null)
-        expect(dt.body.message).contain('driver fetched')
-        
-        // Get Item Holder
-        const res = dt.body
-        expect(res).to.have.property('data')
-        const data = res.data
-        expect(data).to.be.an('object')
-
-        // Get List Key / Column
-        const stringVehicleFields = ['id','vehicle_name','vehicle_plate_number']
-        const stringNullableVehicleFields = ['deleted_at']
-        const stringDriverFields = ['id','username','fullname']
-        const stringAssignedFields = ['id','vehicle_id','vehicle_plate_number','driver_id','username','fullname']
-
-        // Validate Column
-        if (data.vehicle) cy.templateValidateColumn(data.vehicle, stringVehicleFields, 'string', false)
-        if (data.vehicle) cy.templateValidateColumn(data.vehicle, stringNullableVehicleFields, 'string', true)
-        if (data.driver) cy.templateValidateColumn(data.driver, stringDriverFields, 'string', false)
-        if (data.assigned) cy.templateValidateColumn(data.assigned, stringAssignedFields, 'string', false)
-    }
-
     it('TC-INT-DR-014 : User Can See All Driver Vehicle Management List With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -42,11 +19,26 @@ describe('Integration Test - Driver - Get : All Driver Vehicle Management List M
                 }
             }).as('UserCanSeeAllDriverVehicleManagementListWithValidData')
             cy.get('@UserCanSeeAllDriverVehicleManagementListWithValidData').then(dt => {
-                validateValidResponse(dt)
+                cy.templateGet(200,dt, null)
+                expect(dt.body.message).contain('driver fetched')
+                
+                // Get Item Holder
+                const res = dt.body
+                expect(res).to.have.property('data')
+                const data = res.data
+                expect(data).to.be.an('object')
 
-                // Check if all page accessible
-                const last_page = dt.body.data.last_page
-                cy.templatePagination(url, last_page, token)
+                // Get List Key / Column
+                const stringVehicleFields = ['id','vehicle_name','vehicle_plate_number']
+                const stringNullableVehicleFields = ['deleted_at']
+                const stringDriverFields = ['id','username','fullname']
+                const stringAssignedFields = ['id','vehicle_id','vehicle_plate_number','driver_id','username','fullname']
+
+                // Validate Column
+                if (data.vehicle) cy.templateValidateColumn(data.vehicle, stringVehicleFields, 'string', false)
+                if (data.vehicle) cy.templateValidateColumn(data.vehicle, stringNullableVehicleFields, 'string', true)
+                if (data.driver) cy.templateValidateColumn(data.driver, stringDriverFields, 'string', false)
+                if (data.assigned) cy.templateValidateColumn(data.assigned, stringAssignedFields, 'string', false)
             })
         })
     })

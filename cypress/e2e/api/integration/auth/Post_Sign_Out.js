@@ -17,8 +17,8 @@ describe('Integration Test - Auth - Post : Sign Out', () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).as('SuccessPostSignOutWithValidToken')
-            cy.get('@SuccessPostSignOutWithValidToken').then(dt => {
+            }).as('UserCanPostSignOutWithValidToken')
+            cy.get('@UserCanPostSignOutWithValidToken').then(dt => {
                 cy.templateGet(200,dt, null)
                 expect(dt.body.message).contain('logout success')
             })
@@ -33,8 +33,8 @@ describe('Integration Test - Auth - Post : Sign Out', () => {
             headers: {
                 Accept: 'application/json'
             }
-        }).as('FailedPostSignOutWithEmptyToken')
-        cy.get('@FailedPostSignOutWithEmptyToken').then(dt => {
+        }).as('UserCantPostSignOutWithEmptyToken')
+        cy.get('@UserCantPostSignOutWithEmptyToken').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
         })
@@ -49,8 +49,8 @@ describe('Integration Test - Auth - Post : Sign Out', () => {
                 Accept: 'application/json',
                 Authorization: `Bearer 123123`
             }
-        }).as('FailedPostSignOutWithInvalidToken')
-        cy.get('@FailedPostSignOutWithInvalidToken').then(dt => {
+        }).as('UserCantPostSignOutWithInvalidToken')
+        cy.get('@UserCantPostSignOutWithInvalidToken').then(dt => {
             cy.templateGet(401,dt, null)
             expect(dt.body.message).contain('you need to include the authorization token from login')
         })
