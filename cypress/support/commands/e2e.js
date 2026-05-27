@@ -12,7 +12,8 @@ Cypress.Commands.add("login", (email, password) => {
 // Navigation
 Cypress.Commands.add("openPageViaSideBar", (target) => {
     cy.get(".toogle_nav-button").click()
-    cy.get("#sidebar_menu-holder .nav-link").contains(target).click()
+    cy.get(".sidebar").scrollTo("bottom")
+    cy.get(".sidebar .nav-link").contains(target).click()
 })
 
 // Custom Pagination
