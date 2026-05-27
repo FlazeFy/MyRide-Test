@@ -24,7 +24,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
         // Validate Contain
         cy.templateValidateContain(data.data, ['Glove Compartment', 'Trunk', 'Dashboard', 'Back Seat Pocket', 'Roof Box'], 'inventory_storage')
-        cy.templateValidateContain(data.data, ['Safety', 'Maintenance', 'Electronics', 'Documents','Accessoris'], 'inventory_category')
+        cy.templateValidateContain(data.data, ['Safety', 'Maintenance', 'Electronics', 'Documents','Accessoris', 'Personal'], 'inventory_category')
 
         // Validate datetime
         const columnDateTime = [
@@ -40,7 +40,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-001 : User Can See All Inventory With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -64,7 +64,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-002 : User Can See All Inventory With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -89,7 +89,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-003 : User Cant See All Inventory With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'
@@ -161,7 +161,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-006 : User Cant See All Inventory With Custom Invalid Vehicle Id (UUID)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = '1'
@@ -188,7 +188,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-007 : User Cant See All Inventory With Custom Invalid Vehicle Id (Not Found)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = 'a5add64f-fdf8-1eba-0498-c1a000737c81'
@@ -204,7 +204,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
             }).as('UserCantSeeAllInventoryWithCustomInvalidVehicleId(NotFound)')
             cy.get('@UserCantSeeAllInventoryWithCustomInvalidVehicleId(NotFound)').then(dt => {
                 cy.templateGet(404,dt, null)
-                expect(dt.body.message).contain('inventory not found')
+                expect(dt.body.message).contain('vehicle not found')
                 
                 // Get Item Holder
                 const res = dt.body
@@ -215,7 +215,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-008 : User Can See All Inventory With Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'Sponge'
@@ -240,7 +240,7 @@ describe('Integration Test - Inventory - Get : All Inventory', () => {
 
     it('TC-INT-IN-009 : User Cant See All Inventory With Failed Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'Lorem ipsum'

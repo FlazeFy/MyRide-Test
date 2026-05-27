@@ -6,7 +6,7 @@ describe('Integration Test - Vehicle - Get : All Vehicle Name', () => {
 
     it('TC-INT-VH-001 : User Can See All Vehicle Name With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

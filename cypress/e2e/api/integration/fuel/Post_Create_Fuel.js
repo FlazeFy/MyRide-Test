@@ -62,7 +62,7 @@ describe('Integration Test - Fuel - Post : Create Fuel', () => {
     ]
 
     const payloadAuth = {
-        username : 'flazefy',
+        username : 'flazen.edu',
         password: 'nopass123'
     }
 

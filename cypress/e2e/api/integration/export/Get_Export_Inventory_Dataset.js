@@ -6,7 +6,7 @@ describe('Integration Test - Inventory - Get : Export Inventory Dataset', () => 
 
     it('TC-INT-EX-013 : User Can Export Inventory Dataset', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const expectedHeader = [

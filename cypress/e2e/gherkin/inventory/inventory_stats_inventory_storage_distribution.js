@@ -1,5 +1,5 @@
 const { Given, Then } = require("@badeball/cypress-cucumber-preprocessor")
-// E2E Test : E2E-INVT-SICD-001
+// E2E Test : E2E-INVT-SISD-001
 
 Given("I have already signed in to the app", () => {
     const testData = {
@@ -14,13 +14,13 @@ Then("I open the {string} page", (title) => {
 })
 
 Then("I should see the section title {string}", (title) => {
-    cy.get("#inventory_category-holder").prevAll("h2").first().should("contain.text", title)
+    cy.get("#inventory_storage-holder").prevAll("h2").first().should("contain.text", title)
 })
 
 Then("I should see the pie chart", () => {
-    cy.checkPieChart("#inventory_category-holder")
+    cy.checkPieChart("#inventory_storage-holder")
 })
 
 Then("I should see chart labels for each series", () => {
-    cy.checkPieChartLegend("#inventory_category-holder")
+    cy.checkPieChartLegend("#inventory_storage-holder")
 })

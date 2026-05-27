@@ -6,7 +6,7 @@ describe('Integration Test - Service - Get : Service Spending', () => {
 
     it('TC-INT-SV-001 : User Can See Service Spending With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

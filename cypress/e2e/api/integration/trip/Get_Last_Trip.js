@@ -6,7 +6,7 @@ describe('Integration Test - Trip - Get : Last Trip', () => {
 
     it('TC-INT-TR-012 : User Can See Last Trip With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

@@ -10,8 +10,7 @@ Given("I have already signed in to the app", () => {
 })
 
 When("I open the {string} page", (title) => {
-    cy.get(".toogle_nav-button").click()
-    cy.get("#sidebar_menu-holder .nav-link").contains(title).click()
+    cy.openPageViaSideBar(title)
 })
 
 Then("I should see the section title {string}", (title) => {

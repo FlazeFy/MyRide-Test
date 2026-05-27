@@ -6,7 +6,7 @@ describe('Integration Test - Reminder - Get : Next Reminder', () => {
 
     it('TC-INT-RM-001 : User Can See Next Reminder With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

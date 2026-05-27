@@ -38,7 +38,7 @@ describe('Integration Test - Fuel - Get : All Fuel', () => {
 
     it('TC-INT-FL-001 : User Can See All Fuel With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -62,7 +62,7 @@ describe('Integration Test - Fuel - Get : All Fuel', () => {
 
     it('TC-INT-FL-002 : User Can See All Fuel With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -87,7 +87,7 @@ describe('Integration Test - Fuel - Get : All Fuel', () => {
 
     it('TC-INT-FL-003 : User Cant See All Fuel With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'
@@ -159,7 +159,7 @@ describe('Integration Test - Fuel - Get : All Fuel', () => {
 
     it('TC-INT-FL-006 : User Cant See All Fuel With Custom Invalid Vehicle Id (UUID)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const fuelId = '1'
@@ -186,7 +186,7 @@ describe('Integration Test - Fuel - Get : All Fuel', () => {
 
     it('TC-INT-FL-007 : User Cant See All Fuel With Custom Invalid Vehicle Id (Not Found)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const fuelId = 'da79e9ba-bc19-2186-2f4d-c755ec841234'

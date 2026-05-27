@@ -29,7 +29,7 @@ describe('Integration Test - History - Get : All History', () => {
 
     it('TC-INT-HS-001 : User Can See All History With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -53,7 +53,7 @@ describe('Integration Test - History - Get : All History', () => {
 
     it('TC-INT-HS-002 : User Can See All History With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -78,7 +78,7 @@ describe('Integration Test - History - Get : All History', () => {
 
     it('TC-INT-HS-003 : User Cant See All History With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'

@@ -37,7 +37,7 @@ describe('Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-001 : User Can See All Trip With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -61,7 +61,7 @@ describe('Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-002 : User Can See All Trip With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -86,7 +86,7 @@ describe('Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-003 : User Cant See All Trip With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'
@@ -158,7 +158,7 @@ describe('Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-006 : User Cant See All Trip With Custom Invalid Trip Id (UUID)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const tripId = '1'
@@ -185,7 +185,7 @@ describe('Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-007 : User Cant See All Trip With Custom Invalid Trip Id (Not Found)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const tripId = 'da79e9ba-bc19-2186-2f4d-c755ec841234'
@@ -212,7 +212,7 @@ describe('Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-008 : User Can See All Trip With Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'Kost'
@@ -237,7 +237,7 @@ describe('Integration Test - Trip - Get : All Trip', () => {
 
     it('TC-INT-TR-009 : User Cant See All Trip With Failed Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'Lorem ipsum'

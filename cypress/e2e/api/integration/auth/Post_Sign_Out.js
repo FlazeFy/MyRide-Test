@@ -6,7 +6,7 @@ describe('Integration Test - Auth - Post : Sign Out', () => {
 
     it('TC-INT-AU-005 : User Can Sign Out With Valid Token', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

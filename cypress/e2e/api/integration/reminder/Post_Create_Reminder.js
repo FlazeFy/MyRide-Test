@@ -7,7 +7,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
 
     it('TC-INT-RM-016 : User Cant Create Reminder Using Invalid Rules For Reminder Context', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -39,7 +39,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
 
     it('TC-INT-RM-017 : User Cant Create Reminder Using Invalid Char Length Reminder Title', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -70,7 +70,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
 
     it('TC-INT-RM-018 : User Cant Create Reminder Using Empty Reminder Title', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {
@@ -100,7 +100,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
 
     it('TC-INT-RM-019 : User Cant Create Reminder Using Invalid Vehicle Id (Not Found)', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -130,7 +130,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
 
     it('TC-INT-RM-020 : User Cant Create Reminder Using Invalid Remind At Datetime Format', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -161,7 +161,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
 
     it('TC-INT-RM-021 : User Cant Create Reminder Using Invalid Remind At (Remind At Is Past Datetime', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -214,7 +214,7 @@ describe('Integration Test - Reminder - Post : Create Reminder', () => {
 
     it('TC-INT-RM-023 : User Can Create Reminder Using Valid Data', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {

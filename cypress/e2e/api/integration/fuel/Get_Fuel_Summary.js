@@ -23,7 +23,7 @@ describe('Integration Test - Fuel - Get : Fuel Summary', () => {
 
     it('TC-INT-FL-008 : User Can See Fuel Summary With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const period = '01-2026'

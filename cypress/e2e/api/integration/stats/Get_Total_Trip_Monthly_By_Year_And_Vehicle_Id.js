@@ -6,7 +6,7 @@ describe('Integration Test - Stats - Get : Total Trip Monthly By Year And Vehicl
 
     it('TC-INT-ST-010 : User Can See Total Trip Monthly By Year And Vehicle Id With Valid Year & Vehicle And Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicle_id = '7d53371a-e363-2ad3-25fe-180dae88c062'
@@ -43,7 +43,7 @@ describe('Integration Test - Stats - Get : Total Trip Monthly By Year And Vehicl
 
     it('TC-INT-ST-011 : User Cant See Total Trip Monthly By Year And Vehicle Id With Invalid Vehicle Id', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicle_id = '2d98f524-de02-11ed-b5ea'
@@ -71,7 +71,7 @@ describe('Integration Test - Stats - Get : Total Trip Monthly By Year And Vehicl
 
     it('TC-INT-ST-012 : User Can See Total Trip By Context With Valid Context And Empty Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicle_id = '2d98f524-de02-11ed-b5ea-0242ac120002'

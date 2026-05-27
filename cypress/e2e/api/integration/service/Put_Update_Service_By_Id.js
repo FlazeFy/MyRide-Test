@@ -85,7 +85,7 @@ describe('Integration Test - Service - Put : Update Service By Id', () => {
     ]
 
     const payloadAuth = {
-        username : "flazefy",
+        username : "flazen.edu",
         password: 'nopass123'
     }
 

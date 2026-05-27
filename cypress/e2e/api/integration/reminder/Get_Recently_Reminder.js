@@ -29,7 +29,7 @@ describe('Integration Test - Reminder - Get : Recently Reminder', () => {
 
     it('TC-INT-RM-004 : User Can See Recently Reminder With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -53,7 +53,7 @@ describe('Integration Test - Reminder - Get : Recently Reminder', () => {
 
     it('TC-INT-RM-005 : User Can See Recently Reminder With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 1
@@ -78,7 +78,7 @@ describe('Integration Test - Reminder - Get : Recently Reminder', () => {
 
     it('TC-INT-RM-006 : User Cant See Recently Reminder With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'

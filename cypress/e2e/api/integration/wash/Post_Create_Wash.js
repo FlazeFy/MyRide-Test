@@ -95,7 +95,7 @@ describe('Integration Test - Wash - Post : Create Wash', () => {
     ]
 
     const payloadAuth = {
-        username : "flazefy",
+        username : "flazen.edu",
         password: 'nopass123'
     }
 

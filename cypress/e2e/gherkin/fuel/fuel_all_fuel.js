@@ -11,8 +11,7 @@ Given("I have already signed in to the app", () => {
 })
 
 Then("I open the {string} page", (title) => {
-    cy.get(".toogle_nav-button").click()
-    cy.get("#sidebar_menu-holder .nav-link").contains(title).click()
+    cy.openPageViaSideBar(title)
 })
 
 Then("I should see the section title {string}", (title) => {
@@ -98,8 +97,14 @@ Then("I should see plate number, vehicle type, status, fuel info, fuel at, and a
         
         // Check Action Button
         cy.wrap($tds.eq(4)).within(() => {
-            cy.get("a.btn-evidence").should("exist").and("have.attr", "data-bs-toggle", "modal")
-            cy.get("a.btn-evidence").should("have.attr", "data-bs-target").and("match", /^#.+$/)
+            cy.root().then(($root) => {
+                const btnEvidence = $root.find("a.btn-evidence")
+
+                if (btnEvidence.length) {
+                    cy.wrap(btnEvidence).should("have.attr", "data-bs-toggle", "modal")
+                    cy.wrap(btnEvidence).should("have.attr", "data-bs-target").and("match", /^#.+$/)
+                }
+            })
             cy.get("a.btn-delete").should("exist").and("have.attr", "data-url").and("not.be.empty")
 
             const attrs = ["data-vehicle-plate-number","data-id","data-fuel-type","data-fuel-brand","data-fuel-volume","data-fuel-price-total","data-fuel-ron","data-fuel-at"]

@@ -6,7 +6,7 @@ describe('Integration Test - History - Delete : History By Id', () => {
 
     it('TC-INT-HS-006 : User Cant Remove History Using Invalid ID Format', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '1'
@@ -30,7 +30,7 @@ describe('Integration Test - History - Delete : History By Id', () => {
 
     it('TC-INT-HS-007 : User Cant Remove History Using Not Found ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12abcd'
@@ -52,7 +52,7 @@ describe('Integration Test - History - Delete : History By Id', () => {
 
     it('TC-INT-HS-008 : User Can Remove History Using Valid ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'

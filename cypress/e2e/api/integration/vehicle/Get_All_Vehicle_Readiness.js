@@ -41,7 +41,7 @@ describe('Integration Test - Vehicle - Get : All Vehicle Readiness', () => {
 
     it('TC-INT-VH-007 : User Can See All Vehicle Readiness With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -65,7 +65,7 @@ describe('Integration Test - Vehicle - Get : All Vehicle Readiness', () => {
 
     it('TC-INT-VH-008 : User Can See All Vehicle Readiness With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -90,7 +90,7 @@ describe('Integration Test - Vehicle - Get : All Vehicle Readiness', () => {
 
     it('TC-INT-VH-009 : User Cant See All Vehicle Readiness With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'

@@ -27,7 +27,7 @@ describe('Integration Test - Driver - Get : All Driver Vehicle', () => {
 
     it('TC-INT-DR-009 : User Can See All Driver Vehicle With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -51,7 +51,7 @@ describe('Integration Test - Driver - Get : All Driver Vehicle', () => {
 
     it('TC-INT-DR-010 : User Can See All Driver Vehicle With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 1
@@ -76,7 +76,7 @@ describe('Integration Test - Driver - Get : All Driver Vehicle', () => {
 
     it('TC-INT-DR-011 : User Cant See All Driver Vehicle With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'

@@ -6,7 +6,7 @@ describe('Integration Test - Service - Get : Service By Vehicle Id', () => {
 
     it('TC-INT-SV-016 : User Can See Service By Vehicle Id With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = '7d53371a-e363-2ad3-25fe-180dae88c062'
@@ -52,7 +52,7 @@ describe('Integration Test - Service - Get : Service By Vehicle Id', () => {
 
     it('TC-INT-SV-017 : User Cant See Service By Vehicle Id With Empty Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = '88a003eb-d1a6-6b3f-2015-1e11d3186975'

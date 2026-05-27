@@ -84,7 +84,7 @@ describe('Integration Test - Service - Post : Create Service', () => {
     ]
 
     const payloadAuth = {
-        username : "flazefy",
+        username : "flazen.edu",
         password: 'nopass123'
     }
 

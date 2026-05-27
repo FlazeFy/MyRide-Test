@@ -6,7 +6,7 @@ describe('Integration Test - Wash - Get : Wash Summary Per Vehicle', () => {
 
     it('TC-INT-WS-008 : User Can See Wash Summary Per Vehicle With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

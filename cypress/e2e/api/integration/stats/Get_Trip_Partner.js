@@ -6,7 +6,7 @@ describe('Integration Test - Stats - Get : Partner Trip', () => {
 
     it('TC-INT-ST-018 : User Can See List Of Partner Trip', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

@@ -6,7 +6,7 @@ describe('Integration Test - Driver - Post : Create Driver', () => {
 
     it('TC-INT-DR-023 : User Cant Create Driver Using Invalid Telegram User Id', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -41,7 +41,7 @@ describe('Integration Test - Driver - Post : Create Driver', () => {
 
     it('TC-INT-DR-024 : User Cant Create Driver Using Empty Email', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {
@@ -74,7 +74,7 @@ describe('Integration Test - Driver - Post : Create Driver', () => {
 
     it('TC-INT-DR-025 : User Cant Create Driver Using Mismatch Password Confirmation', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -130,7 +130,7 @@ describe('Integration Test - Driver - Post : Create Driver', () => {
 
     it('TC-INT-DR-027 : User Can Create Driver Using Valid Data', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {
@@ -161,7 +161,7 @@ describe('Integration Test - Driver - Post : Create Driver', () => {
 
     it('TC-INT-DR-028 : User Cant Create Driver Using Duplicated Email', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {

@@ -6,7 +6,7 @@ describe('Integration Test - Driver - Get : Export Driver Dataset', () => {
 
     it('TC-INT-EX-016 : User Can Export Driver Dataset', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const expectedHeader = [

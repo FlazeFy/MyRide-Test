@@ -6,7 +6,7 @@ describe('Integration Test - Fuel - Get : Last Fuel', () => {
 
     it('TC-INT-FL-011 : User Can See Last Fuel With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

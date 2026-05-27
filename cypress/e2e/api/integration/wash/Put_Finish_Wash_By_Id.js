@@ -7,7 +7,7 @@ describe('Integration Test - Wash - Put : Finish Wash By Id', () => {
     it('TC-INT-WS-029 : User Cant Finish Wash Who Already Finished', () => {
         const id = '0660078a-15ed-710e-32a8-c78cf5ec13f0'
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
 
@@ -29,7 +29,7 @@ describe('Integration Test - Wash - Put : Finish Wash By Id', () => {
     it('TC-INT-WS-030 : User Cant Finish Wash Using Invalid Wash ID (Not Found)', () => {
         const id = '7d53371a-e363-2ad3-25fe-180dae88c069'
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
 
@@ -52,7 +52,7 @@ describe('Integration Test - Wash - Put : Finish Wash By Id', () => {
     it('TC-INT-WS-031 : User Cant Finish Wash Using Invalid ID (UUID)', () => {
         const id = '1'
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
 
@@ -89,7 +89,7 @@ describe('Integration Test - Wash - Put : Finish Wash By Id', () => {
     it('TC-INT-WS-033 : User Can Finish Wash Who Still Unfinished', () => {
         const id = '6e0187c5-ddd0-15d1-0add-5c57a649a792'
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

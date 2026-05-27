@@ -45,7 +45,7 @@ describe('Integration Test - Wash - Get : All Wash', () => {
 
     it('TC-INT-WS-001 : User Can See All Wash With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -69,7 +69,7 @@ describe('Integration Test - Wash - Get : All Wash', () => {
 
     it('TC-INT-WS-002 : User Can See All Wash With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -94,7 +94,7 @@ describe('Integration Test - Wash - Get : All Wash', () => {
 
     it('TC-INT-WS-003 : User Cant See All Wash With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'
@@ -166,7 +166,7 @@ describe('Integration Test - Wash - Get : All Wash', () => {
 
     it('TC-INT-WS-006 : User Can See All Wash With Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'hydraulic'
@@ -191,7 +191,7 @@ describe('Integration Test - Wash - Get : All Wash', () => {
 
     it('TC-INT-WS-007 : User Cant See All Wash With Failed Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'Lorem ipsum'

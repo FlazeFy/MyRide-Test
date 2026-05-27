@@ -6,7 +6,7 @@ describe('Integration Test - Fuel - Get : Export Fuel Dataset', () => {
 
     it('TC-INT-EX-007 : User Can Export Fuel Dataset', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const expectedHeader = [

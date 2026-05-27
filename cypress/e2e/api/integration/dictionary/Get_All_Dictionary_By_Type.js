@@ -6,7 +6,7 @@ describe('Integration Test - Dictionary - Get : All Dictionary By Type', () => {
 
     it('TC-INT-DC-001 : User Can See All Dictionary Valid Data By Category', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const context = 'inventory_storage'
@@ -40,7 +40,7 @@ describe('Integration Test - Dictionary - Get : All Dictionary By Type', () => {
 
     it('TC-INT-DC-002 : User Cant See Total Trip By Context With Invalid Context', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const context = 'inventory_storage_old'

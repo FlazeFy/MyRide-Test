@@ -31,7 +31,7 @@ describe('Integration Test - Vehicle - Get : Vehicle Trip Summary By Id', () => 
 
     it('TC-INT-VH-012 : User Can See Vehicle Trip Summary By Id With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '7d53371a-e363-2ad3-25fe-180dae88c062'
@@ -52,7 +52,7 @@ describe('Integration Test - Vehicle - Get : Vehicle Trip Summary By Id', () => 
 
     it('TC-INT-VH-013 : User Can See Vehicle Trip Summary By Id For Never Used Vehicle', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '88a003eb-d1a6-6b3f-2015-1e11d3186975'
@@ -73,7 +73,7 @@ describe('Integration Test - Vehicle - Get : Vehicle Trip Summary By Id', () => 
 
     it('TC-INT-VH-014 : User Cant See Vehicle Trip Summary By Id With Invalid UUID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '1'

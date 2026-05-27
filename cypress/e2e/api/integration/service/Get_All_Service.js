@@ -38,7 +38,7 @@ describe('Integration Test - Service - Get : All Service', () => {
 
     it('TC-INT-SV-004 : User Can See All Service With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -62,7 +62,7 @@ describe('Integration Test - Service - Get : All Service', () => {
 
     it('TC-INT-SV-005 : User Can See All Service With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -87,7 +87,7 @@ describe('Integration Test - Service - Get : All Service', () => {
 
     it('TC-INT-SV-006 : User Cant See All Service With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'
@@ -159,7 +159,7 @@ describe('Integration Test - Service - Get : All Service', () => {
 
     it('TC-INT-SV-009 : User Cant See All Service With Custom Invalid Vehicle Id (UUID)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const serviceId = '1'
@@ -186,7 +186,7 @@ describe('Integration Test - Service - Get : All Service', () => {
 
     it('TC-INT-SV-010 : User Cant See All Service With Custom Invalid Vehicle Id (Not Found)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const serviceId = 'da79e9ba-bc19-2186-2f4d-c755ec841234'
@@ -213,7 +213,7 @@ describe('Integration Test - Service - Get : All Service', () => {
 
     it('TC-INT-SV-011 : User Can See All Service With Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'brake'
@@ -238,7 +238,7 @@ describe('Integration Test - Service - Get : All Service', () => {
 
     it('TC-INT-SV-012 : User Cant See All Service With Failed Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'not found'

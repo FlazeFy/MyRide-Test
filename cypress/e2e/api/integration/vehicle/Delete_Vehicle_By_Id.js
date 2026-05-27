@@ -6,7 +6,7 @@ describe('Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', () => {
 
     it('TC-INT-VH-017 : User Cant Remove Vehicle Using Invalid ID Format', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '1'
@@ -30,7 +30,7 @@ describe('Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', () => {
 
     it('TC-INT-VH-018 : User Cant Remove Vehicle Using Not Found ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12abcd'
@@ -52,7 +52,7 @@ describe('Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', () => {
 
     it('TC-INT-VH-019 : User Can Remove Vehicle Using Valid ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'
@@ -73,7 +73,7 @@ describe('Integration Test - Vehicle - Delete : Vehicle By Id (Soft)', () => {
 
     it('TC-INT-VH-020 : User Cant Remove Already Removed Vehicle', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'

@@ -24,7 +24,7 @@ describe('Integration Test - Inventory - Get : Inventory By Vehicle Id', () => {
 
         // Validate Contain
         cy.templateValidateContain(data, ['Glove Compartment', 'Trunk', 'Dashboard', 'Back Seat Pocket', 'Roof Box'], 'inventory_storage')
-        cy.templateValidateContain(data, ['Safety', 'Maintenance', 'Electronics', 'Documents','Accessoris'], 'inventory_category')
+        cy.templateValidateContain(data, ['Safety', 'Maintenance', 'Electronics', 'Documents','Accessoris','Personal'], 'inventory_category')
 
         // Validate datetime
         const columnDateTime = [
@@ -35,7 +35,7 @@ describe('Integration Test - Inventory - Get : Inventory By Vehicle Id', () => {
 
     it('TC-INT-IN-010 : User Can See Inventory By Vehicle Id With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = '7d53371a-e363-2ad3-25fe-180dae88c062'
@@ -56,7 +56,7 @@ describe('Integration Test - Inventory - Get : Inventory By Vehicle Id', () => {
 
     it('TC-INT-IN-011 : User Cant See Inventory By Vehicle Id With Empty Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = '88a003eb-d1a6-6b3f-2015-1e11d3186975'
@@ -104,7 +104,7 @@ describe('Integration Test - Inventory - Get : Inventory By Vehicle Id', () => {
 
     it('TC-INT-IN-013 : User Cant See Inventory By Vehicle Id With Custom Invalid Vehicle Id (UUID)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = '1'
@@ -131,7 +131,7 @@ describe('Integration Test - Inventory - Get : Inventory By Vehicle Id', () => {
 
     it('TC-INT-IN-014 : User Cant See Inventory By Vehicle Id With Custom Invalid Vehicle Id (Not Found)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const vehicleId = 'a5add64f-fdf8-1eba-0498-c1a000737c80'

@@ -6,7 +6,7 @@ describe('Integration Test - Service - Get : Next Service', () => {
 
     it('TC-INT-SV-013 : User Can See Next Service With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

@@ -31,7 +31,7 @@ describe('Integration Test - Chat - Get : All Chat By Type', () => {
 
     it('TC-INT-CT-001 : User Can See All Chat By Type With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const chatType = 'ai'
@@ -56,7 +56,7 @@ describe('Integration Test - Chat - Get : All Chat By Type', () => {
 
     it('TC-INT-CT-002 : User Can See All Chat By Type With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const chatType = 'ai'
@@ -82,7 +82,7 @@ describe('Integration Test - Chat - Get : All Chat By Type', () => {
 
     it('TC-INT-CT-003 : User Cant See All Chat By Type With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const chatType = 'ai'
@@ -158,7 +158,7 @@ describe('Integration Test - Chat - Get : All Chat By Type', () => {
 
     it('TC-INT-CT-006 : User Cant See All Chat By Type With Invalid Type', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const chatType = 'telegram'

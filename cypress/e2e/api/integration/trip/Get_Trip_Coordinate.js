@@ -37,7 +37,7 @@ describe('Integration Test - Trip - Get : Trip Coordinate', () => {
 
     it('TC-INT-TR-018 : User Can See Trip Coordinate With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 
@@ -102,7 +102,7 @@ describe('Integration Test - Trip - Get : Trip Coordinate', () => {
 
     it('TC-INT-TR-021 : User Can See Trip Coordinate With Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'Kost'
@@ -123,7 +123,7 @@ describe('Integration Test - Trip - Get : Trip Coordinate', () => {
 
     it('TC-INT-TR-022 : User Cant See Trip Coordinate With Failed Custom Search', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const search = 'Lorem ipsum'

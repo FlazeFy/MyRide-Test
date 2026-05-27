@@ -62,7 +62,7 @@ describe('Integration Test - Inventory - Post : Create Inventory', () => {
     ]
 
     const payloadAuth = {
-        username : 'flazefy',
+        username : 'flazen.edu',
         password: 'nopass123'
     }
 

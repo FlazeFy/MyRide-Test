@@ -6,7 +6,7 @@ describe('Integration Test - Service - Get : Export Service Dataset', () => {
 
     it('TC-INT-EX-010 : User Can Export Service Dataset', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const expectedHeader = [

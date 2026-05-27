@@ -6,7 +6,7 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
 
     it('TC-INT-ST-002 : User Can See Total Trip By Context With Valid Context And Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const context = 'trip_category'
@@ -42,7 +42,7 @@ describe('Integration Test - Stats - Get : Total Trip By Context', () => {
 
     it('TC-INT-ST-003 : User Cant See Total Trip By Context With Invalid Context', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const context = 'trip_categories'

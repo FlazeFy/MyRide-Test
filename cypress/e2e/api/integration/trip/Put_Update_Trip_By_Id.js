@@ -99,7 +99,7 @@ describe('Integration Test - Trip - Put : Update Trip By ID', () => {
     ]
 
     const payloadAuth = {
-        username: 'flazefy',
+        username: 'flazen.edu',
         password: 'nopass123'
     }
 

@@ -6,7 +6,7 @@ describe('Integration Test - Wash - Get : Export Wash Dataset', () => {
 
     it('TC-INT-EX-001 : User Can Export Wash Dataset', () => {
         const payload = {
-            username: 'flazefy',
+            username: 'flazen.edu',
             password: 'nopass123',
         }
         const expectedHeader = [

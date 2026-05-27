@@ -37,7 +37,7 @@ describe('Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
     it('TC-INT-TR-028 : User Can See All Trip By Driver Id With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const driverId = '5eaa10e9-1e2a-a789-0c96-fb3714ee9b85'
@@ -62,7 +62,7 @@ describe('Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
     it('TC-INT-TR-029 : User Can See All Trip By Driver Id With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 2
@@ -88,7 +88,7 @@ describe('Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
     it('TC-INT-TR-030 : User Cant See All Trip By Driver Id With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const itemPerPage = 'test'
@@ -164,7 +164,7 @@ describe('Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
     it('TC-INT-TR-033 : User Cant See All Trip By Driver Id With Custom Invalid Driver Id (UUID)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const driverId = '1'
@@ -191,7 +191,7 @@ describe('Integration Test - Trip - Get : All Trip By Driver Id', () => {
 
     it('TC-INT-TR-034 : User Cant See All Trip By Driver Id With Custom Invalid Driver Id (Not Found)', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const driverId = 'da79e9ba-bc19-2186-2f4d-c755ec841234'

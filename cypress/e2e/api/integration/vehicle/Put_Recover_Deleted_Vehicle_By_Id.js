@@ -6,7 +6,7 @@ describe('Integration Test - Vehicle - Put : Recover Deleted Vehicle By Id', () 
 
     it('TC-INT-VH-021 : User Cant Recover Deleted Vehicle Using Invalid ID Format', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '1'
@@ -30,7 +30,7 @@ describe('Integration Test - Vehicle - Put : Recover Deleted Vehicle By Id', () 
 
     it('TC-INT-VH-022 : User Cant Recover Deleted Vehicle Using Not Found ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12abcd'
@@ -52,7 +52,7 @@ describe('Integration Test - Vehicle - Put : Recover Deleted Vehicle By Id', () 
 
     it('TC-INT-VH-023 : User Can Recover Deleted Vehicle Using Valid ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'
@@ -73,7 +73,7 @@ describe('Integration Test - Vehicle - Put : Recover Deleted Vehicle By Id', () 
 
     it('TC-INT-VH-024 : User Cant Recover Active Vehicle', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'

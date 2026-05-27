@@ -6,7 +6,7 @@ describe('Integration Test - Fuel - Delete : Fuel By Id', () => {
 
     it('TC-INT-FL-014 : User Cant Remove Fuel Using Invalid ID Format', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '1'
@@ -30,7 +30,7 @@ describe('Integration Test - Fuel - Delete : Fuel By Id', () => {
 
     it('TC-INT-FL-015 : User Cant Remove Fuel Using Not Found ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12abcd'
@@ -52,7 +52,7 @@ describe('Integration Test - Fuel - Delete : Fuel By Id', () => {
 
     it('TC-INT-FL-016 : User Can Remove Fuel Using Valid ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'

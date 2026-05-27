@@ -31,7 +31,7 @@ describe('Integration Test - Trip - Get : Nearest Coordinate', () => {
 
     it('TC-INT-TR-023 : User Can See Nearest Coordinate With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const coor = '-6.193307477576132,106.8290024771821'
@@ -56,7 +56,7 @@ describe('Integration Test - Trip - Get : Nearest Coordinate', () => {
 
     it('TC-INT-TR-024 : User Can See Nearest Coordinate With Custom Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const coor = '-6.193307477576132,106.8290024771821'
@@ -82,7 +82,7 @@ describe('Integration Test - Trip - Get : Nearest Coordinate', () => {
 
     it('TC-INT-TR-025 : User Cant See Nearest Coordinate With Custom Invalid Item Per Page', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const coor = '-6.193307477576132,106.8290024771821'

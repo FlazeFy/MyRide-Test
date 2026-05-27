@@ -6,7 +6,7 @@ describe('Integration Test - Vehicle - Get : All Vehicle Fuel', () => {
 
     it('TC-INT-VH-004 : User Can See All Vehicle Fuel With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

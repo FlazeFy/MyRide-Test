@@ -6,7 +6,7 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
 
     it('TC-INT-ST-014 : User Can See Total Vehicle By Context With Valid Context And Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const context = 'vehicle_merk'
@@ -42,7 +42,7 @@ describe('Integration Test - Stats - Get : Total Vehicle By Context', () => {
 
     it('TC-INT-ST-015 : User Cant See Total Vehicle By Context With Invalid Context', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const context = 'vehicle_categories'

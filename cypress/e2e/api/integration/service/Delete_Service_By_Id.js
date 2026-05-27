@@ -6,7 +6,7 @@ describe('Integration Test - Service - Delete : Service By Id', () => {
 
     it('TC-INT-SV-020 : User Cant Remove Service Using Invalid ID Format', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '1'
@@ -30,7 +30,7 @@ describe('Integration Test - Service - Delete : Service By Id', () => {
 
     it('TC-INT-SV-021 : User Cant Remove Service Using Not Found ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12abcd'
@@ -52,7 +52,7 @@ describe('Integration Test - Service - Delete : Service By Id', () => {
 
     it('TC-INT-SV-022 : User Can Remove Service Using Valid ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'

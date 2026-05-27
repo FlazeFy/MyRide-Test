@@ -7,7 +7,7 @@ describe('Integration Test - Wash - Put : Update Wash By Id', () => {
     const url = `/api/v1/wash/${id}`
 
     const payloadAuth = {
-        username : "flazefy",
+        username : "flazen.edu",
         password: 'nopass123'
     }
 

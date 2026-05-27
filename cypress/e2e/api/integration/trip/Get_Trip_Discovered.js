@@ -31,7 +31,7 @@ describe('Integration Test - Trip - Get : Trip Discovered', () => {
 
     it('TC-INT-TR-011 : User Can See Trip Personal Discovered Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

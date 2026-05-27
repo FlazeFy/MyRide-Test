@@ -6,7 +6,7 @@ describe('Integration Test - Trip - Get : Trip Calendar', () => {
 
     it('TC-INT-TR-015 : User Can See Trip Calendar With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

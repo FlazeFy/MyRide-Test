@@ -6,7 +6,7 @@ describe('Integration Test - Driver - Get : All Driver Name', () => {
 
     it('TC-INT-DR-001 : User Can See All Driver Name With Valid Data', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
 

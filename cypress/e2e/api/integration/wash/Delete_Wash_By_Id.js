@@ -6,7 +6,7 @@ describe('Integration Test - Wash - Delete : Wash By Id', () => {
 
     it('TC-INT-WS-016 : User Cant Remove Wash Using Invalid ID Format', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '1'
@@ -30,7 +30,7 @@ describe('Integration Test - Wash - Delete : Wash By Id', () => {
 
     it('TC-INT-WS-017 : User Cant Remove Wash Using Not Found ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12abcd'
@@ -52,7 +52,7 @@ describe('Integration Test - Wash - Delete : Wash By Id', () => {
 
     it('TC-INT-WS-018 : User Can Remove Wash Using Valid ID', () => {
         const payload = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const id = '0a0c6580-213e-7469-229e-b53f2e12860b'

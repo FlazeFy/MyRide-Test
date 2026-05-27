@@ -6,7 +6,7 @@ describe('Integration Test - Driver - Post : Create Driver - Vehicle Relation', 
 
     it('TC-INT-DR-029 : User Cant Create Driver Relation Using Invalid Vehicle Id', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123'
         }
         const payload = {
@@ -35,7 +35,7 @@ describe('Integration Test - Driver - Post : Create Driver - Vehicle Relation', 
 
     it('TC-INT-DR-030 : User Cant Create Driver Relation Using Empty Driver Id', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {
@@ -63,7 +63,7 @@ describe('Integration Test - Driver - Post : Create Driver - Vehicle Relation', 
 
     it('TC-INT-DR-031 : User Cant Create Driver Relation Using Invalid Char Length Relation Note', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {
@@ -110,7 +110,7 @@ describe('Integration Test - Driver - Post : Create Driver - Vehicle Relation', 
 
     it('TC-INT-DR-033 : User Can Create Driver Relation Using Valid Data', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {
@@ -136,7 +136,7 @@ describe('Integration Test - Driver - Post : Create Driver - Vehicle Relation', 
 
     it('TC-INT-DR-034 : User Cant Create Duplicated Driver Relation', () => {
         const payloadAuth = {
-            username : "flazefy",
+            username : "flazen.edu",
             password: 'nopass123',
         }
         const payload = {
