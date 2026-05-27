@@ -1,7 +1,6 @@
 const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor")
 
-// E2E Test : E2E-AUTH-LOGIN-001
-
+// E2E Test : E2E-AUTH-LOGIN-001, E2E-AUTH-LOGIN-002, E2E-AUTH-LOGIN-003, E2E-AUTH-LOGIN-004
 Given("I open the login page", () => {
     cy.visit("/login")
 })
@@ -32,4 +31,18 @@ When("I click the submit button", () => {
 
 Then("I should be redirected to the dashboard page", () => {
     cy.url().should("include", "/dashboard")
+})
+
+Then("I should see alert message {string}", (message) => {
+    cy.get("#form-login").within(() => {
+        // Wait until alert message pppears
+        cy.get(".alert-text", { timeout: 5000 }).should("be.visible")
+
+        // Check Alert Message
+        cy.get(".alert-text").then((alerts) => {
+            const isMatch = [...alerts].some((alert) => alert.innerText.includes(message))
+
+            expect(isMatch).to.be.true
+        })
+    })
 })

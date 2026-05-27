@@ -6,7 +6,7 @@ describe('Integration Test - Auth - Post : Login', () => {
 
     it('TC-INT-AU-001 : User Can Login With Valid Data', () => {
         const test_data = {
-            username : "flazefy",
+            username : "flazen.edu",
             password : 'nopass123',
         }
 
@@ -59,7 +59,7 @@ describe('Integration Test - Auth - Post : Login', () => {
 
     it('TC-INT-AU-002 : User Cant Login With Wrong Password', () => {
         const test_data = {
-            username : "flazefy",
+            username : "flazen.edu",
             password : 'nopass1234',
         }
 
