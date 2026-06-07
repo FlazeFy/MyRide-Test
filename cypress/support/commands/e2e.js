@@ -26,6 +26,28 @@ Cypress.Commands.add("checkPagination", (target) => {
     })
 })
 
+Cypress.Commands.add("checkMonthlyLineChart", (holderId) => {
+    const validMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    
+    // Make sure series represent all month name
+    cy.get(holderId).within(() => {
+        cy.get(".apexcharts-xaxis-texts-g .apexcharts-xaxis-label tspan").each(el => {
+            const label = el.text().trim()
+            expect(validMonths).to.include(label)
+        })
+    })
+})
+
+Cypress.Commands.add("checkLineChartValidValues", (holderId) => {
+    // Check data (value) label
+    cy.get(holderId).within(() => {
+        cy.get(".apexcharts-datalabel").each(el => {
+            const val = Number(el.text().trim())
+            expect(val).to.be.at.least(0)
+        })
+    })
+})
+
 // Apexchart Element
 Cypress.Commands.add("checkPieChart", (holderId) => {
     cy.get(holderId).within(() => {
