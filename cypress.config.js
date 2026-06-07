@@ -54,6 +54,18 @@ module.exports = defineConfig({
                         header: data[0],
                         rowCount: data.length
                     }
+                },
+
+                getDownloadedFiles(folderPath) {
+                    return fs.readdirSync(folderPath)
+                },
+                
+                deleteFile(filePath) {
+                    if (fs.existsSync(filePath)) {
+                        fs.unlinkSync(filePath)
+                        return true
+                    }
+                    return false
                 }
             })
 
