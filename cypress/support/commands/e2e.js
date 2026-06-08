@@ -86,11 +86,14 @@ Cypress.Commands.add("checkExportedData", (username, fileType, expectedColumns =
                 expectedColumns.forEach(dt => {
                     expect(headers).to.include(dt)
                 })
-            })
-        }
 
-        // Clean up
-        cy.task("deleteFile", filePath)
+                // Clean up
+                cy.task("deleteFile", filePath)
+            })
+        } else {
+            // Clean up
+            cy.task("deleteFile", filePath)
+        }
     })
 })
 
