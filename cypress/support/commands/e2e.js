@@ -83,9 +83,7 @@ Cypress.Commands.add("checkExportedData", (username, fileType, expectedColumns =
                 const headers = data[0]
 
                 // Validate expected columns
-                expectedColumns.forEach(dt => {
-                    expect(headers).to.include(dt)
-                })
+                expectedColumns.forEach(dt => expect(headers).to.include(dt))
 
                 // Clean up
                 cy.task("deleteFile", filePath)
