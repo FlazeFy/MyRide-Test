@@ -9,7 +9,7 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 
 module.exports = defineConfig({
     e2e: {
-        baseUrl: 'http://127.0.0.1:8000',
+        baseUrl: process.env.BASE_URL || "http://localhost:8000",
         env: {
             allure: true,
             allureReuseAfterSpec: true

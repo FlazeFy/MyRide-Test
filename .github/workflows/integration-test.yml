@@ -1,0 +1,54 @@
+name: MyRide Integration Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cypress-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Integration Tests 
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+        run: |
+          set +e
+
+          SPEC_FILES=$(find cypress/e2e/api/integration/auth -type f -name "*.js")
+
+          echo "Found $(echo "$SPEC_FILES" | wc -l) spec files:"
+          echo "$SPEC_FILES"
+          echo "-----------------------------------------"
+
+          FAILED=0
+
+          for spec in $SPEC_FILES; do
+            echo "▶ Running: $spec"
+            npx cypress run --spec "$spec"
+            EXIT_CODE=$?
+
+            if [ $EXIT_CODE -ne 0 ]; then
+              echo "❌ FAILED: $spec"
+              FAILED=1
+            else
+              echo "✅ PASSED: $spec"
+            fi
+            echo "-----------------------------------------"
+          done
+
+          exit $FAILED
